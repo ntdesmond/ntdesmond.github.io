@@ -1,7 +1,8 @@
-name: NodeJS with Webpack
-
+name: Build and deploy Webpack 
 on:
   push:
+    branches: [ "master" ]
+  pull_request:
     branches: [ "master" ]
 
 jobs:
@@ -22,6 +23,7 @@ jobs:
         npm run build
         
     - name: Deploy
+      if: github.ref == 'refs/heads/master'
       uses: JamesIves/github-pages-deploy-action@v4
       with:
         folder: build
