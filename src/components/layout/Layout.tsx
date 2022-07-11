@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import Header from "./header/Header";
 
-const StyledLayout = styled.div`
+const StyledLayout = styled.main`
   transition: padding 0.2s;
   height: 100%;
   display: grid;
