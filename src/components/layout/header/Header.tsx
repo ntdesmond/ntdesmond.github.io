@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import styled from "styled-components";
 
 const StyledHeader = styled.header`
@@ -7,12 +7,32 @@ const StyledHeader = styled.header`
   gap: 1em;
 `;
 
-const Header: React.FC<{ isHome: boolean }> = ({ isHome }) => (
-  <StyledHeader>
-    {!isHome && <Link to="/">go home</Link>}
-    <Link to="/cv">cv</Link>
-    <div>nice header</div>
-  </StyledHeader>
-);
+const ActiveLink = styled(Link)`
+  font-weight: bold;
+  text-decoration: none;
+  color: #000;
+`;
+
+const links = {
+  "/": "home",
+  "/cv": "cv",
+};
+
+const Header = () => {
+  const location = useLocation();
+
+  const linkElements = Object.entries(links).map(([path, name]) =>
+    location.pathname === path ? (
+      <ActiveLink key={path} to={path}>
+        {name}
+      </ActiveLink>
+    ) : (
+      <Link key={path} to={path}>
+        {name}
+      </Link>
+    )
+  );
+  return <StyledHeader>{linkElements}</StyledHeader>;
+};
 
 export default Header;

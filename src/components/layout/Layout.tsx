@@ -1,3 +1,4 @@
+import React from "react";
 import styled from "styled-components";
 import Header from "./header/Header";
 
@@ -13,12 +14,9 @@ const StyledMain = styled.section`
   grid-area: main;
 `;
 
-const Layout = ({
-  isHome = false,
-  children,
-}: React.PropsWithChildren<{ isHome?: boolean }>) => (
+const Layout = ({ children }: { children: React.ReactNode }) => (
   <StyledLayout>
-    <Header isHome={isHome} />
+    <Header />
     <StyledMain>{children}</StyledMain>
   </StyledLayout>
 );
