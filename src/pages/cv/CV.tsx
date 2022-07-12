@@ -9,7 +9,6 @@ import {
 import { Section } from "./components/Section";
 import Responsibility from "./components/workExperience/Responsibility";
 import WorkExperienceEntry from "./components/workExperience/WorkExperienceEntry";
-import WorkExperienceSection from "./components/workExperience/WorkExperienceSection";
 
 const StyledCV = styled.div`
   display: grid;
@@ -59,7 +58,7 @@ const CV = () => (
         <p>Innopolis, Russia</p>
       </ContactSection>
       <FlexColumn>
-        <WorkExperienceSection>
+        <Section title="Work Experience">
           <WorkExperienceEntry
             company="Innopolis University"
             position="Electronics Design Center Specialist"
@@ -74,7 +73,7 @@ const CV = () => (
               </a>
             </Responsibility>
           </WorkExperienceEntry>
-        </WorkExperienceSection>
+        </Section>
         <Section title="Projects">
           <div>
             <p>fraumarta.store</p>
