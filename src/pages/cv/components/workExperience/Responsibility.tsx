@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import Tag, { TagsWrapper } from "../tags/Tag";
+import Tag, { TagList } from "../tags/Tag";
 
 const StyledResponsibility = styled.div`
   display: grid;
@@ -12,11 +12,7 @@ const Responsibility = (props: {
 }) => (
   <StyledResponsibility>
     <div>{props.children}</div>
-    <TagsWrapper>
-      {props.tags.map((tag) => (
-        <Tag name={tag} key={tag} />
-      ))}
-    </TagsWrapper>
+    <TagList tags={props.tags} />
   </StyledResponsibility>
 );
 

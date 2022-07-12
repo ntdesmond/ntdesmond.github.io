@@ -7,6 +7,7 @@ import {
   SectionHeading,
 } from "../../components/typography/Headings";
 import { Section } from "./components/Section";
+import { TagList } from "./components/tags/Tag";
 import Responsibility from "./components/workExperience/Responsibility";
 import WorkExperienceEntry from "./components/workExperience/WorkExperienceEntry";
 
@@ -32,6 +33,10 @@ const ContactSection = styled(YCentered)`
   > * {
     margin: 0;
   }
+`;
+
+const StyledTagList = styled(TagList)`
+  font-size: 1.2em;
 `;
 
 const Name = styled(PageHeading)`
@@ -149,10 +154,24 @@ const CV = () => (
           </ul>
         </Section>
         <Section title="Tags">
-          <p>
-            JS HTML Python Flask nginx Docker Bash Linux C# Git Front-end
-            Back-end
-          </p>
+          <StyledTagList
+            tags={[
+              "JS",
+              "HTML",
+              "Python",
+              "Flask",
+              "nginx",
+              "Docker",
+              "Bash",
+              "Linux",
+              "C#",
+              "Git",
+              "Frontend",
+              "Backend",
+              "React",
+              "FastAPI",
+            ]}
+          />
         </Section>
       </FlexColumn>
     </StyledCV>

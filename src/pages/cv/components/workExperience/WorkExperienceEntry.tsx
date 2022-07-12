@@ -3,7 +3,7 @@ import {
   InTextHeading,
   InTextSubheading,
 } from "../../../../components/typography/Headings";
-import Tag, { TagsWrapper } from "../tags/Tag";
+import Tag, { TagList } from "../tags/Tag";
 
 const StyledEntry = styled.div<{ hasTags: boolean }>`
   display: grid;
@@ -38,13 +38,7 @@ const WorkExperienceEntry = (props: {
       <StyledCompany>{props.company}</StyledCompany>
       <p>{props.period}</p>
     </StyledInfoBlock>
-    {props.tags && (
-      <TagsWrapper>
-        {props.tags.map((tag) => (
-          <Tag name={tag} key={tag} />
-        ))}
-      </TagsWrapper>
-    )}
+    {props.tags && <TagList tags={props.tags} />}
     <StyledContent>
       <InTextSubheading>Responsibilities:</InTextSubheading>
       {props.children}
