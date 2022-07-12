@@ -1,9 +1,15 @@
 import styled from "styled-components";
-import { Section } from "../components/cv/Section";
-import { YCentered } from "../components/layout/alignment/CenterAlign";
-import { FlexColumn } from "../components/layout/alignment/Flex";
-import Layout from "../components/layout/Layout";
-import { PageHeading, SectionHeading } from "../components/typography/Headings";
+import { YCentered } from "../../components/layout/alignment/CenterAlign";
+import { FlexColumn } from "../../components/layout/alignment/Flex";
+import Layout from "../../components/layout/Layout";
+import {
+  PageHeading,
+  SectionHeading,
+} from "../../components/typography/Headings";
+import { Section } from "./components/Section";
+import Responsibility from "./components/workExperience/Responsibility";
+import WorkExperienceEntry from "./components/workExperience/WorkExperienceEntry";
+import WorkExperienceSection from "./components/workExperience/WorkExperienceSection";
 
 const StyledCV = styled.div`
   display: grid;
@@ -53,16 +59,22 @@ const CV = () => (
         <p>Innopolis, Russia</p>
       </ContactSection>
       <FlexColumn>
-        <Section title="Work Experience">
-          <p>Design Center of Electronics and Microelectronics</p>
-          <p>
-            <i>Innopolis University</i>
-          </p>
-          <p>
-            <b>Specialist</b>
-          </p>
-          <p>April 2021 - October 2021</p>
-        </Section>
+        <WorkExperienceSection>
+          <WorkExperienceEntry
+            company="Innopolis University"
+            position="Electronics Design Center Specialist"
+            period="April 2021 - October 2021"
+          >
+            <Responsibility tags={["Linux", "Bash", "Python", "Git"]}>
+              Work on automation scripts and try to improve open-source
+              instruments{" "}
+              <a href="http://opencircuitdesign.com/qflow/">qflow</a> and{" "}
+              <a href="https://github.com/The-OpenROAD-Project/OpenLane/">
+                OpenLane
+              </a>
+            </Responsibility>
+          </WorkExperienceEntry>
+        </WorkExperienceSection>
         <Section title="Projects">
           <div>
             <p>fraumarta.store</p>

@@ -1,5 +1,5 @@
 import { Navigate, Route, Routes } from "react-router-dom";
-import CV from "./pages/CV";
+import CV from "./pages/cv/CV";
 import Home from "./pages/Home";
 
 const App = () => (
