@@ -1,8 +1,8 @@
 import styled from "styled-components";
-import { FlexColumn } from "./Flex";
+import { FlexColumn, FlexRow } from "./Flex";
 
-export const YCentered = styled(FlexColumn).attrs(() => ({
-  justify: "center",
+export const YCentered = styled(FlexRow).attrs(() => ({
+  align: "center",
 }))``;
 
 export const XCentered = styled(FlexColumn).attrs(() => ({

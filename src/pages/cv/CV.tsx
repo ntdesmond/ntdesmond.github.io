@@ -6,6 +6,7 @@ import {
   PageHeading,
   SectionHeading,
 } from "../../components/typography/Headings";
+import ProgrammingLanguages from "./components/programmingLanguages/ProgrammingLanguages";
 import ProjectEntry from "./components/projects/ProjectEntry";
 import { Section } from "./components/Section";
 import TagList from "./components/tags/TagList";
@@ -58,10 +59,12 @@ const CV = () => (
         <Position>Software Engineer</Position>
       </NameSection>
       <ContactSection>
-        <p>github.com/ntdesmond</p>
-        <p>ntdesmond@gmail.com</p>
-        <p>@ntdesmond</p>
-        <p>Innopolis, Russia</p>
+        <div>
+          <p>github.com/ntdesmond</p>
+          <p>ntdesmond@gmail.com</p>
+          <p>@ntdesmond</p>
+          <p>Innopolis, Russia</p>
+        </div>
       </ContactSection>
       <FlexColumn>
         <Section title="Work Experience">
@@ -126,12 +129,16 @@ const CV = () => (
           </ul>
         </Section>
         <Section title="Programming languages">
-          <p>Python 5/5</p>
-          <p>JS/TS 4/5</p>
-          <p>C# 3/5</p>
-          <p>Java 1/5</p>
-          <p>PHP 4/5</p>
-          <p>C++ 4/5</p>
+          <ProgrammingLanguages
+            entries={{
+              Python: 5,
+              "JS/TS": 4,
+              "C#": 3,
+              Java: 1,
+              PHP: 1,
+              "C++": 1,
+            }}
+          />
         </Section>
       </FlexColumn>
       <FlexColumn>
