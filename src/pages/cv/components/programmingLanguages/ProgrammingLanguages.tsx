@@ -1,6 +1,5 @@
 import styled from "styled-components";
 import { YCentered } from "../../../../components/layout/alignment/CenterAlign";
-import { FlexRow } from "../../../../components/layout/alignment/Flex";
 import Level from "./Level";
 
 const StyledSection = styled.div`
