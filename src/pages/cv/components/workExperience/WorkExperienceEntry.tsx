@@ -3,7 +3,7 @@ import {
   InTextHeading,
   InTextSubheading,
 } from "../../../../components/typography/Headings";
-import Tag, { TagList } from "../tags/Tag";
+import TagList from "../tags/TagList";
 
 const StyledEntry = styled.div<{ hasTags: boolean }>`
   display: grid;

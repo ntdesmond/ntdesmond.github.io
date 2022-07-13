@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import Tag, { TagList } from "../tags/Tag";
+import TagList from "../tags/TagList";
 
 const StyledResponsibility = styled.div`
   display: grid;

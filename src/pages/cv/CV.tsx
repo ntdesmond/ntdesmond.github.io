@@ -7,7 +7,7 @@ import {
   SectionHeading,
 } from "../../components/typography/Headings";
 import { Section } from "./components/Section";
-import { TagList } from "./components/tags/Tag";
+import TagList from "./components/tags/TagList";
 import Responsibility from "./components/workExperience/Responsibility";
 import WorkExperienceEntry from "./components/workExperience/WorkExperienceEntry";
 
