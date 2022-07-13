@@ -6,6 +6,8 @@ import {
   PageHeading,
   SectionHeading,
 } from "../../components/typography/Headings";
+import EducationEntry from "./components/education/EducationEntry";
+import LanguageEntry from "./components/languages/LanguageEntry";
 import ProgrammingLanguages from "./components/programmingLanguages/ProgrammingLanguages";
 import ProjectEntry from "./components/projects/ProjectEntry";
 import { Section } from "./components/Section";
@@ -143,25 +145,15 @@ const CV = () => (
       </FlexColumn>
       <FlexColumn>
         <Section title="Education">
-          <p>Computer science, Bachelor</p>
-          <p>
-            <i>Innopolis University</i>
-          </p>
-          <p>2019 - Present</p>
+          <EducationEntry
+            speciality="Computer science, Bachelor"
+            organization="Innopolis University"
+            period="2019 - Present"
+          />
         </Section>
         <Section title="Languages">
-          <div>
-            <p>
-              <b>English</b>
-            </p>
-            <p>Upper-Intermediate</p>
-          </div>
-          <div>
-            <p>
-              <b>Russian</b>
-            </p>
-            <p>Native</p>
-          </div>
+          <LanguageEntry language="English" level="Upper-Intermediate" />
+          <LanguageEntry language="Russian" level="Native" />
         </Section>
         <Section title="Soft skills">
           <ul>
