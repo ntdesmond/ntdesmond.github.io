@@ -7,6 +7,7 @@ const TagsWrapper = styled(FlexRow)`
   gap: 0.5em 0.8em;
   align-content: center;
   justify-content: center;
+  text-align: center;
 `;
 
 const TagList = (props: { tags: string[]; className?: string }) => (

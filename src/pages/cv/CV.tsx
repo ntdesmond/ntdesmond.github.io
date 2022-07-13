@@ -6,6 +6,7 @@ import {
   PageHeading,
   SectionHeading,
 } from "../../components/typography/Headings";
+import ProjectEntry from "./components/projects/ProjectEntry";
 import { Section } from "./components/Section";
 import TagList from "./components/tags/TagList";
 import Responsibility from "./components/workExperience/Responsibility";
@@ -80,16 +81,20 @@ const CV = () => (
           </WorkExperienceEntry>
         </Section>
         <Section title="Projects">
-          <div>
-            <p>fraumarta.store</p>
-            <p>Website written from scratch</p>
-            <p>2021</p>
-          </div>
-          <div>
-            <p>@goodscalcbot</p>
-            <p>Telegram bot to share expenses</p>
-            <p>2020</p>
-          </div>
+          <ProjectEntry
+            title="fraumarta.store"
+            href="https://fraumarta.store"
+            description="Website written from scratch"
+            period="2021"
+            tags={["JS", "HTML", "Python", "Flask", "nginx"]}
+          />
+          <ProjectEntry
+            title="@goodscalcbot"
+            href="https://t.me/goodscalcbot"
+            description="Telegram bot to share expenses"
+            period="2020"
+            tags={["Telegram API", "Google Firestore", "Python"]}
+          />
         </Section>
         <Section title="Technical skills">
           <ul>
@@ -97,15 +102,26 @@ const CV = () => (
               Experienced in <b>Git</b>
             </li>
             <li>
+              Experienced in <b>Docker</b>
+            </li>
+            <li>
+              Worked with SQL and NoSQL databases (<b>Firestore</b>,{" "}
+              <b>Redis</b>, <b>MongoDB</b>, <b>SQLite</b>, <b>MySQL</b>,{" "}
+              <b>PostgreSQL</b>)
+            </li>
+            <li>
               Experienced in <b>Python</b>
               <ul>
+                <li>
+                  Experienced in <b>FastAPI</b> framework
+                </li>
                 <li>
                   Basic knowledge of <b>pandas</b>, <b>numpy</b> libraries
                 </li>
               </ul>
             </li>
             <li>
-              Basic knowledge of <b>Docker</b>, <b>Bash</b> scripting
+              Basic knowledge of <b>Bash</b> scripting
             </li>
           </ul>
         </Section>

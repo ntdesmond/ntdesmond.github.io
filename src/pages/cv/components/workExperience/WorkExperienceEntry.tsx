@@ -10,7 +10,7 @@ const StyledEntry = styled.div<{ hasTags: boolean }>`
   grid-template:
     "${(props) => (props.hasTags ? "info tags" : "info info")}"
     "content content" /
-    auto 10em;
+    auto 6em;
 `;
 
 const StyledInfoBlock = styled.div`
