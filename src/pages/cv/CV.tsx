@@ -1,5 +1,8 @@
 import styled from "styled-components";
 import { YCentered } from "../../components/layout/alignment/CenterAlign";
+import FixedMargin, {
+  NoMargin,
+} from "../../components/layout/alignment/FixedMargin";
 import { FlexColumn } from "../../components/layout/alignment/Flex";
 import Layout from "../../components/layout/Layout";
 import {
@@ -25,18 +28,10 @@ const StyledCV = styled.div`
 
 const NameSection = styled(YCentered)`
   grid-area: name;
-  > * {
-    margin: 0;
-  }
 `;
 
 const ContactSection = styled(YCentered)`
   grid-area: contact;
-  gap: 0.5em;
-
-  > * {
-    margin: 0;
-  }
 `;
 
 const StyledTagList = styled(TagList)`
@@ -57,16 +52,18 @@ const CV = () => (
   <Layout>
     <StyledCV>
       <NameSection>
-        <Name>Vladislav Safonov</Name>
-        <Position>Software Engineer</Position>
+        <NoMargin>
+          <Name>Vladislav Safonov</Name>
+          <Position>Software Engineer</Position>
+        </NoMargin>
       </NameSection>
       <ContactSection>
-        <div>
+        <FixedMargin margin="0.5em">
           <p>github.com/ntdesmond</p>
           <p>ntdesmond@gmail.com</p>
           <p>@ntdesmond</p>
           <p>Innopolis, Russia</p>
-        </div>
+        </FixedMargin>
       </ContactSection>
       <FlexColumn>
         <Section title="Work Experience">
