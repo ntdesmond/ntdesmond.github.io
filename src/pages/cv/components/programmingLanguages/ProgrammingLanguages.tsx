@@ -17,7 +17,7 @@ const ProgrammingLanguages = (props: {
 }) => (
   <StyledSection>
     {Object.entries(props.entries).map(([name, value]) => (
-      <YCentered justify="flex-end" gap="1em">
+      <YCentered justify="flex-end" gap="1em" key={name}>
         <div>{name}</div>
         <Level value={value} maxValue={props.maxValue || 5} />
       </YCentered>
