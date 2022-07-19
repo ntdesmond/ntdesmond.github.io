@@ -11,6 +11,7 @@ import {
 } from "../../components/typography/Headings";
 import EducationEntry from "./components/education/EducationEntry";
 import LanguageEntry from "./components/languages/LanguageEntry";
+import ProgrammingLanguageEntry from "./components/programmingLanguages/ProgrammingLanguageEntry";
 import ProgrammingLanguages from "./components/programmingLanguages/ProgrammingLanguages";
 import ProjectEntry from "./components/projects/ProjectEntry";
 import { Section } from "./components/Section";
@@ -103,45 +104,43 @@ const CV = () => (
         <Section title="Technical skills">
           <ul>
             <li>
-              Experienced in <Tag name="Git" />
+              Experienced in <Tag slug="Git" />
             </li>
             <li>
-              Experienced in <Tag name="Docker" />
+              Experienced in <Tag slug="Docker" />
             </li>
             <li>
-              Worked with SQL and NoSQL databases (<Tag name="Firestore" />,{" "}
-              <Tag name="Redis" />, <Tag name="MongoDB" />,{" "}
-              <Tag name="SQLite" />, <Tag name="MySQL" />,{" "}
-              <Tag name="PostgreSQL" />)
+              Worked with SQL and NoSQL databases (<Tag slug="Firestore" />,{" "}
+              <Tag slug="Redis" />, <Tag slug="MongoDB" />,{" "}
+              <Tag slug="SQLite" />, <Tag slug="MySQL" />,{" "}
+              <Tag slug="PostgreSQL" />)
             </li>
             <li>
-              Experienced in <Tag name="Python" />
+              Experienced in <Tag slug="Python" />
               <ul>
                 <li>
-                  Experienced in <Tag name="FastAPI" /> framework
+                  Experienced in <Tag slug="FastAPI" /> framework
                 </li>
                 <li>
-                  Basic knowledge of <Tag name="pandas" />, <Tag name="numpy" />{" "}
+                  Basic knowledge of <Tag slug="pandas" />, <Tag slug="numpy" />{" "}
                   libraries
                 </li>
               </ul>
             </li>
             <li>
-              Basic knowledge of <Tag name="Bash" /> scripting
+              Basic knowledge of <Tag slug="Bash" /> scripting
             </li>
           </ul>
         </Section>
         <Section title="Programming languages">
-          <ProgrammingLanguages
-            entries={{
-              Python: 5,
-              "JS/TS": 4,
-              "C#": 3,
-              Java: 1,
-              PHP: 1,
-              "C++": 1,
-            }}
-          />
+          <ProgrammingLanguages>
+            <ProgrammingLanguageEntry name="Python" value={5} />
+            <ProgrammingLanguageEntry name="JS/TS" value={4} tagSlug="JS" />
+            <ProgrammingLanguageEntry name="C#" value={3} />
+            <ProgrammingLanguageEntry name="Java" value={1} />
+            <ProgrammingLanguageEntry name="PHP" value={1} />
+            <ProgrammingLanguageEntry name="C++" value={1} />
+          </ProgrammingLanguages>
         </Section>
       </FlexColumn>
       <FlexColumn>

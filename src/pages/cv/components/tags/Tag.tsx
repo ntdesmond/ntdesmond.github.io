@@ -13,16 +13,16 @@ const StyledSelectedTag = styled(StyledTag)`
   font-weight: bold;
 `;
 
-const Tag = ({ name }: { name: string }) => {
+const Tag = (props: { slug: string; name?: string }) => {
   const location = useLocation();
-  const target = `#${encodeURI(name)}`;
+  const target = `#${encodeURI(props.slug)}`;
 
-  return decodeURI(location.hash.slice(1)) === name ? (
+  return decodeURI(location.hash.slice(1)) === props.slug ? (
     <StyledSelectedTag to={target}>
-      <span>{name}</span>
+      <span>{props.name || props.slug}</span>
     </StyledSelectedTag>
   ) : (
-    <StyledTag to={target}>{name}</StyledTag>
+    <StyledTag to={target}>{props.name || props.slug}</StyledTag>
   );
 };
 

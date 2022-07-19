@@ -13,7 +13,7 @@ const TagsWrapper = styled(FlexRow)`
 const TagList = (props: { tags: string[]; className?: string }) => (
   <TagsWrapper className={props.className}>
     {props.tags.map((tag) => (
-      <Tag name={tag} key={tag} />
+      <Tag slug={tag} key={tag} />
     ))}
   </TagsWrapper>
 );

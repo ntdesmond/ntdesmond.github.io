@@ -1,6 +1,4 @@
 import styled from "styled-components";
-import { YCentered } from "../../../../components/layout/alignment/CenterAlign";
-import Level from "./Level";
 
 const StyledSection = styled.div`
   display: grid;
@@ -11,18 +9,8 @@ const StyledSection = styled.div`
   margin: 0.5em auto;
 `;
 
-const ProgrammingLanguages = (props: {
-  entries: { [language: string]: number };
-  maxValue?: number;
-}) => (
-  <StyledSection>
-    {Object.entries(props.entries).map(([name, value]) => (
-      <YCentered justify="flex-end" gap="1em" key={name}>
-        <div>{name}</div>
-        <Level value={value} maxValue={props.maxValue || 5} />
-      </YCentered>
-    ))}
-  </StyledSection>
+const ProgrammingLanguages = (props: { children: React.ReactNode }) => (
+  <StyledSection>{props.children}</StyledSection>
 );
 
 export default ProgrammingLanguages;
