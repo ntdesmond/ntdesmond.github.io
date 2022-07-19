@@ -15,6 +15,7 @@ import ProgrammingLanguages from "./components/programmingLanguages/ProgrammingL
 import ProjectEntry from "./components/projects/ProjectEntry";
 import { Section } from "./components/Section";
 import SoftSkillsList from "./components/skills/SoftSkillsList";
+import Tag from "./components/tags/Tag";
 import TagList from "./components/tags/TagList";
 import Responsibility from "./components/workExperience/Responsibility";
 import WorkExperienceEntry from "./components/workExperience/WorkExperienceEntry";
@@ -102,29 +103,31 @@ const CV = () => (
         <Section title="Technical skills">
           <ul>
             <li>
-              Experienced in <b>Git</b>
+              Experienced in <Tag name="Git" />
             </li>
             <li>
-              Experienced in <b>Docker</b>
+              Experienced in <Tag name="Docker" />
             </li>
             <li>
-              Worked with SQL and NoSQL databases (<b>Firestore</b>,{" "}
-              <b>Redis</b>, <b>MongoDB</b>, <b>SQLite</b>, <b>MySQL</b>,{" "}
-              <b>PostgreSQL</b>)
+              Worked with SQL and NoSQL databases (<Tag name="Firestore" />,{" "}
+              <Tag name="Redis" />, <Tag name="MongoDB" />,{" "}
+              <Tag name="SQLite" />, <Tag name="MySQL" />,{" "}
+              <Tag name="PostgreSQL" />)
             </li>
             <li>
-              Experienced in <b>Python</b>
+              Experienced in <Tag name="Python" />
               <ul>
                 <li>
-                  Experienced in <b>FastAPI</b> framework
+                  Experienced in <Tag name="FastAPI" /> framework
                 </li>
                 <li>
-                  Basic knowledge of <b>pandas</b>, <b>numpy</b> libraries
+                  Basic knowledge of <Tag name="pandas" />, <Tag name="numpy" />{" "}
+                  libraries
                 </li>
               </ul>
             </li>
             <li>
-              Basic knowledge of <b>Bash</b> scripting
+              Basic knowledge of <Tag name="Bash" /> scripting
             </li>
           </ul>
         </Section>
