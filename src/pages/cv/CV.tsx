@@ -14,6 +14,7 @@ import LanguageEntry from "./components/languages/LanguageEntry";
 import ProgrammingLanguages from "./components/programmingLanguages/ProgrammingLanguages";
 import ProjectEntry from "./components/projects/ProjectEntry";
 import { Section } from "./components/Section";
+import SoftSkillsList from "./components/skills/SoftSkillsList";
 import TagList from "./components/tags/TagList";
 import Responsibility from "./components/workExperience/Responsibility";
 import WorkExperienceEntry from "./components/workExperience/WorkExperienceEntry";
@@ -153,17 +154,19 @@ const CV = () => (
           <LanguageEntry language="Russian" level="Native" />
         </Section>
         <Section title="Soft skills">
-          <ul>
-            <li>Desire to learn</li>
-            <li>Responsibility</li>
-            <li>Writing skills</li>
-            <li>Adaptability</li>
-            <li>Cooperation</li>
-            <li>Friendliness</li>
-            <li>Confidence</li>
-            <li>Dedication</li>
-            <li>Honesty</li>
-          </ul>
+          <SoftSkillsList
+            skills={[
+              "Desire to learn",
+              "Responsibility",
+              "Writing skills",
+              "Adaptability",
+              "Friendliness",
+              "Cooperation",
+              "Confidence",
+              "Dedication",
+              "Honesty",
+            ]}
+          />
         </Section>
         <Section title="Tags">
           <StyledTagList
