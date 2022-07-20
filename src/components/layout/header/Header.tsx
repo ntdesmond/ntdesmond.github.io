@@ -10,7 +10,9 @@ const StyledHeader = styled.header`
 const ActiveLink = styled(Link)`
   font-weight: bold;
   text-decoration: none;
-  color: #000;
+  && {
+    color: #000;
+  }
 `;
 
 const links = {
