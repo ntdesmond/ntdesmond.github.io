@@ -90,7 +90,7 @@ const CV = () => (
             href="https://t.me/goodscalcbot"
             description="Telegram bot to share expenses"
             period="2020"
-            tags={['Telegram API', 'Google Firestore', 'Python']}
+            tags={['Telegram API', 'Firestore', 'Python']}
           />
         </Section>
         <Section title="Technical skills">

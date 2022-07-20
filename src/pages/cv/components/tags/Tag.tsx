@@ -9,8 +9,9 @@ const StyledTag = styled(Link)`
 const StyledSelectedTag = styled(StyledTag)`
   > span {
     background-color: #ff5;
+    color: #001155;
+    font-weight: bold;
   }
-  font-weight: bold;
 `;
 
 const Tag = (props: { slug: string; name?: string }) => {
