@@ -8,7 +8,7 @@ import EducationEntry from './components/education/EducationEntry';
 import LanguageEntry from './components/languages/LanguageEntry';
 import ProgrammingLanguageEntry from './components/programmingLanguages/ProgrammingLanguageEntry';
 import ProgrammingLanguages from './components/programmingLanguages/ProgrammingLanguages';
-import ProjectEntry from './components/projects/ProjectEntry';
+import Project from './components/projects/Project';
 import Section from './components/Section';
 import SoftSkillsList from './components/skills/SoftSkillsList';
 import Tag from './components/tags/Tag';
@@ -20,7 +20,8 @@ const StyledCV = styled.div`
   display: grid;
   grid-template:
     'name contact'
-    'sections1 sections2';
+    'sections1 sections2' /
+    auto fit-content(15em);
   gap: 1em;
 `;
 
@@ -77,14 +78,14 @@ const CV = () => (
           </WorkExperienceEntry>
         </Section>
         <Section title="Projects">
-          <ProjectEntry
+          <Project
             title="fraumarta.store"
             href="https://fraumarta.store"
             description="Website written from scratch"
             period="2021"
             tags={['JS', 'HTML', 'Python', 'Flask', 'nginx']}
           />
-          <ProjectEntry
+          <Project
             title="@goodscalcbot"
             href="https://t.me/goodscalcbot"
             description="Telegram bot to share expenses"

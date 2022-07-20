@@ -3,9 +3,9 @@ import TagList from '../tags/TagList';
 
 const StyledEntry = styled.div<{ hasTags: boolean }>`
   display: grid;
-  grid-template:
-    '${(props) => (props.hasTags ? 'info tags' : 'info info')}' /
-    auto 6em;
+  grid-template-areas: '${(props) => (props.hasTags ? 'info tags' : 'info info')}';
+  grid-template-columns: auto 8em;
+  gap: 1em;
 `;
 
 const StyledInfoBlock = styled.div`
@@ -16,7 +16,7 @@ const StyledProjectName = styled.p`
   font-weight: bold;
 `;
 
-const ProjectEntry = (props: {
+const Project = (props: {
   title: string;
   description: string;
   period: string;
@@ -35,4 +35,4 @@ const ProjectEntry = (props: {
   </StyledEntry>
 );
 
-export default ProjectEntry;
+export default Project;
