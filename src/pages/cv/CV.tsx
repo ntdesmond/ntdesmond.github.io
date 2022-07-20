@@ -5,6 +5,10 @@ import FixedMargin, { NoMargin } from '../../components/layout/alignment/FixedMa
 import { FlexColumn } from '../../components/layout/alignment/Flex';
 import Layout from '../../components/layout/Layout';
 import { PageHeading, SectionHeading } from '../../components/typography/Headings';
+import EmailLink from './components/contacts/EmailLink';
+import GithubLink from './components/contacts/GithubLink';
+import Location from './components/contacts/Location';
+import TelegramLink from './components/contacts/TelegramLink';
 import EducationEntry from './components/education/EducationEntry';
 import Language from './components/languages/Language';
 import ProgrammingLanguage from './components/programmingLanguages/ProgrammingLanguage';
@@ -64,10 +68,10 @@ const CV = () => {
           </NameSection>
           <ContactSection>
             <FixedMargin margin="0.5em">
-              <p>github.com/ntdesmond</p>
-              <p>ntdesmond@gmail.com</p>
-              <p>@ntdesmond</p>
-              <p>Innopolis, Russia</p>
+              <GithubLink path="ntdesmond" />
+              <EmailLink address="ntdesmond@gmail.com" />
+              <TelegramLink path="ntdesmond" />
+              <Location location="Innopolis, Russia" />
             </FixedMargin>
           </ContactSection>
           <FlexColumn>
