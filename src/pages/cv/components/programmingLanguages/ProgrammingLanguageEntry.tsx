@@ -1,6 +1,6 @@
-import { YCentered } from "../../../../components/layout/alignment/CenterAlign";
-import Tag from "../tags/Tag";
-import Level from "./Level";
+import { YCentered } from '../../../../components/layout/alignment/CenterAlign';
+import Tag from '../tags/Tag';
+import Level from './Level';
 
 const ProgrammingLanguageEntry = (props: {
   name: string;

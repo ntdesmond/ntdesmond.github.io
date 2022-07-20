@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 const StyledLevel = styled.div`
   font-size: 1.2em;
@@ -13,8 +13,8 @@ const Level = (props: { value: number; maxValue: number }) => {
         <b>error</b>
       ) : (
         <>
-          {"●".repeat(props.value)}
-          {"○".repeat(diff)}
+          {'●'.repeat(props.value)}
+          {'○'.repeat(diff)}
         </>
       )}
     </StyledLevel>

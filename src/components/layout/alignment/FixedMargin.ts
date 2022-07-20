@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 const FixedMargin = styled.div<{ margin: string }>`
   p,
@@ -12,6 +12,6 @@ const FixedMargin = styled.div<{ margin: string }>`
   }
 `;
 
-export const NoMargin = styled(FixedMargin).attrs({ margin: "0" })``;
+export const NoMargin = styled(FixedMargin).attrs({ margin: '0' })``;
 
 export default FixedMargin;

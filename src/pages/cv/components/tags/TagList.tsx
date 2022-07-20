@@ -1,6 +1,6 @@
-import styled from "styled-components";
-import { FlexRow } from "../../../../components/layout/alignment/Flex";
-import Tag from "./Tag";
+import styled from 'styled-components';
+import { FlexRow } from '../../../../components/layout/alignment/Flex';
+import Tag from './Tag';
 
 const TagsWrapper = styled(FlexRow)`
   flex-wrap: wrap;

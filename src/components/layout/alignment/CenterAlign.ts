@@ -1,15 +1,15 @@
-import styled from "styled-components";
-import { FlexColumn, FlexRow } from "./Flex";
+import styled from 'styled-components';
+import { FlexColumn, FlexRow } from './Flex';
 
 export const YCentered = styled(FlexRow).attrs(() => ({
-  align: "center",
+  align: 'center',
 }))``;
 
 export const XCentered = styled(FlexColumn).attrs(() => ({
-  align: "center",
+  align: 'center',
 }))``;
 
 export const XYCentered = styled(FlexColumn).attrs(() => ({
-  justify: "center",
-  align: "center",
+  justify: 'center',
+  align: 'center',
 }))``;

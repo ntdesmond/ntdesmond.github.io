@@ -1,5 +1,5 @@
-import { Link, useLocation } from "react-router-dom";
-import styled from "styled-components";
+import { Link, useLocation } from 'react-router-dom';
+import styled from 'styled-components';
 
 const StyledHeader = styled.header`
   display: flex;
@@ -14,8 +14,8 @@ const ActiveLink = styled(Link)`
 `;
 
 const links = {
-  "/": "home",
-  "/cv": "cv",
+  '/': 'home',
+  '/cv': 'cv',
 };
 
 const Header = () => {
@@ -30,7 +30,7 @@ const Header = () => {
       <Link key={path} to={path}>
         {name}
       </Link>
-    )
+    ),
   );
   return <StyledHeader>{linkElements}</StyledHeader>;
 };

@@ -1,15 +1,13 @@
-import styled from "styled-components";
-import {
-  InTextHeading,
-  InTextSubheading,
-} from "../../../../components/typography/Headings";
-import TagList from "../tags/TagList";
+import React from 'react';
+import styled from 'styled-components';
+import { InTextHeading, InTextSubheading } from '../../../../components/typography/Headings';
+import TagList from '../tags/TagList';
 
 const StyledEntry = styled.div<{ hasTags: boolean }>`
   display: grid;
   grid-template:
-    "${(props) => (props.hasTags ? "info tags" : "info info")}"
-    "content content" /
+    '${(props) => (props.hasTags ? 'info tags' : 'info info')}'
+    'content content' /
     auto 6em;
 `;
 

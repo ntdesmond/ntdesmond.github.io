@@ -1,10 +1,10 @@
-import styled from "styled-components";
-import TagList from "../tags/TagList";
+import styled from 'styled-components';
+import TagList from '../tags/TagList';
 
 const StyledEntry = styled.div<{ hasTags: boolean }>`
   display: grid;
   grid-template:
-    "${(props) => (props.hasTags ? "info tags" : "info info")}" /
+    '${(props) => (props.hasTags ? 'info tags' : 'info info')}' /
     auto 6em;
 `;
 
