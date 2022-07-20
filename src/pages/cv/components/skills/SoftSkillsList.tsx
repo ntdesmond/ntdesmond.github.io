@@ -1,9 +1,11 @@
+import Skill from './Skill';
+
 const SoftSkillsList = (props: { skills: string[]; className?: string }) => (
-  <ul className={props.className}>
+  <div className={props.className}>
     {props.skills.map((skill) => (
-      <li key={skill}>{skill}</li>
+      <Skill key={skill}>{skill}</Skill>
     ))}
-  </ul>
+  </div>
 );
 
 export default SoftSkillsList;

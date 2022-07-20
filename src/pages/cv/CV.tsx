@@ -11,6 +11,7 @@ import ProgrammingLanguage from './components/programmingLanguages/ProgrammingLa
 import ProgrammingLanguages from './components/programmingLanguages/ProgrammingLanguages';
 import Project from './components/projects/Project';
 import Section from './components/Section';
+import Skill from './components/skills/Skill';
 import SoftSkillsList from './components/skills/SoftSkillsList';
 import Tag from './components/tags/Tag';
 import TagsSection from './components/tags/TagsSection';
@@ -100,33 +101,29 @@ const CV = () => {
               />
             </Section>
             <Section title="Technical skills">
-              <ul>
-                <li>
-                  Experienced in <Tag slug="Git" />
-                </li>
-                <li>
-                  Experienced in <Tag slug="Docker" />
-                </li>
-                <li>
-                  Worked with SQL and NoSQL databases (<Tag slug="Firestore" />,{' '}
-                  <Tag slug="Redis" />, <Tag slug="MongoDB" />, <Tag slug="SQLite" />,{' '}
-                  <Tag slug="MySQL" />, <Tag slug="PostgreSQL" />)
-                </li>
-                <li>
-                  Experienced in <Tag slug="Python" />
-                  <ul>
-                    <li>
-                      Experienced in <Tag slug="FastAPI" /> framework
-                    </li>
-                    <li>
-                      Basic knowledge of <Tag slug="pandas" />, <Tag slug="numpy" /> libraries
-                    </li>
-                  </ul>
-                </li>
-                <li>
-                  Basic knowledge of <Tag slug="Bash" /> scripting
-                </li>
-              </ul>
+              <Skill>
+                Experienced in <Tag slug="Git" />
+              </Skill>
+              <Skill>
+                Experienced in <Tag slug="Docker" />
+              </Skill>
+              <Skill>
+                Worked with SQL and NoSQL databases (<Tag slug="Firestore" />, <Tag slug="Redis" />,{' '}
+                <Tag slug="MongoDB" />, <Tag slug="SQLite" />, <Tag slug="MySQL" />,{' '}
+                <Tag slug="PostgreSQL" />)
+              </Skill>
+              <Skill>
+                Experienced in <Tag slug="Python" />
+                <Skill>
+                  Experienced in <Tag slug="FastAPI" /> framework
+                </Skill>
+                <Skill>
+                  Basic knowledge of <Tag slug="pandas" />, <Tag slug="numpy" /> libraries
+                </Skill>
+              </Skill>
+              <Skill>
+                Basic knowledge of <Tag slug="Bash" /> scripting
+              </Skill>
             </Section>
             <Section title="Programming languages">
               <ProgrammingLanguages>
