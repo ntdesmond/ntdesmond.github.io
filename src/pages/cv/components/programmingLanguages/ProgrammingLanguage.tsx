@@ -2,7 +2,7 @@ import { YCentered } from '../../../../components/layout/alignment/CenterAlign';
 import Tag from '../tags/Tag';
 import Level from './Level';
 
-const ProgrammingLanguageEntry = (props: {
+const ProgrammingLanguage = (props: {
   name: string;
   tagSlug?: string;
   value: number;
@@ -14,4 +14,4 @@ const ProgrammingLanguageEntry = (props: {
   </YCentered>
 );
 
-export default ProgrammingLanguageEntry;
+export default ProgrammingLanguage;
