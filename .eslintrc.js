@@ -23,6 +23,7 @@ module.exports = {
   ],
   plugins: ['react', '@typescript-eslint'],
   rules: {
+    'no-spaced-func': 0,
     'no-confusing-arrow': 0,
     'implicit-arrow-linebreak': 0,
     'function-paren-newline': 0,

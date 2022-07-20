@@ -1,5 +1,7 @@
+import { useContext } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import styled from 'styled-components';
+import TagsContext from '../../contexts/TagsContext';
 
 const StyledTag = styled(Link)`
   font-weight: 500;
@@ -14,9 +16,14 @@ const StyledSelectedTag = styled(StyledTag)`
   }
 `;
 
-const Tag = (props: { slug: string; name?: string }) => {
+const Tag = (props: { slug: string; name?: string; register?: boolean }) => {
   const location = useLocation();
   const target = `#${encodeURI(props.slug)}`;
+
+  if (props.register !== false) {
+    const { pushTag } = useContext(TagsContext);
+    pushTag(props.slug);
+  }
 
   return decodeURI(location.hash.slice(1)) === props.slug ? (
     <StyledSelectedTag to={target}>
