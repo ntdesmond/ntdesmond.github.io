@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { XCentered } from './alignment/CenterAlign';
 import Header from './header/Header';
 
 const StyledLayout = styled.main`
@@ -10,18 +11,22 @@ const StyledLayout = styled.main`
     'header' 2em
     'main' auto;
   max-width: 800px;
-  margin: 0 auto;
+  padding: 0.5em;
+  width: 100%;
+  box-sizing: border-box;
 `;
 
-const StyledMain = styled.section`
+const StyledMainSection = styled.section`
   grid-area: main;
 `;
 
-const Layout = ({ children }: { children: React.ReactNode }) => (
-  <StyledLayout>
-    <Header />
-    <StyledMain>{children}</StyledMain>
-  </StyledLayout>
+const Layout = (props: { children: React.ReactNode; className?: string }) => (
+  <XCentered height="100%">
+    <StyledLayout className={props.className}>
+      <Header />
+      <StyledMainSection>{props.children}</StyledMainSection>
+    </StyledLayout>
+  </XCentered>
 );
 
 export default Layout;

@@ -2,8 +2,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Oswald&text=Vladislav+Safonov&display=swap');
 
 html,
-body {
+body,
+#root {
   height: 100%;
+}
+
+body {
+  margin: 0;
 }
 
 body,

@@ -4,7 +4,10 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ESLintWebpackPlugin = require('eslint-webpack-plugin');
 
 module.exports = {
-  entry: './src/index.tsx',
+  entry: {
+    main: './src/index.tsx',
+    cv: './src/cv.tsx',
+  },
   resolve: {
     extensions: ['.tsx', '.ts', '.js'],
   },
@@ -33,6 +36,13 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
       template: path.join(__dirname, 'src', 'index.html'),
+      chunks: ['main'],
+    }),
+    new HtmlWebpackPlugin({
+      template: path.join(__dirname, 'src', 'index.html'),
+      filename: 'cv.html',
+      title: 'CV',
+      chunks: ['cv'],
     }),
     new webpack.DefinePlugin({
       'process.env': JSON.stringify(process.env),
@@ -44,7 +54,7 @@ module.exports = {
   ],
   output: {
     path: path.join(__dirname, 'build'),
-    filename: 'index.js',
+    filename: '[name].bundle.js',
     publicPath: '/',
     clean: true,
   },
