@@ -125,6 +125,20 @@ const CV = () => {
             </Section>
             <Section title="Projects">
               <Project
+                title="ntdesmond.github.io"
+                href="https://ntdesmond.github.io"
+                description="Personal website with interactive CV"
+                period="2022"
+                tags={['TypeScript', 'React', 'Github Actions']}
+              />
+              <Project
+                title="PPFS"
+                href="https://github.com/ntdesmond/PPFS"
+                description="File server made with FastAPI and GridFS"
+                period="2022"
+                tags={['Python', 'FastAPI', 'asyncio', 'MongoDB', 'Docker', 'GridFS']}
+              />
+              <Project
                 title="fraumarta.store"
                 href="https://fraumarta.store"
                 description="Website written from scratch"
@@ -166,7 +180,7 @@ const CV = () => {
             </Section>
             <Section title="Programming languages">
               <ProgrammingLanguages>
-                <ProgrammingLanguage name="Python" value={5} />
+                <ProgrammingLanguage name="Python" value={4} />
                 <ProgrammingLanguage name="JS/TS" value={4} tagSlug="JS" />
                 <ProgrammingLanguage name="C#" value={3} />
                 <ProgrammingLanguage name="Java" value={1} />
