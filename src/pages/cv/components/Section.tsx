@@ -6,6 +6,7 @@ const StyledHeading = styled(SectionHeading)`
   color: #035;
   border-bottom: 0.15em solid #035;
   margin: 0.5rem 0;
+  white-space: nowrap;
 `;
 
 const Section = ({ title, children }: { title: string; children: React.ReactNode }) => (
