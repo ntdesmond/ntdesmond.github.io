@@ -27,7 +27,13 @@ const Project = (props: {
   <StyledEntry hasTags={!!props.tags}>
     <StyledInfoBlock>
       <StyledProjectName>
-        {props.href ? <a href={props.href}>{props.title}</a> : props.title}
+        {props.href ? (
+          <a href={props.href} target="_blank" rel="noreferrer">
+            {props.title}
+          </a>
+        ) : (
+          props.title
+        )}
       </StyledProjectName>
       <p>{props.description}</p>
       <p>{props.period}</p>
