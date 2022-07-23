@@ -9,6 +9,8 @@ const StyledEntry = styled.div<{ hasTags: boolean }>`
     '${(props) => (props.hasTags ? 'info tags' : 'info info')}'
     'content content' /
     auto 6em;
+
+  margin: 1em 0 1em;
 `;
 
 const StyledInfoBlock = styled.div`
