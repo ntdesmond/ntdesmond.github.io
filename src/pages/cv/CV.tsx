@@ -4,19 +4,18 @@ import { YCentered } from '../../components/layout/alignment/CenterAlign';
 import FixedMargin, { NoMargin } from '../../components/layout/alignment/FixedMargin';
 import { FlexColumn } from '../../components/layout/alignment/Flex';
 import Layout from '../../components/layout/Layout';
-import { PageHeading, SectionHeading } from '../../components/typography/Headings';
+import { InTextHeading, PageHeading, SectionHeading } from '../../components/typography/Headings';
 import EmailLink from './components/contacts/EmailLink';
 import GithubLink from './components/contacts/GithubLink';
 import Location from './components/contacts/Location';
 import TelegramLink from './components/contacts/TelegramLink';
 import EducationEntry from './components/education/EducationEntry';
 import Language from './components/languages/Language';
-import ProgrammingLanguage from './components/programmingLanguages/ProgrammingLanguage';
-import ProgrammingLanguages from './components/programmingLanguages/ProgrammingLanguages';
 import Project from './components/projects/Project';
 import Section from './components/Section';
-import Skill from './components/skills/Skill';
+import BulletPoint from './components/skills/BulletPoint';
 import SoftSkillsList from './components/skills/SoftSkillsList';
+import TechSkill from './components/skills/TechSkill';
 import Tag from './components/tags/Tag';
 import TagsSection from './components/tags/TagsSection';
 import Responsibility from './components/workExperience/Responsibility';
@@ -126,7 +125,7 @@ const CV = () => {
             <Section title="Projects">
               <Project
                 title="ntdesmond.github.io"
-                href="https://ntdesmond.github.io"
+                href="https://github.com/ntdesmond/ntdesmond.github.io"
                 description="Personal website with interactive CV"
                 period="2022"
                 tags={['TypeScript', 'React', 'Github Actions']}
@@ -154,39 +153,43 @@ const CV = () => {
               />
             </Section>
             <Section title="Technical skills">
-              <Skill>
+              <InTextHeading>Programming languages</InTextHeading>
+              <TechSkill name="Python" value={0.8}>
+                <BulletPoint>
+                  Experienced in <Tag slug="FastAPI" /> framework
+                </BulletPoint>
+                <BulletPoint>
+                  Basic knowledge of <Tag slug="pandas" />, <Tag slug="numpy" /> libraries
+                </BulletPoint>
+              </TechSkill>
+              <TechSkill name="JS/TS" value={0.7} tagSlug="JS">
+                <BulletPoint>
+                  Used <Tag slug="React" /> and <Tag slug="Webpack" /> both in{' '}
+                  <Tag name="JavaScript" slug="JS" /> and <Tag slug="TypeScript" />
+                </BulletPoint>
+              </TechSkill>
+              <TechSkill name="C#" value={0.5} />
+              <TechSkill name="Java" value={0.2} />
+              <TechSkill name="PHP" value={0.1} />
+              <TechSkill name="C++" value={0.1} />
+              <InTextHeading>Other</InTextHeading>
+              <BulletPoint>
                 Experienced in <Tag slug="Git" />
-              </Skill>
-              <Skill>
-                Experienced in <Tag slug="Docker" />
-              </Skill>
-              <Skill>
+                <BulletPoint>
+                  Using <Tag slug="GitHub" /> mostly, worked with <Tag slug="GitHub Actions" />
+                </BulletPoint>
+              </BulletPoint>
+              <BulletPoint>
+                Experienced in <Tag slug="Docker" /> and <Tag slug="Docker Compose" />
+              </BulletPoint>
+              <BulletPoint>
                 Worked with SQL and NoSQL databases (<Tag slug="Firestore" />, <Tag slug="Redis" />,{' '}
                 <Tag slug="MongoDB" />, <Tag slug="SQLite" />, <Tag slug="MySQL" />,{' '}
                 <Tag slug="PostgreSQL" />)
-              </Skill>
-              <Skill>
-                Experienced in <Tag slug="Python" />
-                <Skill>
-                  Experienced in <Tag slug="FastAPI" /> framework
-                </Skill>
-                <Skill>
-                  Basic knowledge of <Tag slug="pandas" />, <Tag slug="numpy" /> libraries
-                </Skill>
-              </Skill>
-              <Skill>
+              </BulletPoint>
+              <BulletPoint>
                 Basic knowledge of <Tag slug="Bash" /> scripting
-              </Skill>
-            </Section>
-            <Section title="Programming languages">
-              <ProgrammingLanguages>
-                <ProgrammingLanguage name="Python" value={4} />
-                <ProgrammingLanguage name="JS/TS" value={4} tagSlug="JS" />
-                <ProgrammingLanguage name="C#" value={3} />
-                <ProgrammingLanguage name="Java" value={1} />
-                <ProgrammingLanguage name="PHP" value={1} />
-                <ProgrammingLanguage name="C++" value={1} />
-              </ProgrammingLanguages>
+              </BulletPoint>
             </Section>
           </FirstColumn>
           <SecondColumn>

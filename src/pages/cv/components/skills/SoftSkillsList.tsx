@@ -1,9 +1,9 @@
-import Skill from './Skill';
+import BulletPoint from './BulletPoint';
 
 const SoftSkillsList = (props: { skills: string[]; className?: string }) => (
   <div className={props.className}>
     {props.skills.map((skill) => (
-      <Skill key={skill}>{skill}</Skill>
+      <BulletPoint key={skill}>{skill}</BulletPoint>
     ))}
   </div>
 );
