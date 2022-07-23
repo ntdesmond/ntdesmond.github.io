@@ -30,14 +30,49 @@ const StyledCV = styled.div`
     'sections1 sections2' /
     auto fit-content(20em);
   gap: 1em;
+  margin: 3em 2em;
+
+  @media screen and (max-width: 720px) {
+    grid-template-areas:
+      'name contact'
+      'sections1 sections1'
+      'sections2 sections2';
+  }
+
+  @media screen and (max-width: 640px) {
+    grid-template-areas:
+      'name'
+      'contact'
+      'sections1'
+      'sections2';
+  }
 `;
 
 const NameSection = styled(YCentered)`
   grid-area: name;
+  white-space: nowrap;
+
+  @media screen and (max-width: 640px) {
+    justify-content: center;
+    text-align: center;
+  }
 `;
 
 const ContactSection = styled(YCentered)`
   grid-area: contact;
+  white-space: nowrap;
+
+  @media screen and (max-width: 640px) {
+    justify-content: center;
+  }
+`;
+
+const FirstColumn = styled(FlexColumn)`
+  grid-area: sections1;
+`;
+
+const SecondColumn = styled(FlexColumn)`
+  grid-area: sections2;
 `;
 
 const Name = styled(PageHeading)`
@@ -74,7 +109,7 @@ const CV = () => {
               <Location location="Innopolis, Russia" />
             </FixedMargin>
           </ContactSection>
-          <FlexColumn>
+          <FirstColumn>
             <Section title="Work Experience">
               <WorkExperienceEntry
                 company="Innopolis University"
@@ -89,6 +124,20 @@ const CV = () => {
               </WorkExperienceEntry>
             </Section>
             <Section title="Projects">
+              <Project
+                title="ntdesmond.github.io"
+                href="https://ntdesmond.github.io"
+                description="Personal website with interactive CV"
+                period="2022"
+                tags={['TypeScript', 'React', 'Github Actions']}
+              />
+              <Project
+                title="PPFS"
+                href="https://github.com/ntdesmond/PPFS"
+                description="File server made with FastAPI and GridFS"
+                period="2022"
+                tags={['Python', 'FastAPI', 'asyncio', 'MongoDB', 'Docker', 'GridFS']}
+              />
               <Project
                 title="fraumarta.store"
                 href="https://fraumarta.store"
@@ -131,7 +180,7 @@ const CV = () => {
             </Section>
             <Section title="Programming languages">
               <ProgrammingLanguages>
-                <ProgrammingLanguage name="Python" value={5} />
+                <ProgrammingLanguage name="Python" value={4} />
                 <ProgrammingLanguage name="JS/TS" value={4} tagSlug="JS" />
                 <ProgrammingLanguage name="C#" value={3} />
                 <ProgrammingLanguage name="Java" value={1} />
@@ -139,8 +188,8 @@ const CV = () => {
                 <ProgrammingLanguage name="C++" value={1} />
               </ProgrammingLanguages>
             </Section>
-          </FlexColumn>
-          <FlexColumn>
+          </FirstColumn>
+          <SecondColumn>
             <Section title="Education">
               <EducationEntry
                 speciality="Computer science, Bachelor"
@@ -170,7 +219,7 @@ const CV = () => {
             <Section title="Tags">
               <TagsSection />
             </Section>
-          </FlexColumn>
+          </SecondColumn>
         </TagsContext.Provider>
       </StyledCV>
     </Layout>

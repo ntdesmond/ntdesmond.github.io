@@ -6,6 +6,7 @@ const StyledEntry = styled.div<{ hasTags: boolean }>`
   grid-template-areas: '${(props) => (props.hasTags ? 'info tags' : 'info info')}';
   grid-template-columns: auto 8em;
   gap: 1em;
+  margin: 1em 0 1em;
 `;
 
 const StyledInfoBlock = styled.div`
