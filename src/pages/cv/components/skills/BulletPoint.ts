@@ -4,7 +4,7 @@ const BulletPoint = styled.div`
   &::before {
     content: '●';
     position: absolute;
-    margin-left: -1em;
+    left: -1em;
   }
 
   & > &::before {
@@ -12,6 +12,7 @@ const BulletPoint = styled.div`
   }
 
   margin: 0.5em 0 0 1.5em;
+  position: relative;
 `;
 
 export default BulletPoint;
