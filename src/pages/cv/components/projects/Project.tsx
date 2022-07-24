@@ -1,16 +1,13 @@
 import styled from 'styled-components';
+import { FlexRow } from '../../../../components/layout/alignment/Flex';
 import TagList from '../tags/TagList';
 
-const StyledEntry = styled.div<{ hasTags: boolean }>`
-  display: grid;
-  grid-template-areas: '${(props) => (props.hasTags ? 'info tags' : 'info info')}';
-  grid-template-columns: auto 8em;
-  gap: 1em;
-  margin: 1em 0 1em;
-`;
+const StyledEntry = styled(FlexRow)`
+  margin-bottom: 1em;
 
-const StyledInfoBlock = styled.div`
-  grid-area: info;
+  @media print {
+    margin-bottom: 0.5em;
+  }
 `;
 
 const StyledProjectName = styled.p`
@@ -24,8 +21,8 @@ const Project = (props: {
   href?: string;
   tags?: string[];
 }) => (
-  <StyledEntry hasTags={!!props.tags}>
-    <StyledInfoBlock>
+  <StyledEntry gap="1em" justify="space-between">
+    <div>
       <StyledProjectName>
         {props.href ? (
           <a href={props.href} target="_blank" rel="noreferrer">
@@ -37,8 +34,8 @@ const Project = (props: {
       </StyledProjectName>
       <p>{props.description}</p>
       <p>{props.period}</p>
-    </StyledInfoBlock>
-    {props.tags && <TagList tags={props.tags} />}
+    </div>
+    {props.tags && <TagList width="8em" tags={props.tags} />}
   </StyledEntry>
 );
 

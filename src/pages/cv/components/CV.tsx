@@ -1,13 +1,8 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import { YCentered } from '../../../components/layout/alignment/CenterAlign';
 import FixedMargin, { NoMargin } from '../../../components/layout/alignment/FixedMargin';
-import { FlexColumn } from '../../../components/layout/alignment/Flex';
-import {
-  InTextHeading,
-  PageHeading,
-  SectionHeading,
-} from '../../../components/typography/Headings';
+import { FlexColumn, FlexRow } from '../../../components/layout/alignment/Flex';
+import { PageHeading, SectionHeading } from '../../../components/typography/Headings';
 import EmailLink from './contacts/EmailLink';
 import GithubLink from './contacts/GithubLink';
 import Location from './contacts/Location';
@@ -24,66 +19,65 @@ import TagsSection from './tags/TagsSection';
 import Responsibility from './workExperience/Responsibility';
 import WorkExperienceEntry from './workExperience/WorkExperienceEntry';
 import TagsContext from '../contexts/TagsContext';
+import SkillCategoryHeading from './skills/SkillCategoryHeading';
+import NoPrint from '../../../components/layout/utils/NoPrint';
+import NoWrap from '../../../components/layout/utils/NoWrap';
 
 const StyledCV = styled.div`
   display: grid;
   grid-template:
-    'name contact'
-    'sections1 sections2' /
-    auto fit-content(20em);
-  gap: 1em;
-  margin: 1.52cm;
+    'info info info'
+    'sections1 sections2 sections3' /
+    auto auto fit-content(20em);
+  gap: 1em 3em;
+  margin: 0.7cm;
 
-  @media screen and (max-width: 720px) {
+  @media screen and (max-width: 920px) {
     grid-template-areas:
-      'name contact'
+      'info info'
       'sections1 sections1'
-      'sections2 sections2';
+      'sections2 sections2'
+      'sections3 sections3';
   }
 
   @media screen and (max-width: 640px) {
-    grid-template-areas:
-      'name'
-      'contact'
-      'sections1'
-      'sections2';
+    display: flex;
+    flex-direction: column;
+  }
+
+  @media print {
+    column-gap: 1em;
+    grid-template-columns: 1fr 1fr 20em;
   }
 `;
 
-const NameSection = styled(YCentered)`
-  grid-area: name;
-  white-space: nowrap;
+const InfoSection = styled(FlexRow)`
+  grid-area: info;
 
   @media screen and (max-width: 640px) {
-    justify-content: center;
-    text-align: center;
+    flex-direction: column;
   }
 `;
 
-const ContactSection = styled(YCentered)`
-  grid-area: contact;
-  white-space: nowrap;
-
-  @media screen and (max-width: 640px) {
-    justify-content: center;
-  }
-`;
-
-const FirstColumn = styled(FlexColumn)`
-  grid-area: sections1;
-`;
-
-const SecondColumn = styled(FlexColumn)`
-  grid-area: sections2;
+const CVColumn = styled(FlexColumn)<{ index: number }>`
+  grid-area: ${(p) => `sections${p.index}`};
 `;
 
 const Name = styled(PageHeading)`
   font-family: 'Oswald', 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+
+  @media screen and (max-width: 640px) {
+    text-align: center;
+  }
 `;
 
 const Position = styled(SectionHeading)`
   font-weight: normal;
   color: #035;
+
+  @media screen and (max-width: 640px) {
+    text-align: center;
+  }
 `;
 
 const CV = () => {
@@ -96,21 +90,24 @@ const CV = () => {
   return (
     <StyledCV>
       <TagsContext.Provider value={contextValue}>
-        <NameSection>
-          <NoMargin>
-            <Name>Vladislav Safonov</Name>
-            <Position>Software Engineer</Position>
-          </NoMargin>
-        </NameSection>
-        <ContactSection>
-          <FixedMargin margin="0.5em">
-            <GithubLink path="ntdesmond" />
-            <EmailLink address="ntdesmond@gmail.com" />
-            <TelegramLink path="ntdesmond" />
-            <Location location="Innopolis, Russia" />
-          </FixedMargin>
-        </ContactSection>
-        <FirstColumn>
+        <InfoSection gap="2em" align="center">
+          <NoWrap>
+            <NoMargin>
+              <Name>Vladislav Safonov</Name>
+              <Position>Software Engineer</Position>
+            </NoMargin>
+          </NoWrap>
+          <NoWrap>
+            <FixedMargin margin="0.5em">
+              <GithubLink path="ntdesmond" />
+              <EmailLink address="ntdesmond@gmail.com" />
+              <TelegramLink path="ntdesmond" />
+              <Location location="Innopolis, Russia" />
+            </FixedMargin>
+          </NoWrap>
+        </InfoSection>
+
+        <CVColumn index={1}>
           <Section title="Work Experience">
             <WorkExperienceEntry
               company="Innopolis University"
@@ -154,8 +151,10 @@ const CV = () => {
               tags={['Telegram API', 'Firestore', 'Python']}
             />
           </Section>
+        </CVColumn>
+        <CVColumn index={2}>
           <Section title="Technical skills">
-            <InTextHeading>Programming languages</InTextHeading>
+            <SkillCategoryHeading>Programming languages</SkillCategoryHeading>
             <TechSkill name="Python" value={0.8}>
               <BulletPoint>
                 Experienced in <Tag slug="FastAPI" /> framework
@@ -174,7 +173,7 @@ const CV = () => {
             <TechSkill name="Java" value={0.2} />
             <TechSkill name="PHP" value={0.1} />
             <TechSkill name="C++" value={0.1} />
-            <InTextHeading>Other</InTextHeading>
+            <SkillCategoryHeading>Other</SkillCategoryHeading>
             <BulletPoint>
               Experienced in <Tag slug="Git" />
               <BulletPoint>
@@ -193,8 +192,8 @@ const CV = () => {
               Basic knowledge of <Tag slug="Bash" /> scripting
             </BulletPoint>
           </Section>
-        </FirstColumn>
-        <SecondColumn>
+        </CVColumn>
+        <CVColumn index={3}>
           <Section title="Education">
             <EducationEntry
               speciality="Computer science, Bachelor"
@@ -221,10 +220,12 @@ const CV = () => {
               ]}
             />
           </Section>
-          <Section title="Tags">
-            <TagsSection />
-          </Section>
-        </SecondColumn>
+          <NoPrint>
+            <Section title="Tags">
+              <TagsSection />
+            </Section>
+          </NoPrint>
+        </CVColumn>
       </TagsContext.Provider>
     </StyledCV>
   );

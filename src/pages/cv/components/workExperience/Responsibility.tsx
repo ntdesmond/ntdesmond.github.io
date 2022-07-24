@@ -1,18 +1,12 @@
 import React from 'react';
-import styled from 'styled-components';
+import { FlexRow } from '../../../../components/layout/alignment/Flex';
 import TagList from '../tags/TagList';
 
-const StyledResponsibility = styled.div`
-  display: grid;
-  grid-template-columns: auto 8em;
-  gap: 1em;
-`;
-
 const Responsibility = (props: { children: React.ReactNode; tags: string[] }) => (
-  <StyledResponsibility>
+  <FlexRow gap="1em" justify="space-betweeb">
     <div>{props.children}</div>
-    <TagList tags={props.tags} />
-  </StyledResponsibility>
+    <TagList width="8em" tags={props.tags} />
+  </FlexRow>
 );
 
 export default Responsibility;

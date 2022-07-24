@@ -13,6 +13,10 @@ const BulletPoint = styled.div`
 
   margin: 0.5em 0 0 1.5em;
   position: relative;
+
+  @media print {
+    margin: 0.1em 0 0 1.5em;
+  }
 `;
 
 export default BulletPoint;
