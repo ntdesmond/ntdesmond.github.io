@@ -30,7 +30,7 @@ const StyledCV = styled.div`
     'sections1 sections2 sections3' /
     auto auto fit-content(20em);
   gap: 1em 3em;
-  margin: 0.7cm;
+  margin: 2em;
 
   @media screen and (max-width: 920px) {
     grid-template-areas:
@@ -46,8 +46,9 @@ const StyledCV = styled.div`
   }
 
   @media print {
+    margin: 0;
     column-gap: 1em;
-    grid-template-columns: 1fr 1fr 20em;
+    grid-template-columns: 1fr 1fr 0.8fr;
   }
 `;
 

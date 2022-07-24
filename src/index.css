@@ -26,3 +26,15 @@ a,
 a:visited {
   color: #0066cc;
 }
+
+@media print {
+  @page {
+    size: A4 landscape;
+    margin: 0.7cm;
+  }
+
+  html {
+    height: 99%;
+    font-size: 0.34cm;
+  }
+}

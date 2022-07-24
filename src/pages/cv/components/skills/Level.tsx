@@ -6,6 +6,11 @@ const StyledLevelBar = styled.div`
   background-color: #abd;
   border-radius: 0.4em;
   overflow: clip;
+
+  @media print {
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
+  }
 `;
 
 const StyledValueBar = styled.div<{ width: number }>`
