@@ -1,13 +1,13 @@
 import { createRoot } from 'react-dom/client';
-import { HashRouter, Route, Routes } from 'react-router-dom';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import './index.css';
 import CV from './pages/cv/components/CV';
 
 const root = createRoot(document.getElementById('root')!);
 root.render(
-  <HashRouter>
+  <BrowserRouter>
     <Routes>
       <Route path="*" element={<CV />} />
     </Routes>
-  </HashRouter>,
+  </BrowserRouter>,
 );
