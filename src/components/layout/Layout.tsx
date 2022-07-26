@@ -10,7 +10,7 @@ const StyledLayout = styled.main`
   grid-template:
     'header' 2em
     'main' auto;
-  max-width: 1000px;
+  max-width: 1100px;
   padding: 0.5em;
   width: 100%;
   box-sizing: border-box;

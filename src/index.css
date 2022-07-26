@@ -1,5 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;700&family=Open+Sans:ital,wght@0,400;0,500;0,700;1,400;1,700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Oswald&text=Vladislav+Safonov&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Oswald&text=Vladislav+Safonov+Владислав+Сафонов&display=swap');
 
 html,
 body,
@@ -29,7 +29,7 @@ a:visited {
 
 @media print {
   @page {
-    size: A4 landscape;
+    size: A4 portrait;
     margin: 0.7cm;
   }
 
