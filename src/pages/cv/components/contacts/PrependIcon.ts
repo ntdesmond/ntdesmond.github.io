@@ -9,6 +9,11 @@ const PrependIcon = styled.p<{ icon: string }>`
     background-size: cover;
     vertical-align: middle;
     margin-right: 0.5em;
+
+    @media print {
+      print-color-adjust: exact;
+      -webkit-print-color-adjust: exact;
+    }
   }
 
   margin: 0.2em 0;

@@ -1,9 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;700&family=Open+Sans:ital,wght@0,400;0,500;0,700;1,400;1,700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Oswald&text=Vladislav+Safonov&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Oswald&text=Vladislav+Safonov+Владислав+Сафонов&display=swap');
 
 html,
-body {
+body,
+#root {
   height: 100%;
+}
+
+body {
+  margin: 0;
 }
 
 body,
@@ -20,4 +25,16 @@ pre {
 a,
 a:visited {
   color: #0066cc;
+}
+
+@media print {
+  @page {
+    size: A4 portrait;
+    margin: 0.7cm;
+  }
+
+  html {
+    height: 99%;
+    font-size: 0.34cm;
+  }
 }

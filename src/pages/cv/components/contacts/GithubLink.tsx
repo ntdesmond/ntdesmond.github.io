@@ -3,7 +3,9 @@ import PrependIcon from './PrependIcon';
 
 const GithubLink = (props: { path: string }) => (
   <PrependIcon icon={GithubIcon}>
-    <a href={`https://github.com/${props.path}`}>github.com/{props.path}</a>
+    <a href={`https://github.com/${props.path}`} target="_blank" rel="noreferrer">
+      github.com/{props.path}
+    </a>
   </PrependIcon>
 );
 

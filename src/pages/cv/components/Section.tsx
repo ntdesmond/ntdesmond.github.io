@@ -1,6 +1,9 @@
+import { useContext } from 'react';
 import styled from 'styled-components';
 import FixedMargin from '../../../components/layout/alignment/FixedMargin';
 import { SectionHeading } from '../../../components/typography/Headings';
+import LanguageContext from '../contexts/LanguageContext';
+import LanguageFragment from '../types/LanguageFragment';
 
 const StyledHeading = styled(SectionHeading)`
   color: #035;
@@ -9,9 +12,9 @@ const StyledHeading = styled(SectionHeading)`
   white-space: nowrap;
 `;
 
-const Section = ({ title, children }: { title: string; children: React.ReactNode }) => (
+const Section = ({ title, children }: { title: LanguageFragment; children: React.ReactNode }) => (
   <FixedMargin margin="0.5rem 0">
-    <StyledHeading>{title}</StyledHeading>
+    <StyledHeading>{title.get(useContext(LanguageContext))}</StyledHeading>
     {children}
   </FixedMargin>
 );

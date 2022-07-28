@@ -4,7 +4,10 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ESLintWebpackPlugin = require('eslint-webpack-plugin');
 
 module.exports = {
-  entry: './src/index.tsx',
+  entry: {
+    main: './src/index.tsx',
+    cv: './src/cv.tsx',
+  },
   resolve: {
     extensions: ['.tsx', '.ts', '.js'],
   },
@@ -26,13 +29,27 @@ module.exports = {
       },
       {
         test: /\.(jpg|jpeg|png|gif|mp3|svg)$/,
-        use: ['file-loader'],
+        type: 'asset/resource',
+      },
+      {
+        test: /files[/\\].+\.(jpg|jpeg|png|gif|mp3|svg|pdf)$/,
+        type: 'asset/resource',
+        generator: {
+          filename: '[name].[hash:5][ext][query]',
+        },
       },
     ],
   },
   plugins: [
     new HtmlWebpackPlugin({
       template: path.join(__dirname, 'src', 'index.html'),
+      chunks: ['main'],
+    }),
+    new HtmlWebpackPlugin({
+      template: path.join(__dirname, 'src', 'index.html'),
+      filename: 'cv.html',
+      title: 'CV',
+      chunks: ['cv'],
     }),
     new webpack.DefinePlugin({
       'process.env': JSON.stringify(process.env),
@@ -44,7 +61,7 @@ module.exports = {
   ],
   output: {
     path: path.join(__dirname, 'build'),
-    filename: 'index.js',
+    filename: '[name].[fullhash].bundle.js',
     publicPath: '/',
     clean: true,
   },

@@ -1,10 +1,10 @@
 import styled from 'styled-components';
 
-const Skill = styled.div`
+const BulletPoint = styled.div`
   &::before {
     content: '●';
     position: absolute;
-    margin-left: -1em;
+    left: -1em;
   }
 
   & > &::before {
@@ -12,6 +12,11 @@ const Skill = styled.div`
   }
 
   margin: 0.5em 0 0 1.5em;
+  position: relative;
+
+  @media print {
+    margin: 0.1em 0 0 1.5em;
+  }
 `;
 
-export default Skill;
+export default BulletPoint;
