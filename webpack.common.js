@@ -29,7 +29,14 @@ module.exports = {
       },
       {
         test: /\.(jpg|jpeg|png|gif|mp3|svg)$/,
-        use: ['file-loader'],
+        type: 'asset/resource',
+      },
+      {
+        test: /files[/\\].+\.(jpg|jpeg|png|gif|mp3|svg|pdf)$/,
+        type: 'asset/resource',
+        generator: {
+          filename: '[name].[hash:5][ext][query]',
+        },
       },
     ],
   },
@@ -54,7 +61,7 @@ module.exports = {
   ],
   output: {
     path: path.join(__dirname, 'build'),
-    filename: '[name].bundle.js',
+    filename: '[name].[fullhash].bundle.js',
     publicPath: '/',
     clean: true,
   },
