@@ -4,6 +4,13 @@ import styled from 'styled-components';
 import FixedMargin, { NoMargin } from '../../../components/layout/alignment/FixedMargin';
 import { FlexColumn, FlexRow } from '../../../components/layout/alignment/Flex';
 import { PageHeading, SectionHeading } from '../../../components/typography/Headings';
+import OnlyPrint from '../../../components/layout/utils/OnlyPrint';
+import NoPrint from '../../../components/layout/utils/NoPrint';
+import NoWrap from '../../../components/layout/utils/NoWrap';
+import LanguageContext from '../contexts/LanguageContext';
+import TagsContext from '../contexts/TagsContext';
+import LanguageFragment from '../types/LanguageFragment';
+import LanguageType from '../types/Language';
 import EmailLink from './contacts/EmailLink';
 import GithubLink from './contacts/GithubLink';
 import Location from './contacts/Location';
@@ -19,14 +26,7 @@ import Tag from './tags/Tag';
 import TagsSection from './tags/TagsSection';
 import Responsibility from './workExperience/Responsibility';
 import WorkExperienceEntry from './workExperience/WorkExperienceEntry';
-import TagsContext from '../contexts/TagsContext';
 import SkillCategoryHeading from './skills/SkillCategoryHeading';
-import NoPrint from '../../../components/layout/utils/NoPrint';
-import NoWrap from '../../../components/layout/utils/NoWrap';
-import LanguageContext from '../contexts/LanguageContext';
-import LanguageFragment from '../types/LanguageFragment';
-import LanguageType from '../types/Language';
-import OnlyPrint from '../../../components/layout/utils/OnlyPrint';
 import QR from './images/QR.svg';
 
 const StyledCV = styled.div`
@@ -115,7 +115,7 @@ const QRCode = styled.div`
 const CV = () => {
   const [tags, setTags] = useState<Set<string>>(new Set(['Frontend', 'Backend']));
   const { search } = useLocation();
-  const pushTag = (tag: string) => setTags(tags.add(tag));
+  const pushTag = (tag: string) => setTags((oldTags) => new Set(oldTags.add(tag)));
 
   const language = (new URLSearchParams(search).get('language') as LanguageType) || 'en';
   const tagsContextValue = React.useMemo(() => ({ tags, pushTag }), [tags]);
