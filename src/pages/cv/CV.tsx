@@ -5,6 +5,8 @@ import Layout from '../../components/layout/Layout';
 import Dropdown from '../../components/ui/Dropdown';
 import Language from './types/Language';
 import LanguageFragment from './types/LanguageFragment';
+import EnCVFile from './files/cv_en.pdf';
+import RuCVFile from './files/cv_ru.pdf';
 
 const ActionsPanel = styled(FlexRow)`
   gap: 2em;
@@ -27,6 +29,11 @@ const StyledLayout = styled(Layout)`
   overflow: hidden;
 `;
 
+const files = {
+  en: EnCVFile,
+  ru: RuCVFile,
+};
+
 const CV = () => {
   const [language, setLanguage] = useState<Language>('en');
   return (
@@ -47,9 +54,11 @@ const CV = () => {
             <button type="button" onClick={() => window.frames[0].print()}>
               {new LanguageFragment({ en: 'Print', ru: 'Печать' }).get(language)}
             </button>
-            <button type="button">
-              {new LanguageFragment({ en: 'Download PDF', ru: 'Скачать PDF' }).get(language)}
-            </button>
+            <a href={files[language]} target="_blank" rel="noreferrer">
+              {new LanguageFragment({ en: 'Open PDF version', ru: 'Открыть PDF-версию' }).get(
+                language,
+              )}
+            </a>
           </FlexRow>
         </ActionsPanel>
         <StyledInnerDocument title="CV" src={`/cv.html?language=${language}`} />
