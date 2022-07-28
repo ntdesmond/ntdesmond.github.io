@@ -26,6 +26,8 @@ import NoWrap from '../../../components/layout/utils/NoWrap';
 import LanguageContext from '../contexts/LanguageContext';
 import LanguageFragment from '../types/LanguageFragment';
 import LanguageType from '../types/Language';
+import OnlyPrint from '../../../components/layout/utils/OnlyPrint';
+import QR from './images/QR.svg';
 
 const StyledCV = styled.div`
   display: grid;
@@ -85,6 +87,31 @@ const Position = styled(SectionHeading)`
   }
 `;
 
+const QRCodeWrapper = styled(FlexColumn)`
+  margin-left: auto;
+
+  align-self: stretch;
+  align-items: stretch;
+  text-align: center;
+
+  gap: 0.2em;
+
+  > * {
+    flex-basis: 0;
+  }
+`;
+
+const QRCode = styled.div`
+  background: url(${QR}) center no-repeat;
+  background-size: contain;
+  flex-grow: 1;
+
+  @media print {
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
+  }
+`;
+
 const CV = () => {
   const [tags, setTags] = useState<Set<string>>(new Set(['Frontend', 'Backend']));
   const { search } = useLocation();
@@ -95,7 +122,7 @@ const CV = () => {
 
   const name = new LanguageFragment({ en: 'Vladislav Safonov', ru: 'Владислав Сафонов' });
   const position = new LanguageFragment({
-    en: 'Software Engineer',
+    en: 'Software Developer',
     ru: 'Разработчик ПО (Программист)',
   });
 
@@ -116,6 +143,18 @@ const CV = () => {
                 <Location location="Innopolis, Russia" />
               </FixedMargin>
             </NoWrap>
+            <OnlyPrint>
+              <QRCodeWrapper>
+                <div>
+                  {new LanguageFragment({
+                    en: 'Interactive CV is available here:',
+                    ru: 'Интерактивное резюме доступно здесь:',
+                  }).get(language)}
+                </div>
+                <a href="https://ntdesmond.github.io/#/cv">ntdesmond.github.io/#/cv</a>
+                <QRCode />
+              </QRCodeWrapper>
+            </OnlyPrint>
           </InfoSection>
 
           <CVColumn index={1}>
