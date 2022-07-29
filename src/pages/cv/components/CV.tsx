@@ -116,14 +116,18 @@ const CV = () => {
   const [tags, setTags] = useState<Set<string>>(new Set(['Frontend', 'Backend']));
   const { search } = useLocation();
   const pushTag = (tag: string) => setTags((oldTags) => new Set(oldTags.add(tag)));
+  const tagsContextValue = React.useMemo(() => ({ tags, pushTag }), [tags]);
 
   const language = (new URLSearchParams(search).get('language') as LanguageType) || 'en';
-  const tagsContextValue = React.useMemo(() => ({ tags, pushTag }), [tags]);
 
   const name = new LanguageFragment({ en: 'Vladislav Safonov', ru: 'Владислав Сафонов' });
   const position = new LanguageFragment({
     en: 'Software Developer',
     ru: 'Разработчик ПО (Программист)',
+  });
+  const geolocation = new LanguageFragment({
+    en: 'Innopolis, Russia',
+    ru: 'Иннополис, Россия',
   });
 
   return (
@@ -140,7 +144,7 @@ const CV = () => {
                 <GithubLink path="ntdesmond" />
                 <EmailLink address="ntdesmond@gmail.com" />
                 <TelegramLink path="ntdesmond" />
-                <Location location="Innopolis, Russia" />
+                <Location location={geolocation} />
               </FixedMargin>
             </NoWrap>
             <OnlyPrint>
