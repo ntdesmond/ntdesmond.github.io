@@ -38,6 +38,10 @@ module.exports = {
           filename: '[name].[hash:5][ext][query]',
         },
       },
+      {
+        resourceQuery: /inline/,
+        type: 'asset/inline',
+      },
     ],
   },
   plugins: [

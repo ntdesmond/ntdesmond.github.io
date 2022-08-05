@@ -27,7 +27,7 @@ import TagsSection from './tags/TagsSection';
 import Responsibility from './workExperience/Responsibility';
 import WorkExperienceEntry from './workExperience/WorkExperienceEntry';
 import SkillCategoryHeading from './skills/SkillCategoryHeading';
-import QR from './images/QR.svg';
+import QR from './images/QR.svg?inline';
 
 const StyledCV = styled.div`
   display: grid;
