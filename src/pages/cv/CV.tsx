@@ -2,7 +2,7 @@ import { useState } from 'react';
 import styled from 'styled-components';
 import { FlexColumn, FlexRow } from '../../components/layout/alignment/Flex';
 import Layout from '../../components/layout/Layout';
-import Dropdown from '../../components/ui/Dropdown';
+import Dropdown from '../../components/UI/Dropdown';
 import Language from './types/Language';
 import LanguageFragment from './types/LanguageFragment';
 import EnCVFile from './files/cv_en.pdf';

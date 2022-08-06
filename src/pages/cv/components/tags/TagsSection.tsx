@@ -8,7 +8,7 @@ const StyledTagList = styled(TagList)`
 
 const TagsSection = () => (
   <TagsContext.Consumer>
-    {({ tags }) => <StyledTagList tags={Array.from(tags.values()).sort()} />}
+    {({ tags }) => <StyledTagList tags={Array.from(tags.values()).sort()} print />}
   </TagsContext.Consumer>
 );
 

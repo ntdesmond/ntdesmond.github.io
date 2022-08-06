@@ -1,6 +1,7 @@
 import { useContext } from 'react';
 import styled from 'styled-components';
 import { FlexRow } from '../../../../components/layout/alignment/Flex';
+import ExternalURL from '../../../../components/UI/ExternalURL';
 import LanguageContext from '../../contexts/LanguageContext';
 import LanguageFragment from '../../types/LanguageFragment';
 import TagList from '../tags/TagList';
@@ -29,13 +30,7 @@ const Project = (props: {
     <StyledEntry gap="1em" justify="space-between">
       <div>
         <StyledProjectName>
-          {props.href ? (
-            <a href={props.href} target="_blank" rel="noreferrer">
-              {props.title}
-            </a>
-          ) : (
-            props.title
-          )}
+          {props.href ? <ExternalURL href={props.href}>{props.title}</ExternalURL> : props.title}
         </StyledProjectName>
         <p>{props.description.get(language)}</p>
         <p>{props.period.get(language)}</p>

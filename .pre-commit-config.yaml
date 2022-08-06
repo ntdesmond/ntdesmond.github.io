@@ -1,0 +1,11 @@
+# See https://pre-commit.com for more information
+# See https://pre-commit.com/hooks.html for more hooks
+repos:
+  - repo: local
+    hooks:
+      - id: generate-cv-pdfs
+        name: Generate CV PDFs
+        language: system
+        entry: powershell ./.pre-commit/cv-pdfs.ps1
+        pass_filenames: false
+        files: ^src/pages/cv/components/
