@@ -202,6 +202,22 @@ const CV = () => {
             </Section>
             <Section title={new LanguageFragment({ en: 'Projects', ru: 'Проекты' })}>
               <Project
+                title="Paste and Search"
+                href="https://github.com/ntdesmond/paste-and-search"
+                description={
+                  new LanguageFragment({
+                    en: 'Website for easier reverse image searching',
+                    ru: 'Сайт для упрощения поиска по изображению',
+                  })
+                }
+                period={
+                  new LanguageFragment({
+                    en: 2022,
+                  })
+                }
+                tags={['TypeScript', 'React', 'Github Actions', 'Github Pages']}
+              />
+              <Project
                 title="ntdesmond.github.io"
                 href="https://github.com/ntdesmond/ntdesmond.github.io"
                 description={
