@@ -1,25 +1,33 @@
-name: Build and deploy Webpack
-on: [push]
+name: Build Webpack
+on:
+  push:
+    branches-ignore: [master]
+
+# Allow one concurrent build for each branch
+concurrency:
+  group: build-pages-${{ github.ref }}
+  cancel-in-progress: true
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
+    # Read-only permissions for GITHUB_TOKEN
+    permissions:
+      contents: read
+
     steps:
       - uses: actions/checkout@v3
 
-      - name: Setup Node.js
+      - name: Setup Node.js 16
         uses: actions/setup-node@v3
         with:
           node-version: 16
 
       - name: Build the project
+        env:
+          GITHUB_REPO: ${{ github.repository }}
+
         run: |
           npm install
           npm run build
-
-      - name: Deploy
-        if: github.ref == 'refs/heads/master'
-        uses: JamesIves/github-pages-deploy-action@v4
-        with:
-          folder: build
