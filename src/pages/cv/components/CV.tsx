@@ -5,7 +5,6 @@ import FixedMargin, { NoMargin } from '../../../components/layout/alignment/Fixe
 import { FlexColumn, FlexRow } from '../../../components/layout/alignment/Flex';
 import { PageHeading, SectionHeading } from '../../../components/typography/Headings';
 import OnlyPrint from '../../../components/layout/utils/OnlyPrint';
-import NoPrint from '../../../components/layout/utils/NoPrint';
 import NoWrap from '../../../components/layout/utils/NoWrap';
 import LanguageContext from '../contexts/LanguageContext';
 import TagsContext from '../contexts/TagsContext';
@@ -215,7 +214,7 @@ const CV = () => {
                     en: 2022,
                   })
                 }
-                tags={['TypeScript', 'React', 'Github Actions', 'Github Pages']}
+                tags={['TypeScript', 'React', 'GitHub Actions', 'GitHub Pages']}
               />
               <Project
                 title="ntdesmond.github.io"
@@ -231,7 +230,7 @@ const CV = () => {
                     en: 2022,
                   })
                 }
-                tags={['TypeScript', 'React', 'Github Actions']}
+                tags={['TypeScript', 'React', 'GitHub Actions']}
               />
               <Project
                 title="PPFS"
@@ -248,22 +247,6 @@ const CV = () => {
                   })
                 }
                 tags={['Python', 'FastAPI', 'asyncio', 'MongoDB', 'Docker', 'GridFS']}
-              />
-              <Project
-                title="fraumarta.store"
-                href="https://fraumarta.store"
-                description={
-                  new LanguageFragment({
-                    en: 'Website on pure HTML/CSS/JS',
-                    ru: 'Веб-сайт на чистом HTML/CSS/JS',
-                  })
-                }
-                period={
-                  new LanguageFragment({
-                    en: 2021,
-                  })
-                }
-                tags={['JS', 'HTML', 'Python', 'Flask', 'nginx']}
               />
               <Project
                 title="@goodscalcbot"
@@ -496,11 +479,9 @@ const CV = () => {
                 ]}
               />
             </Section>
-            <NoPrint>
-              <Section title={new LanguageFragment({ en: 'Tags', ru: 'Теги' })}>
-                <TagsSection />
-              </Section>
-            </NoPrint>
+            <Section title={new LanguageFragment({ en: 'Tags', ru: 'Теги' })}>
+              <TagsSection />
+            </Section>
           </CVColumn>
         </TagsContext.Provider>
       </LanguageContext.Provider>
