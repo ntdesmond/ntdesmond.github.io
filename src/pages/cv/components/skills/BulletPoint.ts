@@ -2,13 +2,15 @@ import styled from 'styled-components';
 
 const BulletPoint = styled.div`
   &::before {
-    content: '●';
+    content: '•';
+    font-size: 2em;
+    line-height: 0.7em;
     position: absolute;
-    left: -1em;
+    left: -0.5em;
   }
 
   & > &::before {
-    content: '○';
+    content: '◦';
   }
 
   margin: 0.5em 0 0 1.5em;
