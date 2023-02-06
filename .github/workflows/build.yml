@@ -1,4 +1,4 @@
-name: Build Webpack
+name: Build Webpack and generate PDFs
 on:
   push:
     branches-ignore: [master]
@@ -24,10 +24,30 @@ jobs:
         with:
           node-version: 16
 
-      - name: Build the project
-        env:
-          GITHUB_REPO: ${{ github.repository }}
-
+      - name: Build CV
         run: |
           npm install
-          npm run build
+          npm run build:cv
+
+      - name: Generate PDF file (en)
+        uses: fifsky/html-to-pdf-action@v0.1.0
+        with:
+          htmlFile: ./build/cv.html?language=en&print
+          outputFile: ./src/pages/cv/files/cv_en.pdf
+
+      - name: Generate PDF file (ru)
+        uses: fifsky/html-to-pdf-action@v0.1.0
+        with:
+          htmlFile: ./build/cv.html?language=ru&print
+          outputFile: ./src/pages/cv/files/cv_ru.pdf
+
+      - name: Build the rest of the app
+        env:
+          GITHUB_REPO: ${{ github.repository }}
+        run: |
+          npm run build:main
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v1
+        with:
+          path: "build/"
