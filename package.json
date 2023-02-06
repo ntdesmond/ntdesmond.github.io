@@ -4,8 +4,9 @@
   "description": "",
   "main": "./src/index.ts",
   "scripts": {
-    "start": "webpack serve --config webpack.dev.js",
-    "build": "webpack --config webpack.prod.js --stats-error-details"
+    "start": "webpack serve --config webpack/webpack.dev.js",
+    "build:cv": "webpack --config webpack/webpack.prod.cv.js --stats-error-details",
+    "build:main": "webpack --config webpack/webpack.prod.main.js --stats-error-details"
   },
   "repository": {
     "type": "git",
