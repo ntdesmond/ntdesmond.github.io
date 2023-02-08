@@ -8,6 +8,10 @@ concurrency:
   group: build-pages-${{ github.ref }}
   cancel-in-progress: true
 
+env:
+  PDF_OPTIONS: |
+    {"format": "A4"}
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -30,16 +34,18 @@ jobs:
           npm run build:cv
 
       - name: Generate PDF file (en)
-        uses: fifsky/html-to-pdf-action@v0.1.0
+        uses: ntdesmond/html2pdf-action@v1
         with:
-          htmlFile: ./build/cv.html?language=en&print
-          outputFile: ./src/pages/cv/files/cv_en.pdf
+          path: ./build/cv.html?language=en&print
+          output: ./src/pages/cv/files/cv_en.pdf
+          options: ${{ env.PDF_OPTIONS }}
 
       - name: Generate PDF file (ru)
-        uses: fifsky/html-to-pdf-action@v0.1.0
+        uses: ntdesmond/html2pdf-action@v1
         with:
-          htmlFile: ./build/cv.html?language=ru&print
-          outputFile: ./src/pages/cv/files/cv_ru.pdf
+          path: ./build/cv.html?language=ru&print
+          output: ./src/pages/cv/files/cv_ru.pdf
+          options: ${{ env.PDF_OPTIONS }}
 
       - name: Build the rest of the app
         env:
