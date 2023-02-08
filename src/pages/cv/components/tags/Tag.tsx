@@ -19,7 +19,7 @@ const StyledSelectedTag = styled(StyledTag)`
   }
 `;
 
-const Tag = (props: { slug: string; name?: string; register?: boolean }) => {
+const Tag = (props: { slug: string; name?: string; register?: boolean; className?: string; }) => {
   const { hash, search } = useLocation();
   const { pushTag } = useContext(TagsContext);
 
@@ -34,15 +34,20 @@ const Tag = (props: { slug: string; name?: string; register?: boolean }) => {
   }, []);
 
   if (isPrintMode) {
-    return <StyledTag as="span">{props.name || props.slug}</StyledTag>;
+    return <StyledTag className={props.className} as="span">{props.name || props.slug}</StyledTag>;
   }
 
   return decodeURI(hash.slice(1)) === props.slug ? (
-    <StyledSelectedTag to={target}>
+    <StyledSelectedTag className={props.className} to={target}>
       <span>{props.name || props.slug}</span>
     </StyledSelectedTag>
   ) : (
-    <StyledTag to={search + target}>{props.name || props.slug}</StyledTag>
+    <StyledTag
+      className={props.className}
+      to={search + target}
+    >
+      {props.name || props.slug}
+    </StyledTag>
   );
 };
 
