@@ -13,7 +13,7 @@ const Home = () => (
       nickname.
     </p>
     <p>
-      My real name is <b>Vladislav Safonov</b>, and, as of 2022, I&#39;m a student of{' '}
+      My real name is <b>Vladislav Safonov</b>, and, as of 2023, I&#39;m a student of{' '}
       <a href="https://innopolis.university/">Innopolis University</a>.
     </p>
     <InTextHeading>So?</InTextHeading>
