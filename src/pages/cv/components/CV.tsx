@@ -274,7 +274,7 @@ const CV = () => {
                   ru: 'Языки программирования',
                 }).get(language)}
               </SkillCategoryHeading>
-              <TechSkill name="Python" value={0.8}>
+              <TechSkill name="Python">
                 <BulletPoint>
                   {new LanguageFragment({
                     en: (
@@ -305,7 +305,7 @@ const CV = () => {
                   }).get(language)}
                 </BulletPoint>
               </TechSkill>
-              <TechSkill name="JS/TS" value={0.7} tagSlug="JS">
+              <TechSkill name="JS/TS" tagSlug="JS">
                 <BulletPoint>
                   {new LanguageFragment({
                     en: (
@@ -323,10 +323,22 @@ const CV = () => {
                   }).get(language)}
                 </BulletPoint>
               </TechSkill>
-              <TechSkill name="C#" value={0.5} />
-              <TechSkill name="Java" value={0.2} />
-              <TechSkill name="PHP" value={0.1} />
-              <TechSkill name="C++" value={0.1} />
+              <TechSkill name="C#">
+                <BulletPoint>
+                  {new LanguageFragment({
+                    en: (
+                      <>
+                        Experienced in <Tag slug="WPF" /> and <Tag slug="WinForms" />
+                      </>
+                    ),
+                    ru: (
+                      <>
+                        Опыт работы с <Tag slug="WPF" /> и <Tag slug="WinForms" />
+                      </>
+                    ),
+                  }).get(language)}
+                </BulletPoint>
+              </TechSkill>
               <SkillCategoryHeading>
                 {new LanguageFragment({
                   en: 'Other',
