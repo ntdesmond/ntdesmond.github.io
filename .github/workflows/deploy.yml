@@ -5,7 +5,7 @@ on:
 
 # Allow one concurrent deployment
 concurrency:
-  group: 'deploy-pages'
+  group: "deploy-pages"
   cancel-in-progress: true
 
 jobs:
@@ -16,33 +16,9 @@ jobs:
       - name: Setup Github Pages
         uses: actions/configure-pages@v1
 
+  # Reuse build.yml workflow
   build:
-    runs-on: ubuntu-latest
-
-    # Read-only permissions for GITHUB_TOKEN
-    permissions:
-      contents: read
-
-    steps:
-      - uses: actions/checkout@v3
-
-      - name: Setup Node.js 16
-        uses: actions/setup-node@v3
-        with:
-          node-version: 16
-
-      - name: Build the project
-        env:
-          GITHUB_REPO: ${{ github.repository }}
-
-        run: |
-          npm install
-          npm run build
-
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v1
-        with:
-          path: 'build/'
+    uses: ./.github/workflows/build.yml
 
   deploy:
     needs: build
