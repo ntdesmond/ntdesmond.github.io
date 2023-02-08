@@ -61,7 +61,7 @@ const CV = () => {
             </a>
           </FlexRow>
         </ActionsPanel>
-        <StyledInnerDocument title="CV" src={`/cv.html?language=${language}`} />
+        <StyledInnerDocument title="CV" src={`cv.html?language=${language}`} />
       </FlexColumn>
     </StyledLayout>
   );
