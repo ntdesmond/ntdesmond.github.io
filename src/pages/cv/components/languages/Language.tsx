@@ -1,20 +1,15 @@
-import { useContext } from 'react';
+import { ReactNode } from 'react';
 import styled from 'styled-components';
-import LanguageContext from '../../contexts/LanguageContext';
-import LanguageFragment from '../../types/LanguageFragment';
 
 const StyledName = styled.p`
   font-weight: bold;
 `;
 
-const Language = (props: { name: LanguageFragment; level: LanguageFragment }) => {
-  const language = useContext(LanguageContext);
-  return (
-    <div>
-      <StyledName>{props.name.get(language)}</StyledName>
-      <p>{props.level.get(language)}</p>
-    </div>
-  );
-};
+const Language = (props: { name: ReactNode; level: ReactNode }) => (
+  <div>
+    <StyledName>{props.name}</StyledName>
+    <p>{props.level}</p>
+  </div>
+);
 
 export default Language;

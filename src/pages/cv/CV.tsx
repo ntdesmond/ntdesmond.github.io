@@ -3,10 +3,10 @@ import styled from 'styled-components';
 import { FlexColumn, FlexRow } from '../../components/layout/alignment/Flex';
 import Layout from '../../components/layout/Layout';
 import Dropdown from '../../components/UI/Dropdown';
-import Language from './types/Language';
-import LanguageFragment from './types/LanguageFragment';
+import LanguageFragment from './components/LanguageFragment';
 import EnCVFile from './files/cv_en.pdf';
 import RuCVFile from './files/cv_ru.pdf';
+import { Language } from './types/Language';
 
 const ActionsPanel = styled(FlexRow)`
   gap: 2em;
@@ -52,12 +52,10 @@ const CV = () => {
           </FlexRow>
           <FlexRow gap="1em" align="center">
             <button type="button" onClick={() => window.frames[0].print()}>
-              {new LanguageFragment({ en: 'Print', ru: 'Печать' }).get(language)}
+              <LanguageFragment en="Print" ru="Печать" language={language} />
             </button>
             <a href={files[language]} target="_blank" rel="noreferrer">
-              {new LanguageFragment({ en: 'Open PDF version', ru: 'Открыть PDF-версию' }).get(
-                language,
-              )}
+              <LanguageFragment en="Open PDF version" ru="Открыть PDF-версию" language={language} />
             </a>
           </FlexRow>
         </ActionsPanel>

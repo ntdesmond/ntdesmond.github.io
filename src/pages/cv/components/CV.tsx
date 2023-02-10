@@ -1,15 +1,11 @@
 import React, { useState } from 'react';
-import { useLocation } from 'react-router-dom';
 import styled from 'styled-components';
 import FixedMargin, { NoMargin } from '../../../components/layout/alignment/FixedMargin';
 import { FlexColumn, FlexRow } from '../../../components/layout/alignment/Flex';
 import { PageHeading, SectionHeading } from '../../../components/typography/Headings';
 import OnlyPrint from '../../../components/layout/utils/OnlyPrint';
 import NoWrap from '../../../components/layout/utils/NoWrap';
-import LanguageContext from '../contexts/LanguageContext';
 import TagsContext from '../contexts/TagsContext';
-import LanguageFragment from '../types/LanguageFragment';
-import LanguageType from '../types/Language';
 import EmailLink from './contacts/EmailLink';
 import GithubLink from './contacts/GithubLink';
 import Location from './contacts/Location';
@@ -27,6 +23,7 @@ import Responsibility from './workExperience/Responsibility';
 import WorkExperienceEntry from './workExperience/WorkExperienceEntry';
 import SkillCategoryHeading from './skills/SkillCategoryHeading';
 import QR from './images/QR.svg?inline';
+import LanguageFragment from './LanguageFragment';
 
 const StyledCV = styled.div`
   display: grid;
@@ -110,407 +107,267 @@ const QRCode = styled.div`
 
 const CV = () => {
   const [tags, setTags] = useState<Set<string>>(new Set(['Frontend', 'Backend']));
-  const { search } = useLocation();
   const pushTag = (tag: string) => setTags((oldTags) => new Set(oldTags.add(tag)));
   const tagsContextValue = React.useMemo(() => ({ tags, pushTag }), [tags]);
 
-  const language = (new URLSearchParams(search).get('language') as LanguageType) || 'en';
-
-  const name = new LanguageFragment({ en: 'Vladislav Safonov', ru: 'Владислав Сафонов' });
-  const position = new LanguageFragment({
-    en: 'Software Developer',
-    ru: 'Разработчик ПО (Программист)',
-  });
-  const geolocation = new LanguageFragment({
-    en: 'Innopolis, Russia',
-    ru: 'Иннополис, Россия',
-  });
-
   return (
     <StyledCV>
-      <LanguageContext.Provider value={language}>
-        <TagsContext.Provider value={tagsContextValue}>
-          <InfoSection gap="2em" align="center">
-            <NoMargin>
-              <Name>{name.get(language)}</Name>
-              <Position>{position.get(language)}</Position>
-            </NoMargin>
-            <NoWrap>
-              <FixedMargin margin="0.5em">
-                <GithubLink path="ntdesmond" />
-                <EmailLink address="ntdesmond@gmail.com" />
-                <TelegramLink path="ntdesmond" />
-                <Location location={geolocation} />
-              </FixedMargin>
-            </NoWrap>
-            <OnlyPrint>
-              <QRCodeWrapper>
-                <div>
-                  {new LanguageFragment({
-                    en: 'Interactive CV is available here:',
-                    ru: 'Интерактивное резюме доступно здесь:',
-                  }).get(language)}
-                </div>
-                <a href="https://ntdesmond.github.io/#/cv">ntdesmond.github.io/#/cv</a>
-                <QRCode />
-              </QRCodeWrapper>
-            </OnlyPrint>
-          </InfoSection>
-          <SummarySection title={new LanguageFragment({ en: 'Summary', ru: 'О себе' })}>
-            {new LanguageFragment(
-              { en:
-  <>
-    Highly motivated computer science student at Innopolis University with a strong
-    passion for developing user-friendly applications.
-    Experienced in creating complete systems, utilizing both <Tag slug="FastAPI" /> for the backend
-    and <Tag slug="React" /> for the frontend to deliver seamless user experiences.
-    Possesses the ability to not only develop a system, but also set up a <Tag slug="CI/CD" /> system
-    for automatic deployment, ensuring smooth and efficient operations.
-    Seeking opportunities to challenge and expand skillset while delivering
-    impactful solutions to real-world problems.
-  </>,
-              ru:
-  <>
-    Высокомотивированный студент факультета компьютерных наук Университета Иннополис,
-    увлеченный разработкой user-friendly приложений.
-    Есть опыт создания сложных систем, используя <Tag slug="FastAPI" /> для бэкенда
-    и <Tag slug="React" /> для фронтенда.
-    Способен не только разработать приложение, но и настроить <Tag slug="CI/CD" /> для
-    автоматического развертывания приложения, обеспечивая бесперебойную работу сервисов.
-    Ищу возможности расширить свои навыки и предложить эффективные решения для реальных
-    задач.
-  </>,
-              },
-            ).get(language)}
+      <TagsContext.Provider value={tagsContextValue}>
+        <InfoSection gap="2em" align="center">
+          <NoMargin>
+            <Name><LanguageFragment en="Vladislav Safonov" ru="Владислав Сафонов" /></Name>
+            <Position><LanguageFragment en="Software Developer" ru="Разработчик ПО (Программист)" /></Position>
+          </NoMargin>
+          <NoWrap>
+            <FixedMargin margin="0.5em">
+              <GithubLink path="ntdesmond" />
+              <EmailLink address="ntdesmond@gmail.com" />
+              <TelegramLink path="ntdesmond" />
+              <Location location={<LanguageFragment en="Innopolis, Russia" ru="Иннополис, Россия" />} />
+            </FixedMargin>
+          </NoWrap>
+          <OnlyPrint>
+            <QRCodeWrapper>
+              <div>
+                <LanguageFragment en="Interactive CV is available here:" ru="Интерактивное резюме доступно здесь:" />
+              </div>
+              <a href="https://ntdesmond.github.io/#/cv">ntdesmond.github.io/#/cv</a>
+              <QRCode />
+            </QRCodeWrapper>
+          </OnlyPrint>
+        </InfoSection>
+        <SummarySection title={<LanguageFragment en="Summary" ru="О себе" />}>
+          <LanguageFragment
+            en={(
+              <>
+                Highly motivated computer science student at Innopolis University with a strong
+                passion for developing user-friendly applications.
+                Experienced in creating complete systems, utilizing both <Tag slug="FastAPI" /> for the backend
+                and <Tag slug="React" /> for the frontend to deliver seamless user experiences.
+                Possesses the ability to not only develop a system, but also set up a <Tag slug="CI/CD" /> system
+                for automatic deployment, ensuring smooth and efficient operations.
+                Seeking opportunities to challenge and expand skillset while delivering
+                impactful solutions to real-world problems.
+              </>
+              )}
+            ru={(
+              <>
+                Высокомотивированный студент факультета компьютерных наук Университета Иннополис,
+                увлеченный разработкой user-friendly приложений.
+                Есть опыт создания сложных систем, используя <Tag slug="FastAPI" /> для бэкенда
+                и <Tag slug="React" /> для фронтенда.
+                Способен не только разработать приложение, но и настроить <Tag slug="CI/CD" /> для
+                автоматического развертывания приложения, обеспечивая бесперебойную работу
+                сервисов.
+                Ищу возможности расширить свои навыки и предложить эффективные решения для
+                реальных задач.
+              </>
+              )}
+          />
 
-          </SummarySection>
-          <CVColumn index={1}>
-            <Section title={new LanguageFragment({ en: 'Work Experience', ru: 'Опыт работы' })}>
-              <WorkExperienceEntry
-                company={
-                  new LanguageFragment({ en: 'Innopolis University', ru: 'Университет Иннополис' })
+        </SummarySection>
+        <CVColumn index={1}>
+          <Section title={<LanguageFragment en="Work Experience" ru="Опыт работы" />}>
+            <WorkExperienceEntry
+              company={
+                <LanguageFragment en="Innopolis University" ru="Университет Иннополис" />
                 }
-                position={
-                  new LanguageFragment({
-                    en: 'Electronics Design Center Specialist',
-                    ru: 'Специалист Дизайн-центра электроники',
-                  })
+              position={
+                <LanguageFragment en="Electronics Design Center Specialist" ru="Специалист Дизайн-центра электроники" />
                 }
-                period={LanguageFragment.same('2021')}
-              >
-                <Responsibility tags={['Linux', 'Bash', 'Python', 'Git']}>
-                  {new LanguageFragment({
-                    en: (
-                      <>
-                        Worked on automation scripts and improvement of open-source instruments{' '}
-                        <a href="http://opencircuitdesign.com/qflow/">qflow</a> and{' '}
-                        <a href="https://github.com/The-OpenROAD-Project/OpenLane/">OpenLane</a>
-                      </>
-                    ),
-                    ru: (
-                      <>
-                        Работал над скриптами автоматизации и улучшением открытых инструментов{' '}
-                        <a href="http://opencircuitdesign.com/qflow/">qflow</a> и{' '}
-                        <a href="https://github.com/The-OpenROAD-Project/OpenLane/">OpenLane</a>
-                      </>
-                    ),
-                  }).get(language)}
-                </Responsibility>
-              </WorkExperienceEntry>
-            </Section>
-            <Section title={new LanguageFragment({ en: 'Projects', ru: 'Проекты' })}>
-              <Project
-                title="Paste and Search"
-                href="https://github.com/ntdesmond/paste-and-search"
-                description={
-                  new LanguageFragment({
-                    en: 'Website for easier reverse image searching',
-                    ru: 'Сайт для упрощения поиска по изображению',
-                  })
-                }
-                period={
-                  new LanguageFragment({
-                    en: 2022,
-                  })
-                }
-                tags={['TypeScript', 'React', 'GitHub Actions', 'GitHub Pages']}
-              />
-              <Project
-                title="ntdesmond.github.io"
-                href="https://github.com/ntdesmond/ntdesmond.github.io"
-                description={
-                  new LanguageFragment({
-                    en: 'Personal website with interactive CV',
-                    ru: 'Личный веб-сайт с интерактивным резюме',
-                  })
-                }
-                period={
-                  new LanguageFragment({
-                    en: 2022,
-                  })
-                }
-                tags={['TypeScript', 'React', 'GitHub Actions']}
-              />
-              <Project
-                title="PPFS"
-                href="https://github.com/ntdesmond/PPFS"
-                description={
-                  new LanguageFragment({
-                    en: 'File server made with FastAPI and GridFS',
-                    ru: 'Файл-сервер, сделанный с помощью FastAPI и GridFS',
-                  })
-                }
-                period={
-                  new LanguageFragment({
-                    en: 2022,
-                  })
-                }
-                tags={['Python', 'FastAPI', 'asyncio', 'MongoDB', 'Docker', 'GridFS']}
-              />
-              <Project
-                title="@goodscalcbot"
-                href="https://t.me/goodscalcbot"
-                description={
-                  new LanguageFragment({
-                    en: 'Telegram bot to share expenses',
-                    ru: 'Телеграм-бот для разделения расходов',
-                  })
-                }
-                period={
-                  new LanguageFragment({
-                    en: 2020,
-                  })
-                }
-                tags={['Telegram API', 'Firestore', 'Python']}
-              />
-            </Section>
-          </CVColumn>
-          <CVColumn index={2}>
-            <Section title={new LanguageFragment({ en: 'Technical skills', ru: 'Навыки' })}>
-              <SkillCategoryHeading>
-                {new LanguageFragment({
-                  en: 'Programming languages',
-                  ru: 'Языки программирования',
-                }).get(language)}
-              </SkillCategoryHeading>
-              <TechSkill name="Python">
-                <BulletPoint>
-                  {new LanguageFragment({
-                    en: (
-                      <>
-                        Experienced in <Tag slug="FastAPI" /> framework
-                      </>
-                    ),
-                    ru: (
-                      <>
-                        Опыт работы с фреймворком <Tag slug="FastAPI" />
-                      </>
-                    ),
-                  }).get(language)}
-                </BulletPoint>
-                <BulletPoint>
-                  {new LanguageFragment({
-                    en: (
-                      <>
-                        Basic knowledge of <Tag slug="pandas" />, <Tag slug="numpy" /> libraries
-                      </>
-                    ),
-                    ru: (
-                      <>
-                        Знание библиотек <Tag slug="pandas" />, <Tag slug="numpy" /> на базовом
-                        уровне
-                      </>
-                    ),
-                  }).get(language)}
-                </BulletPoint>
-              </TechSkill>
-              <TechSkill name="JS/TS" tagSlug="JS">
-                <BulletPoint>
-                  {new LanguageFragment({
-                    en: (
-                      <>
-                        Used <Tag slug="React" /> and <Tag slug="Webpack" /> both in{' '}
-                        <Tag name="JavaScript" slug="JS" /> and <Tag slug="TypeScript" />
-                      </>
-                    ),
-                    ru: (
-                      <>
-                        Использовал <Tag slug="React" /> и <Tag slug="Webpack" /> как на{' '}
-                        <Tag name="JavaScript" slug="JS" />, так и на <Tag slug="TypeScript" />
-                      </>
-                    ),
-                  }).get(language)}
-                </BulletPoint>
-              </TechSkill>
-              <TechSkill name="C#">
-                <BulletPoint>
-                  {new LanguageFragment({
-                    en: (
-                      <>
-                        Experienced in <Tag slug="WPF" /> and <Tag slug="WinForms" />
-                      </>
-                    ),
-                    ru: (
-                      <>
-                        Опыт работы с <Tag slug="WPF" /> и <Tag slug="WinForms" />
-                      </>
-                    ),
-                  }).get(language)}
-                </BulletPoint>
-              </TechSkill>
-              <SkillCategoryHeading>
-                {new LanguageFragment({
-                  en: 'Other',
-                  ru: 'Прочее',
-                }).get(language)}
-              </SkillCategoryHeading>
+              period={2021}
+            >
+              <Responsibility tags={['Linux', 'Bash', 'Python', 'Git']}>
+                <LanguageFragment
+                  en={(
+                    <>
+                      Worked on automation scripts and improvement of open-source instruments{' '}
+                      <a href="http://opencircuitdesign.com/qflow/">qflow</a> and{' '}
+                      <a href="https://github.com/The-OpenROAD-Project/OpenLane/">OpenLane</a>
+                    </>
+                      )}
+                  ru={(
+                    <>
+                      Работал над скриптами автоматизации и улучшением открытых инструментов{' '}
+                      <a href="http://opencircuitdesign.com/qflow/">qflow</a> и{' '}
+                      <a href="https://github.com/The-OpenROAD-Project/OpenLane/">OpenLane</a>
+                    </>
+                      )}
+                />
+              </Responsibility>
+            </WorkExperienceEntry>
+          </Section>
+          <Section title={<LanguageFragment en="Projects" ru="Проекты" />}>
+            <Project
+              title="Paste and Search"
+              href="https://github.com/ntdesmond/paste-and-search"
+              description={<LanguageFragment en="Website for easier reverse image searching" ru="Сайт для упрощения поиска по изображению" />}
+              period={2022}
+              tags={['TypeScript', 'React', 'GitHub Actions', 'GitHub Pages']}
+            />
+            <Project
+              title="ntdesmond.github.io"
+              href="https://github.com/ntdesmond/ntdesmond.github.io"
+              description={<LanguageFragment en="Personal website with interactive CV" ru="Личный веб-сайт с интерактивным резюме" />}
+              period={2022}
+              tags={['TypeScript', 'React', 'GitHub Actions']}
+            />
+            <Project
+              title="PPFS"
+              href="https://github.com/ntdesmond/PPFS"
+              description={<LanguageFragment en="File server made with FastAPI and GridFS" ru="Файл-сервер, сделанный с помощью FastAPI и GridFS" />}
+              period={2022}
+              tags={['Python', 'FastAPI', 'asyncio', 'MongoDB', 'Docker', 'GridFS']}
+            />
+            <Project
+              title="@goodscalcbot"
+              href="https://t.me/goodscalcbot"
+              description={<LanguageFragment en="Telegram bot to share expenses" ru="Телеграм-бот для разделения расходов" />}
+              period={2020}
+              tags={['Telegram API', 'Firestore', 'Python']}
+            />
+          </Section>
+        </CVColumn>
+        <CVColumn index={2}>
+          <Section title={<LanguageFragment en="Technical skills" ru="Навыки" />}>
+            <SkillCategoryHeading>
+              <LanguageFragment en="Programming languages" ru="Языки программирования" />
+            </SkillCategoryHeading>
+            <TechSkill name="Python">
               <BulletPoint>
-                {new LanguageFragment({
-                  en: (
-                    <>
-                      Experienced in <Tag slug="Git" />
-                    </>
-                  ),
-                  ru: (
-                    <>
-                      Опыт работы с <Tag slug="Git" />
-                    </>
-                  ),
-                }).get(language)}
-                <BulletPoint>
-                  {new LanguageFragment({
-                    en: (
-                      <>
-                        Using <Tag slug="GitHub" /> mostly, worked with{' '}
-                        <Tag slug="GitHub Actions" />
-                      </>
-                    ),
-                    ru: (
-                      <>
-                        Использую в основном <Tag slug="GitHub" />, работал с{' '}
-                        <Tag slug="GitHub Actions" />
-                      </>
-                    ),
-                  }).get(language)}
-                </BulletPoint>
+                <LanguageFragment
+                  en={<>Experienced in <Tag slug="FastAPI" /> framework</>}
+                  ru={<>Опыт работы с фреймворком <Tag slug="FastAPI" /></>}
+                />
               </BulletPoint>
               <BulletPoint>
-                {new LanguageFragment({
-                  en: (
-                    <>
-                      Experienced in <Tag slug="Docker" /> and <Tag slug="Docker Compose" />
-                    </>
-                  ),
-                  ru: (
-                    <>
-                      Опыт работы с <Tag slug="Docker" /> и <Tag slug="Docker Compose" />
-                    </>
-                  ),
-                }).get(language)}
+                <LanguageFragment
+                  en={<>Basic knowledge of <Tag slug="pandas" />, <Tag slug="numpy" /> libraries</>}
+                  ru={<>Знание библиотек <Tag slug="pandas" />, <Tag slug="numpy" /> на базовом уровне</>}
+                />
               </BulletPoint>
+            </TechSkill>
+            <TechSkill name="JS/TS" tagSlug="JS">
               <BulletPoint>
-                {new LanguageFragment({
-                  en: (
-                    <>
-                      Worked with SQL and NoSQL databases (<Tag slug="Firestore" />,{' '}
-                      <Tag slug="Redis" />, <Tag slug="MongoDB" />, <Tag slug="SQLite" />,{' '}
-                      <Tag slug="MySQL" />, <Tag slug="PostgreSQL" />)
+                <LanguageFragment
+                  en={(
+                    <>Used <Tag slug="React" /> and <Tag slug="Webpack" /> both in{' '}
+                      <Tag name="JavaScript" slug="JS" /> and <Tag slug="TypeScript" />
                     </>
-                  ),
-                  ru: (
+                  )}
+                  ru={(
                     <>
-                      Работал с SQL и NoSQL базами данных (<Tag slug="Firestore" />,{' '}
-                      <Tag slug="Redis" />, <Tag slug="MongoDB" />, <Tag slug="SQLite" />,{' '}
-                      <Tag slug="MySQL" />, <Tag slug="PostgreSQL" />)
+                      Использовал <Tag slug="React" /> и <Tag slug="Webpack" /> как на{' '}
+                      <Tag name="JavaScript" slug="JS" />, так и на <Tag slug="TypeScript" />
                     </>
-                  ),
-                }).get(language)}
+                  )}
+                />
               </BulletPoint>
+            </TechSkill>
+            <TechSkill name="C#">
               <BulletPoint>
-                {new LanguageFragment({
-                  en: (
-                    <>
-                      Basic knowledge of <Tag slug="Bash" /> scripting
-                    </>
-                  ),
-                  ru: (
-                    <>
-                      Знание скриптов <Tag slug="Bash" /> на базовом уровне
-                    </>
-                  ),
-                }).get(language)}
+                <LanguageFragment
+                  en={<>Experienced in <Tag slug="WPF" /> and <Tag slug="WinForms" /></>}
+                  ru={<>Опыт работы с <Tag slug="WPF" /> и <Tag slug="WinForms" /></>}
+                />
               </BulletPoint>
-            </Section>
-          </CVColumn>
-          <CVColumn index={3}>
-            <Section title={new LanguageFragment({ en: 'Education', ru: 'Образование' })}>
-              <EducationEntry
-                speciality={
-                  new LanguageFragment({
-                    en: 'Computer science, Bachelor',
-                    ru: 'Компьютерные науки, Бакалавр',
-                  })
-                }
-                organization={
-                  new LanguageFragment({
-                    en: 'Innopolis University',
-                    ru: 'Университет Иннополис',
-                  })
-                }
-                period={LanguageFragment.same('2023')}
+            </TechSkill>
+            <SkillCategoryHeading>
+              <LanguageFragment en="Other" ru="Прочее" />
+            </SkillCategoryHeading>
+            <BulletPoint>
+              <LanguageFragment
+                en={<>Experienced in <Tag slug="Git" /></>}
+                ru={<>Опыт работы с <Tag slug="Git" /></>}
               />
-            </Section>
-            <Section title={new LanguageFragment({ en: 'Languages', ru: 'Языки' })}>
-              <Language
-                name={
-                  new LanguageFragment({
-                    en: 'English',
-                    ru: 'Английский',
-                  })
-                }
-                level={
-                  new LanguageFragment({
-                    en: 'Upper-Intermediate',
-                    ru: 'Выше среднего',
-                  })
-                }
+              <BulletPoint>
+
+                <LanguageFragment
+                  en={(
+                    <>
+                      Using <Tag slug="GitHub" /> mostly, worked with{' '}
+                      <Tag slug="GitHub Actions" />
+                    </>
+                      )}
+                  ru={(
+                    <>
+                      Использую в основном <Tag slug="GitHub" />, работал с{' '}
+                      <Tag slug="GitHub Actions" />
+                    </>
+                      )}
+                />
+              </BulletPoint>
+            </BulletPoint>
+            <BulletPoint>
+              <LanguageFragment
+                en={<>Experienced in <Tag slug="Docker" /> and <Tag slug="Docker Compose" /></>}
+                ru={<>Опыт работы с <Tag slug="Docker" /> и <Tag slug="Docker Compose" /></>}
               />
-              <Language
-                name={
-                  new LanguageFragment({
-                    en: 'Russian',
-                    ru: 'Русский',
-                  })
-                }
-                level={
-                  new LanguageFragment({
-                    en: 'Native',
-                    ru: 'Родной',
-                  })
-                }
+            </BulletPoint>
+            <BulletPoint>
+              <LanguageFragment
+                en={(
+                  <>
+                    Worked with SQL and NoSQL databases (<Tag slug="Firestore" />,{' '}
+                    <Tag slug="Redis" />, <Tag slug="MongoDB" />, <Tag slug="SQLite" />,{' '}
+                    <Tag slug="MySQL" />, <Tag slug="PostgreSQL" />)
+                  </>
+                    )}
+                ru={(
+                  <>
+                    Работал с SQL и NoSQL базами данных (<Tag slug="Firestore" />,{' '}
+                    <Tag slug="Redis" />, <Tag slug="MongoDB" />, <Tag slug="SQLite" />,{' '}
+                    <Tag slug="MySQL" />, <Tag slug="PostgreSQL" />)
+                  </>
+                    )}
               />
-            </Section>
-            <Section title={new LanguageFragment({ en: 'Soft skills', ru: 'Качества' })}>
-              <SoftSkillsList
-                skills={[
-                  new LanguageFragment({ en: 'Desire to learn', ru: 'Стремление учиться' }),
-                  new LanguageFragment({ en: 'Responsibility', ru: 'Ответственность' }),
-                  new LanguageFragment({ en: 'Writing skills', ru: 'Навыки письма' }),
-                  new LanguageFragment({ en: 'Adaptability', ru: 'Приспособляемость' }),
-                  new LanguageFragment({ en: 'Friendliness', ru: 'Дружелюбие' }),
-                  new LanguageFragment({ en: 'Cooperation', ru: 'Сотрудничество' }),
-                  new LanguageFragment({ en: 'Confidence', ru: 'Уверенность' }),
-                  new LanguageFragment({ en: 'Dedication', ru: 'Преданность' }),
-                  new LanguageFragment({ en: 'Honesty', ru: 'Честность' }),
-                ]}
+            </BulletPoint>
+            <BulletPoint>
+              <LanguageFragment
+                en={<>Basic knowledge of <Tag slug="Bash" /> scripting</>}
+                ru={<>Знание скриптов <Tag slug="Bash" /> на базовом уровне</>}
               />
-            </Section>
-            <Section title={new LanguageFragment({ en: 'Tags', ru: 'Теги' })}>
-              <TagsSection />
-            </Section>
-          </CVColumn>
-        </TagsContext.Provider>
-      </LanguageContext.Provider>
+            </BulletPoint>
+          </Section>
+        </CVColumn>
+        <CVColumn index={3}>
+          <Section title={<LanguageFragment en="Education" ru="Образование" />}>
+            <EducationEntry
+              speciality={<LanguageFragment en="Computer science, Bachelor" ru="Компьютерные науки, Бакалавр" />}
+              organization={<LanguageFragment en="Innopolis University" ru="Университет Иннополис" />}
+              period="2019 — 2023"
+            />
+          </Section>
+          <Section title={<LanguageFragment en="Languages" ru="Языки" />}>
+            <Language
+              name={<LanguageFragment en="English" ru="Английский" />}
+              level={<LanguageFragment en="Advanced" ru="Продвинутый" />}
+            />
+            <Language
+              name={<LanguageFragment en="Russian" ru="Русский" />}
+              level={<LanguageFragment en="Native" ru="Родной" />}
+            />
+          </Section>
+          <Section title={<LanguageFragment en="Soft skills" ru="Качества" />}>
+            <SoftSkillsList
+              skills={[
+                <LanguageFragment en="Desire to learn" ru="Стремление учиться" />,
+                <LanguageFragment en="Responsibility" ru="Ответственность" />,
+                <LanguageFragment en="Writing skills" ru="Навыки письма" />,
+                <LanguageFragment en="Adaptability" ru="Приспособляемость" />,
+                <LanguageFragment en="Friendliness" ru="Дружелюбие" />,
+                <LanguageFragment en="Cooperation" ru="Сотрудничество" />,
+                <LanguageFragment en="Confidence" ru="Уверенность" />,
+                <LanguageFragment en="Dedication" ru="Преданность" />,
+                <LanguageFragment en="Honesty" ru="Честность" />,
+              ]}
+            />
+          </Section>
+          <Section title={<LanguageFragment en="Tags" ru="Теги" />}>
+            <TagsSection />
+          </Section>
+        </CVColumn>
+      </TagsContext.Provider>
     </StyledCV>
   );
 };
