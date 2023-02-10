@@ -12,8 +12,14 @@ const StyledHeading = styled(SectionHeading)`
   white-space: nowrap;
 `;
 
-const Section = ({ title, children }: { title: LanguageFragment; children: React.ReactNode }) => (
-  <FixedMargin margin="0.5rem 0">
+const Section = (
+  { title, children, className }: {
+    title: LanguageFragment;
+    children: React.ReactNode;
+    className?: string;
+  },
+) => (
+  <FixedMargin margin="0.5rem 0" className={className}>
     <StyledHeading>{title.get(useContext(LanguageContext))}</StyledHeading>
     {children}
   </FixedMargin>

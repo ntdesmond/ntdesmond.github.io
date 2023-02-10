@@ -14,6 +14,10 @@ class LanguageFragment {
     this.strings = strings;
   }
 
+  static same(str: string) {
+    return new LanguageFragment({ en: str });
+  }
+
   get(language: Language) {
     return this.strings[language] || this.strings.en;
   }

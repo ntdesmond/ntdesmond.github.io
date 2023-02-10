@@ -32,20 +32,13 @@ const StyledCV = styled.div`
   display: grid;
   grid-template:
     'info info info'
+    'summary summary sections3'
     'sections1 sections2 sections3' /
     1fr 1fr fit-content(20em);
   gap: 1em 3em;
   margin: 2em;
 
-  @media screen and (max-width: 920px) {
-    grid-template-areas:
-      'info info'
-      'sections1 sections1'
-      'sections2 sections2'
-      'sections3 sections3';
-  }
-
-  @media screen and (max-width: 710px) {
+  @media screen and (max-width: 1024px) {
     display: flex;
     flex-direction: column;
   }
@@ -63,6 +56,10 @@ const InfoSection = styled(FlexRow)`
   @media screen and (max-width: 710px) {
     flex-direction: column;
   }
+`;
+
+const SummarySection = styled(Section)`
+  grid-area: summary;
 `;
 
 const CVColumn = styled(FlexColumn)<{ index: number }>`
@@ -159,7 +156,34 @@ const CV = () => {
               </QRCodeWrapper>
             </OnlyPrint>
           </InfoSection>
+          <SummarySection title={new LanguageFragment({ en: 'Summary', ru: 'О себе' })}>
+            {new LanguageFragment(
+              { en:
+  <>
+    Highly motivated computer science student at Innopolis University with a strong
+    passion for developing user-friendly applications.
+    Experienced in creating complete systems, utilizing both <Tag slug="FastAPI" /> for the backend
+    and <Tag slug="React" /> for the frontend to deliver seamless user experiences.
+    Possesses the ability to not only develop a system, but also set up a <Tag slug="CI/CD" /> system
+    for automatic deployment, ensuring smooth and efficient operations.
+    Seeking opportunities to challenge and expand skillset while delivering
+    impactful solutions to real-world problems.
+  </>,
+              ru:
+  <>
+    Высокомотивированный студент факультета компьютерных наук Университета Иннополис,
+    увлеченный разработкой user-friendly приложений.
+    Есть опыт создания сложных систем, используя <Tag slug="FastAPI" /> для бэкенда
+    и <Tag slug="React" /> для фронтенда.
+    Способен не только разработать приложение, но и настроить <Tag slug="CI/CD" /> для
+    автоматического развертывания приложения, обеспечивая бесперебойную работу сервисов.
+    Ищу возможности расширить свои навыки и предложить эффективные решения для реальных
+    задач.
+  </>,
+              },
+            ).get(language)}
 
+          </SummarySection>
           <CVColumn index={1}>
             <Section title={new LanguageFragment({ en: 'Work Experience', ru: 'Опыт работы' })}>
               <WorkExperienceEntry
@@ -172,12 +196,7 @@ const CV = () => {
                     ru: 'Специалист Дизайн-центра электроники',
                   })
                 }
-                period={
-                  new LanguageFragment({
-                    en: 'April 2021 — October 2021',
-                    ru: 'Апрель 2021 — Октябрь 2021',
-                  })
-                }
+                period={LanguageFragment.same('2021')}
               >
                 <Responsibility tags={['Linux', 'Bash', 'Python', 'Git']}>
                   {new LanguageFragment({
@@ -438,12 +457,7 @@ const CV = () => {
                     ru: 'Университет Иннополис',
                   })
                 }
-                period={
-                  new LanguageFragment({
-                    en: '2019 — Present',
-                    ru: '2019 — н.в.',
-                  })
-                }
+                period={LanguageFragment.same('2023')}
               />
             </Section>
             <Section title={new LanguageFragment({ en: 'Languages', ru: 'Языки' })}>
