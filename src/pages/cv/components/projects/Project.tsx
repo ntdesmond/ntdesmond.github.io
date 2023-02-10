@@ -8,7 +8,7 @@ const StyledEntry = styled(FlexRow)`
   margin-bottom: 1em;
 
   @media print {
-    margin-bottom: 0.5em;
+    margin-bottom: 0.4em;
   }
 `;
 
