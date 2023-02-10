@@ -7,6 +7,14 @@ const StyledTag = styled(Link)`
   color: #0066cc;
   font-weight: 500;
   text-decoration: underline dotted;
+  
+  @media print {
+    :visited {
+      color: #001155;
+    }
+    color: #001155;
+    font-weight: bold;
+  }
 `;
 
 const StyledSelectedTag = styled(StyledTag)`
