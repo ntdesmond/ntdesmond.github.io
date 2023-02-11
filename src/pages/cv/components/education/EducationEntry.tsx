@@ -1,25 +1,21 @@
-import { useContext } from 'react';
+import { ReactNode } from 'react';
 import styled from 'styled-components';
-import LanguageContext from '../../contexts/LanguageContext';
-import LanguageFragment from '../../types/LanguageFragment';
+import { InTextHeading } from '../../../../components/typography/Headings';
 
-const Organization = styled.p`
-  font-style: italic;
+const StyledSpecialty = styled.p`
+  font-weight: 500;
 `;
 
 const EducationEntry = (props: {
-  speciality: LanguageFragment;
-  organization: LanguageFragment;
-  period: LanguageFragment;
-}) => {
-  const language = useContext(LanguageContext);
-  return (
-    <div>
-      <p>{props.speciality.get(language)}</p>
-      <Organization>{props.organization.get(language)}</Organization>
-      <p>{props.period.get(language)}</p>
-    </div>
-  );
-};
+  specialty: ReactNode;
+  organization: ReactNode;
+  period: ReactNode;
+}) => (
+  <div>
+    <InTextHeading>{props.organization}</InTextHeading>
+    <StyledSpecialty>{props.specialty}</StyledSpecialty>
+    <p>{props.period}</p>
+  </div>
+);
 
 export default EducationEntry;

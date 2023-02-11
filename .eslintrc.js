@@ -31,6 +31,7 @@ module.exports = {
     'react/jsx-filename-extension': [1, { extensions: ['.tsx'] }],
     'react/destructuring-assignment': 0,
     'react/react-in-jsx-scope': 0,
+    'react/jsx-no-useless-fragment': [2, { allowExpressions: true }],
     'react/function-component-definition': [
       2,
       {

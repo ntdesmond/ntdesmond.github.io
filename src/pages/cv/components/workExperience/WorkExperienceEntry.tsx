@@ -1,52 +1,45 @@
-import React, { useContext } from 'react';
+import { ReactNode } from 'react';
 import styled from 'styled-components';
 import { FlexRow } from '../../../../components/layout/alignment/Flex';
-import { InTextHeading, InTextSubheading } from '../../../../components/typography/Headings';
-import LanguageContext from '../../contexts/LanguageContext';
-import LanguageFragment from '../../types/LanguageFragment';
+import { InTextHeading, InTextSubHeading } from '../../../../components/typography/Headings';
+import LanguageFragment from '../LanguageFragment';
 import TagList from '../tags/TagList';
 
 const StyledEntry = styled.div`
   margin-bottom: 1em;
 
   @media print {
-    margin-bottom: 0.5em;
+    margin-bottom: 0.4em;
   }
 `;
 
-const StyledCompany = styled.p`
-  font-style: italic;
+const StyledPosition = styled.p`
+  font-weight: 500;
 `;
 
 const WorkExperienceEntry = (props: {
-  company: LanguageFragment;
-  position: LanguageFragment;
-  period: LanguageFragment;
+  company: ReactNode;
+  position: ReactNode;
+  period: ReactNode;
   tags?: string[];
-  children?: React.ReactNode;
-}) => {
-  const language = useContext(LanguageContext);
-  const responsibilities = new LanguageFragment({
-    en: 'Responsibilities:',
-    ru: 'Обязанности:',
-  });
-
-  return (
-    <StyledEntry>
-      <FlexRow gap="1em" justify="space-between">
-        <div>
-          <InTextHeading>{props.position.get(language)}</InTextHeading>
-          <StyledCompany>{props.company.get(language)}</StyledCompany>
-          <p>{props.period.get(language)}</p>
-        </div>
-        {props.tags && <TagList width="8em" tags={props.tags} />}
-      </FlexRow>
+  children?: ReactNode;
+}) => (
+  <StyledEntry>
+    <FlexRow gap="1em" justify="space-between" align="center">
       <div>
-        <InTextSubheading>{responsibilities.get(language)}</InTextSubheading>
-        {props.children}
+        <InTextHeading>{props.company}</InTextHeading>
+        <StyledPosition>{props.position}</StyledPosition>
+        <p>{props.period}</p>
       </div>
-    </StyledEntry>
-  );
-};
+      {props.tags && <TagList width="8em" tags={props.tags} />}
+    </FlexRow>
+    <div>
+      <InTextSubHeading>
+        <LanguageFragment en="Responsibilities:" ru="Обязанности:" />
+      </InTextSubHeading>
+      {props.children}
+    </div>
+  </StyledEntry>
+);
 
 export default WorkExperienceEntry;

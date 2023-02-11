@@ -6,7 +6,16 @@ import TagsContext from '../../contexts/TagsContext';
 const StyledTag = styled(Link)`
   color: #0066cc;
   font-weight: 500;
-  text-decoration: underline dotted;
+  text-decoration: underline dotted 1px;
+  
+  @media print {
+    :visited {
+      color: black; 
+    }
+    font-weight: normal;
+    text-decoration: none;
+    color: black;
+  }
 `;
 
 const StyledSelectedTag = styled(StyledTag)`
