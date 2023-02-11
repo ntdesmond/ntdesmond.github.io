@@ -12,6 +12,7 @@ const StyledTag = styled(Link)`
     :visited {
       color: black; 
     }
+    font-weight: normal;
     text-decoration: none;
     color: black;
   }
