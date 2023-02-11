@@ -1,7 +1,7 @@
 import { ReactNode } from 'react';
 import styled from 'styled-components';
 import { FlexRow } from '../../../../components/layout/alignment/Flex';
-import { InTextHeading, InTextSubheading } from '../../../../components/typography/Headings';
+import { InTextHeading, InTextSubHeading } from '../../../../components/typography/Headings';
 import LanguageFragment from '../LanguageFragment';
 import TagList from '../tags/TagList';
 
@@ -13,8 +13,8 @@ const StyledEntry = styled.div`
   }
 `;
 
-const StyledCompany = styled.p`
-  font-style: italic;
+const StyledPosition = styled.p`
+  font-weight: 500;
 `;
 
 const WorkExperienceEntry = (props: {
@@ -25,18 +25,18 @@ const WorkExperienceEntry = (props: {
   children?: ReactNode;
 }) => (
   <StyledEntry>
-    <FlexRow gap="1em" justify="space-between">
+    <FlexRow gap="1em" justify="space-between" align="center">
       <div>
-        <InTextHeading>{props.position}</InTextHeading>
-        <StyledCompany>{props.company}</StyledCompany>
+        <InTextHeading>{props.company}</InTextHeading>
+        <StyledPosition>{props.position}</StyledPosition>
         <p>{props.period}</p>
       </div>
       {props.tags && <TagList width="8em" tags={props.tags} />}
     </FlexRow>
     <div>
-      <InTextSubheading>
+      <InTextSubHeading>
         <LanguageFragment en="Responsibilities:" ru="Обязанности:" />
-      </InTextSubheading>
+      </InTextSubHeading>
       {props.children}
     </div>
   </StyledEntry>

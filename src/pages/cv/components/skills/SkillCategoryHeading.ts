@@ -1,7 +1,7 @@
 import styled from 'styled-components';
-import { InTextHeading } from '../../../../components/typography/Headings';
+import { InTextSubHeading } from '../../../../components/typography/Headings';
 
-const SkillCategoryHeading = styled(InTextHeading)`
+const SkillCategoryHeading = styled(InTextSubHeading)`
   white-space: nowrap;
 `;
 

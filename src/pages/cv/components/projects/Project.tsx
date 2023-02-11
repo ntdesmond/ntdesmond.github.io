@@ -23,7 +23,7 @@ const Project = (props: {
   href?: string;
   tags?: string[];
 }) => (
-  <StyledEntry gap="1em" justify="space-between">
+  <StyledEntry gap="1em" justify="space-between" align="center">
     <div>
       <StyledProjectName>
         {props.href ? <ExternalURL href={props.href}>{props.title}</ExternalURL> : props.title}

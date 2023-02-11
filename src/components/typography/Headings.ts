@@ -18,7 +18,13 @@ export const InTextHeading = styled.h3`
   font-style: normal;
 `;
 
-export const InTextSubheading = styled.h3`
+export const InTextSubHeading = styled.h4`
+  font-size: 1.2em;
+  font-weight: bold;
+  font-style: normal;
+`;
+
+export const InTextSubSubheading = styled.h5`
   font-size: 1em;
   font-weight: bold;
   font-style: normal;

@@ -6,14 +6,14 @@ import TagsContext from '../../contexts/TagsContext';
 const StyledTag = styled(Link)`
   color: #0066cc;
   font-weight: 500;
-  text-decoration: underline dotted;
+  text-decoration: underline dotted 1px;
   
   @media print {
     :visited {
-      color: #001155;
+      color: black; 
     }
-    color: #001155;
-    font-weight: bold;
+    text-decoration: none;
+    color: black;
   }
 `;
 
