@@ -10,8 +10,10 @@ export type LanguageFragmentProps = {
 
 const LanguageFragment = (props: LanguageFragmentProps) => {
   const { search } = useLocation();
-  const language = props.language || (new URLSearchParams(search).get('language') as Language) || defaultLanguage;
+  const language =
+    props.language || (new URLSearchParams(search).get('language') as Language) || defaultLanguage;
 
+  // eslint-disable-next-line react/jsx-no-useless-fragment
   return <>{props[language] ?? props[defaultLanguage]}</>;
 };
 

@@ -1,4 +1,4 @@
-import React, { MouseEventHandler, useEffect, useState } from 'react';
+import React, { Key, MouseEventHandler, useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { onlyEnter, onlyKey } from '../../utils/keyboardEvents';
 import useRefFactory from '../../utils/refFactory';
@@ -66,7 +66,7 @@ const Dropdown = (props: {
     if (focused !== null) {
       itemRefs[focused].current?.focus();
     }
-  }, [focused]);
+  }, [focused, itemRefs]);
 
   const close = () => {
     setIsOpened(false);
@@ -96,7 +96,7 @@ const Dropdown = (props: {
 
   const selectItem = (i: number) => {
     close();
-    setSelected((props.children[i] as React.ReactElement).key!);
+    setSelected((props.children[i] as React.ReactElement).key as Key);
   };
 
   // Open/close on field (aka header) click
@@ -116,7 +116,7 @@ const Dropdown = (props: {
   // Notify parent on state change
   useEffect(() => {
     props.onChange(selected);
-  }, [selected]);
+  }, [props, selected]);
 
   const styledChildren = props.children.map((item, i) => {
     const itemRef = newItemRef();

@@ -34,7 +34,7 @@ const files = {
   ru: RuCVFile,
 };
 
-const CV = () => {
+const CVPage = () => {
   const [language, setLanguage] = useState<Language>('en');
   return (
     <StyledLayout>
@@ -65,4 +65,4 @@ const CV = () => {
   );
 };
 
-export default CV;
+export default CVPage;

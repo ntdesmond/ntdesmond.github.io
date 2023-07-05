@@ -6,14 +6,9 @@ const StyledSkill = styled.div`
   width: 100%;
 `;
 
-const TechSkill = (props: {
-  name: string;
-  tagSlug?: string;
-  children: React.ReactNode;
-}) => (
+const TechSkill = (props: { name: string; tagSlug?: string; children: React.ReactNode }) => (
   <StyledSkill>
-    <Tag slug={props.tagSlug || props.name} name={props.name} />:{' '}
-    {props.children}
+    <Tag slug={props.tagSlug || props.name} name={props.name} />: {props.children}
   </StyledSkill>
 );
 

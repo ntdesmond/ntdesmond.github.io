@@ -5,6 +5,8 @@
   "main": "./src/index.ts",
   "scripts": {
     "start": "webpack serve --config webpack/webpack.dev.js",
+    "lint": "eslint . --report-unused-disable-directives --max-warnings 0 && prettier --check .",
+    "format": "eslint --fix . && prettier -w .",
     "build:cv": "webpack --config webpack/webpack.prod.cv.js --stats-error-details",
     "build:main": "webpack --config webpack/webpack.prod.main.js --stats-error-details"
   },
@@ -37,10 +39,13 @@
     "eslint": "^8.2.0",
     "eslint-config-airbnb": "^19.0.4",
     "eslint-config-airbnb-typescript": "^17.0.0",
+    "eslint-config-prettier": "^8.8.0",
     "eslint-plugin-import": "^2.25.3",
     "eslint-plugin-jsx-a11y": "^6.5.1",
     "eslint-plugin-react": "^7.28.0",
     "eslint-plugin-react-hooks": "^4.3.0",
+    "eslint-plugin-react-refresh": "^0.4.1",
+    "prettier": "^2.8.8",
     "style-loader": "^3.3.1",
     "ts-loader": "^9.3.1",
     "typescript": "^4.7.4",

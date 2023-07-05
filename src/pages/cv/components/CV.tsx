@@ -20,6 +20,7 @@ import Tag from './tags/Tag';
 import Responsibility from './workExperience/Responsibility';
 import WorkExperienceEntry from './workExperience/WorkExperienceEntry';
 import SkillCategoryHeading from './skills/SkillCategoryHeading';
+// eslint-disable-next-line import/no-unresolved
 import QR from './images/QR.svg?inline';
 import LanguageFragment from './LanguageFragment';
 
@@ -97,7 +98,7 @@ const QRCode = styled.div`
   }
 `;
 
-const CV = () => {
+const CVComponent = () => {
   const [tags, setTags] = useState<Set<string>>(new Set(['Frontend', 'Backend']));
   const pushTag = (tag: string) => setTags((oldTags) => new Set(oldTags.add(tag)));
   const tagsContextValue = React.useMemo(() => ({ tags, pushTag }), [tags]);
@@ -107,21 +108,30 @@ const CV = () => {
       <TagsContext.Provider value={tagsContextValue}>
         <InfoSection gap="2em" align="center">
           <NoMargin>
-            <Name><LanguageFragment en="Vladislav Safonov" ru="Владислав Сафонов" /></Name>
-            <Position><LanguageFragment en="Software Developer" ru="Разработчик ПО (Программист)" /></Position>
+            <Name>
+              <LanguageFragment en="Vladislav Safonov" ru="Владислав Сафонов" />
+            </Name>
+            <Position>
+              <LanguageFragment en="Software Developer" ru="Разработчик ПО (Программист)" />
+            </Position>
           </NoMargin>
           <NoWrap>
             <FixedMargin margin="0.5em">
               <GithubLink path="ntdesmond" />
               <EmailLink address="ntdesmond@gmail.com" />
               <TelegramLink path="ntdesmond" />
-              <Location location={<LanguageFragment en="Innopolis, Russia" ru="Иннополис, Россия" />} />
+              <Location
+                location={<LanguageFragment en="Innopolis, Russia" ru="Иннополис, Россия" />}
+              />
             </FixedMargin>
           </NoWrap>
           <OnlyPrint>
             <QRCodeWrapper>
               <div>
-                <LanguageFragment en="Interactive CV is available here:" ru="Интерактивное резюме доступно здесь:" />
+                <LanguageFragment
+                  en="Interactive CV is available here:"
+                  ru="Интерактивное резюме доступно здесь:"
+                />
               </div>
               <a href="https://ntdesmond.github.io/#/cv">ntdesmond.github.io/#/cv</a>
               <QRCode />
@@ -130,88 +140,107 @@ const CV = () => {
         </InfoSection>
         <CVColumn index={1}>
           <Section title={<LanguageFragment en="Summary" ru="О себе" />}>
-
             <LanguageFragment
-              en={(
+              en={
                 <>
                   Highly motivated computer science student at Innopolis University with a strong
-                  passion for developing user-friendly applications.
-                  Experienced in creating full-stack applications and systems,
-                  utilizing <Tag slug="FastAPI" /> for the backend and <Tag slug="React" /> for the
-                  frontend. Able to set up a <Tag slug="CI/CD" /> system for automatic deployment.
-                  Aiming to deliver smooth and efficient user experience.
-                  With a systematic view on projects, I ensure proper system design and quality.
+                  passion for developing user-friendly applications. Experienced in creating
+                  full-stack applications and systems, utilizing <Tag slug="FastAPI" /> for the
+                  backend and <Tag slug="React" /> for the frontend. Able to set up a{' '}
+                  <Tag slug="CI/CD" /> system for automatic deployment. Aiming to deliver smooth and
+                  efficient user experience. With a systematic view on projects, I ensure proper
+                  system design and quality.
                 </>
-              )}
-              ru={(
+              }
+              ru={
                 <>
                   Высокомотивированный студент факультета компьютерных наук Университета Иннополис,
-                  увлеченный разработкой user-friendly приложений.
-                  Есть опыт создания full-stack приложений и систем с использованием{' '}
-                  <Tag slug="FastAPI" /> для бэкенда и <Tag slug="React" /> для фронтенда.
-                  Способен настроить <Tag slug="CI/CD" /> для автоматического развертывания приложения.
-                  Благодаря систематическому взгляду на проект, могу обеспечить качество работы и
-                  правильную архитектуру приложения.
+                  увлеченный разработкой user-friendly приложений. Есть опыт создания full-stack
+                  приложений и систем с использованием <Tag slug="FastAPI" /> для бэкенда и{' '}
+                  <Tag slug="React" /> для фронтенда. Способен настроить <Tag slug="CI/CD" /> для
+                  автоматического развертывания приложения. Благодаря систематическому взгляду на
+                  проект, могу обеспечить качество работы и правильную архитектуру приложения.
                 </>
-              )}
+              }
             />
           </Section>
           <Section title={<LanguageFragment en="Work Experience" ru="Опыт работы" />}>
             <WorkExperienceEntry
-              company={
-                <LanguageFragment en="Innopolis University" ru="Университет Иннополис" />
-              }
+              company={<LanguageFragment en="Innopolis University" ru="Университет Иннополис" />}
               position={
-                <LanguageFragment en="Developer at Electronics Design Center" ru="Разработчик  Дизайн-центра электроники" />
+                <LanguageFragment
+                  en="Developer at Electronics Design Center"
+                  ru="Разработчик  Дизайн-центра электроники"
+                />
               }
               period={2021}
             >
               <Responsibility tags={['Linux', 'Bash', 'Python', 'Git']}>
                 <LanguageFragment
-                  en={(
+                  en={
                     <>
                       Worked on automation scripts and improvement of open-source instruments{' '}
                       <a href="http://opencircuitdesign.com/qflow/">qflow</a> and{' '}
                       <a href="https://github.com/The-OpenROAD-Project/OpenLane/">OpenLane</a>
                     </>
-                  )}
-                  ru={(
+                  }
+                  ru={
                     <>
                       Работал над скриптами автоматизации и улучшением открытых инструментов{' '}
                       <a href="http://opencircuitdesign.com/qflow/">qflow</a> и{' '}
                       <a href="https://github.com/The-OpenROAD-Project/OpenLane/">OpenLane</a>
                     </>
-                  )}
+                  }
                 />
               </Responsibility>
             </WorkExperienceEntry>
           </Section>
           <Section title={<LanguageFragment en="Projects" ru="Проекты" />}>
             <Project
-              title="Paste and Search"
-              href="https://github.com/ntdesmond/paste-and-search"
-              description={<LanguageFragment en="Developed a website for easier reverse image searching" ru="Разработал веб-сайт для упрощения поиска по изображению" />}
-              period={2022}
-              tags={['TypeScript', 'React', 'GitHub Pages']}
+              title="innonymous"
+              href="https://github.com/innonymous/app"
+              description={
+                <LanguageFragment
+                  en="Developed a frontend for an instant web messenger"
+                  ru="Разработал фронтенд для веб-мессенджера"
+                />
+              }
+              period={2023}
+              tags={['TypeScript', 'React', 'Chakra UI', 'Vite']}
             />
             <Project
-              title="ntdesmond.github.io"
-              href="https://github.com/ntdesmond/ntdesmond.github.io"
-              description={<LanguageFragment en="Developed a personal website with interactive CV" ru="Разработал личный веб-сайт с интерактивным резюме" />}
+              title="Paste and Search"
+              href="https://github.com/ntdesmond/paste-and-search"
+              description={
+                <LanguageFragment
+                  en="Developed a website for easier reverse image searching"
+                  ru="Разработал веб-сайт для упрощения поиска по изображению"
+                />
+              }
               period={2022}
               tags={['TypeScript', 'React', 'GitHub Pages']}
             />
             <Project
               title="PPFS"
               href="https://github.com/ntdesmond/PPFS"
-              description={<LanguageFragment en="Developed a file server with simple authentication" ru="Разработал файл-сервер с простой авторизацией" />}
+              description={
+                <LanguageFragment
+                  en="Developed a file server with simple authentication"
+                  ru="Разработал файл-сервер с простой авторизацией"
+                />
+              }
               period={2022}
               tags={['Python', 'FastAPI', 'MongoDB']}
             />
             <Project
               title="@goodscalcbot"
               href="https://t.me/goodscalcbot"
-              description={<LanguageFragment en="Developed a Telegram bot to share expenses" ru="Разработал Telegram-бота для разделения расходов" />}
+              description={
+                <LanguageFragment
+                  en="Developed a Telegram bot to share expenses"
+                  ru="Разработал Telegram-бота для разделения расходов"
+                />
+              }
               period={2020}
               tags={['Telegram API', 'Python']}
             />
@@ -228,28 +257,46 @@ const CV = () => {
             <TechSkill name="JS/TS" tagSlug="JS">
               <Tag slug="TypeScript" />, <Tag slug="React" />, Webpack
             </TechSkill>
-            <TechSkill name="C#">
-              WPF, WinForms
-            </TechSkill>
+            <TechSkill name="C#">WPF, WinForms</TechSkill>
             <SkillCategoryHeading>
               <LanguageFragment en="Other" ru="Прочее" />
             </SkillCategoryHeading>
-            <p><Tag slug="Git" /> (<LanguageFragment en="GitHub is preferred" ru="предпочитаю GitHub" />)</p>
-            <p><Tag slug="CI/CD" />: GitHub Actions, GitLab CI</p>
+            <p>
+              <Tag slug="Git" /> (
+              <LanguageFragment en="GitHub is preferred" ru="предпочитаю GitHub" />)
+            </p>
+            <p>
+              <Tag slug="CI/CD" />: GitHub Actions, GitLab CI
+            </p>
             <p>Docker, Docker Compose</p>
             <p>
               <LanguageFragment en="SQL and NoSQL databases" ru="SQL и NoSQL базы данных" />:{' '}
               Firestore, Redis, MongoDB, SQLite, MySQL, PostgreSQL
             </p>
             <LanguageFragment
-              en={<>Basic knowledge of <Tag slug="Bash" /> scripting</>}
-              ru={<>Знание скриптов <Tag slug="Bash" /> на базовом уровне</>}
+              en={
+                <>
+                  Basic knowledge of <Tag slug="Bash" /> scripting
+                </>
+              }
+              ru={
+                <>
+                  Знание скриптов <Tag slug="Bash" /> на базовом уровне
+                </>
+              }
             />
           </Section>
           <Section title={<LanguageFragment en="Education" ru="Образование" />}>
             <EducationEntry
-              specialty={<LanguageFragment en="Computer science, Bachelor" ru="Компьютерные науки, Бакалавр" />}
-              organization={<LanguageFragment en="Innopolis University" ru="Университет Иннополис" />}
+              specialty={
+                <LanguageFragment
+                  en="Computer science, Bachelor"
+                  ru="Компьютерные науки, Бакалавр"
+                />
+              }
+              organization={
+                <LanguageFragment en="Innopolis University" ru="Университет Иннополис" />
+              }
               period="2019 — 2023"
             />
           </Section>
@@ -280,4 +327,4 @@ const CV = () => {
   );
 };
 
-export default CV;
+export default CVComponent;

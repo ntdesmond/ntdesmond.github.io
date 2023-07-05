@@ -7,10 +7,10 @@ const StyledTag = styled(Link)`
   color: #0066cc;
   font-weight: 500;
   text-decoration: underline dotted 1px;
-  
+
   @media print {
     :visited {
-      color: black; 
+      color: black;
     }
     font-weight: normal;
     text-decoration: none;
@@ -28,7 +28,7 @@ const StyledSelectedTag = styled(StyledTag)`
   }
 `;
 
-const Tag = (props: { slug: string; name?: string; register?: boolean; className?: string; }) => {
+const Tag = (props: { slug: string; name?: string; register?: boolean; className?: string }) => {
   const { hash, search } = useLocation();
   const { pushTag } = useContext(TagsContext);
 
@@ -40,10 +40,14 @@ const Tag = (props: { slug: string; name?: string; register?: boolean; className
     if (props.register !== false) {
       pushTag(props.slug);
     }
-  }, []);
+  }, [props.register, props.slug, pushTag]);
 
   if (isPrintMode) {
-    return <StyledTag className={props.className} as="span">{props.name || props.slug}</StyledTag>;
+    return (
+      <StyledTag className={props.className} as="span">
+        {props.name || props.slug}
+      </StyledTag>
+    );
   }
 
   return decodeURI(hash.slice(1)) === props.slug ? (
@@ -51,10 +55,7 @@ const Tag = (props: { slug: string; name?: string; register?: boolean; className
       <span>{props.name || props.slug}</span>
     </StyledSelectedTag>
   ) : (
-    <StyledTag
-      className={props.className}
-      to={search + target}
-    >
+    <StyledTag className={props.className} to={search + target}>
       {props.name || props.slug}
     </StyledTag>
   );

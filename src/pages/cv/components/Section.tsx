@@ -10,13 +10,15 @@ const StyledHeading = styled(SectionHeading)`
   white-space: nowrap;
 `;
 
-const Section = (
-  { title, children, className }: {
-    title: ReactNode;
-    children: ReactNode;
-    className?: string;
-  },
-) => (
+const Section = ({
+  title,
+  children,
+  className,
+}: {
+  title: ReactNode;
+  children: ReactNode;
+  className?: string;
+}) => (
   <FixedMargin margin="0.5rem 0" className={className}>
     <StyledHeading>{title}</StyledHeading>
     {children}
