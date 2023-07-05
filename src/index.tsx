@@ -1,7 +1,11 @@
 import { createRoot } from 'react-dom/client';
 import { HashRouter } from 'react-router-dom';
 import App from './App';
-import './index.css';
+import '@fontsource/open-sans/400-italic.css';
+import '@fontsource/open-sans/400.css';
+import '@fontsource/open-sans/700.css';
+import '@fontsource/fira-code/400.css';
+import './common.css';
 
 const root = createRoot(document.getElementById('root') as HTMLElement);
 root.render(
