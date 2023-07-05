@@ -15,7 +15,7 @@ const Footer = () => (
   <StyledFooter>
     <p>
       Source code of this website is available at{' '}
-      <ExternalURL href={`https://github.com/${process.env.GITHUB_REPO}`}>GitHub</ExternalURL>
+      <ExternalURL href={`https://github.com/${import.meta.env.GITHUB_REPO}`}>GitHub</ExternalURL>
     </p>
   </StyledFooter>
 );

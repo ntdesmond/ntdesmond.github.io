@@ -5,7 +5,7 @@ export const onlyKey = (key: string | string[]) => (target: () => void) => {
     if (typeof key === 'string' && e.key !== key) {
       return;
     }
-    if (key instanceof Array<string> && !key.includes(e.key)) {
+    if (Array.isArray(key) && !key.includes(e.key)) {
       return;
     }
 

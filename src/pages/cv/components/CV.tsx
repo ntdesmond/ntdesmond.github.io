@@ -1,4 +1,4 @@
-import React, { useCallback, useMemo, useState } from 'react';
+import { useCallback, useMemo, useState } from 'react';
 import styled from 'styled-components';
 import FixedMargin, { NoMargin } from '../../../components/layout/alignment/FixedMargin';
 import { FlexColumn, FlexRow } from '../../../components/layout/alignment/Flex';
@@ -19,8 +19,7 @@ import Tag from './tags/Tag';
 import Responsibility from './workExperience/Responsibility';
 import WorkExperienceEntry from './workExperience/WorkExperienceEntry';
 import SkillCategoryHeading from './skills/SkillCategoryHeading';
-// eslint-disable-next-line import/no-unresolved
-import QR from './images/QR.svg?inline';
+import QR from './images/QR.svg';
 import LanguageFragment from './LanguageFragment';
 import BulletPoint from './skills/BulletPoint';
 

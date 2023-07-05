@@ -24,7 +24,7 @@ module.exports = {
   ignorePatterns: ['*.cjs', 'dist*/', 'build*/', 'release/', 'webpack/'],
   overrides: [
     {
-      files: ['vite.*.ts', 'electron/**/*'],
+      files: ['vite.*.ts'],
       rules: {
         'import/no-extraneous-dependencies': 0,
       },
