@@ -1,3 +1,4 @@
+import { useMemo } from 'react';
 import MailIcon from '../../../../components/icons/mail.svg';
 import PrependIcon from './PrependIcon';
 
@@ -17,7 +18,7 @@ class EmailAddress {
 }
 
 const EmailLink = (props: { address: string }) => {
-  const validEmail = new EmailAddress(props.address).toString();
+  const validEmail = useMemo(() => new EmailAddress(props.address).toString(), [props.address]);
 
   return (
     <PrependIcon icon={MailIcon}>

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useCallback, useMemo, useState } from 'react';
 import styled from 'styled-components';
 import FixedMargin, { NoMargin } from '../../../components/layout/alignment/FixedMargin';
 import { FlexColumn, FlexRow } from '../../../components/layout/alignment/Flex';
@@ -14,7 +14,6 @@ import EducationEntry from './education/EducationEntry';
 import Language from './languages/Language';
 import Project from './projects/Project';
 import Section from './Section';
-import SoftSkillsList from './skills/SoftSkillsList';
 import TechSkill from './skills/TechSkill';
 import Tag from './tags/Tag';
 import Responsibility from './workExperience/Responsibility';
@@ -23,6 +22,7 @@ import SkillCategoryHeading from './skills/SkillCategoryHeading';
 // eslint-disable-next-line import/no-unresolved
 import QR from './images/QR.svg?inline';
 import LanguageFragment from './LanguageFragment';
+import BulletPoint from './skills/BulletPoint';
 
 const StyledCV = styled.div`
   display: grid;
@@ -100,8 +100,10 @@ const QRCode = styled.div`
 
 const CVComponent = () => {
   const [tags, setTags] = useState<Set<string>>(new Set(['Frontend', 'Backend']));
-  const pushTag = (tag: string) => setTags((oldTags) => new Set(oldTags.add(tag)));
-  const tagsContextValue = React.useMemo(() => ({ tags, pushTag }), [tags]);
+
+  const pushTag = useCallback((tag: string) => setTags((oldTags) => new Set(oldTags.add(tag))), []);
+
+  const tagsContextValue = useMemo(() => ({ tags, pushTag }), [pushTag, tags]);
 
   return (
     <StyledCV>
@@ -311,15 +313,21 @@ const CVComponent = () => {
             />
           </Section>
           <Section title={<LanguageFragment en="Soft skills" ru="Качества" />}>
-            <SoftSkillsList
-              skills={[
-                <LanguageFragment en="Desire to learn" ru="Стремление учиться" />,
-                <LanguageFragment en="Responsibility" ru="Ответственность" />,
-                <LanguageFragment en="Adaptability" ru="Приспособляемость" />,
-                <LanguageFragment en="Cooperation" ru="Сотрудничество" />,
-                <LanguageFragment en="Confidence" ru="Уверенность" />,
-              ]}
-            />
+            <BulletPoint>
+              <LanguageFragment en="Desire to learn" ru="Стремление учиться" />
+            </BulletPoint>
+            <BulletPoint>
+              <LanguageFragment en="Responsibility" ru="Ответственность" />
+            </BulletPoint>
+            <BulletPoint>
+              <LanguageFragment en="Adaptability" ru="Приспособляемость" />
+            </BulletPoint>
+            <BulletPoint>
+              <LanguageFragment en="Cooperation" ru="Сотрудничество" />
+            </BulletPoint>
+            <BulletPoint>
+              <LanguageFragment en="Confidence" ru="Уверенность" />
+            </BulletPoint>
           </Section>
         </CVColumn>
       </TagsContext.Provider>

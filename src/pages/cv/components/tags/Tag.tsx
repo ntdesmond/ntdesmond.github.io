@@ -1,4 +1,4 @@
-import { useContext, useEffect } from 'react';
+import { useContext, useEffect, useMemo } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import styled from 'styled-components';
 import TagsContext from '../../contexts/TagsContext';
@@ -32,9 +32,9 @@ const Tag = (props: { slug: string; name?: string; register?: boolean; className
   const { hash, search } = useLocation();
   const { pushTag } = useContext(TagsContext);
 
-  const isPrintMode = new URLSearchParams(search).get('print') !== null;
+  const isPrintMode = useMemo(() => new URLSearchParams(search).get('print') !== null, [search]);
 
-  const target = `#${encodeURI(props.slug)}`;
+  const target = useMemo(() => `#${encodeURI(props.slug)}`, [props.slug]);
 
   useEffect(() => {
     if (props.register !== false) {
