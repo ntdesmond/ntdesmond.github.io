@@ -32,11 +32,14 @@ jobs:
         with:
           node-version: 16
 
+      - name: Install dependencies
+        run: npm install
+
       - name: Build CV
-        run: |
-          npm install
-          npm run build:cv
-          npm run preview -- --host &
+        run: npm run build:cv
+
+      - name: Serve CV
+        run: npm run preview -- --host & npx wait-on tcp:4173
 
       - name: Generate PDF file (en)
         uses: ntdesmond/html2pdf-action@v1

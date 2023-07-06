@@ -46,6 +46,7 @@
     "typescript": "^5.1.6",
     "vite": "^4.3.9",
     "vite-plugin-eslint2": "^3.3.0",
+    "wait-on": "^7.0.1",
     "webpack-dev-server": "^4.9.3"
   },
   "dependencies": {
