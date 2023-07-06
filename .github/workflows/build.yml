@@ -36,18 +36,19 @@ jobs:
         run: |
           npm install
           npm run build:cv
+          npm run preview &
 
       - name: Generate PDF file (en)
         uses: ntdesmond/html2pdf-action@v1
         with:
-          path: ./build/cv.html?language=en&print
+          path: http://localhost:4173/cv.html?language=en&print
           output: ./src/pages/cv/files/cv_en.pdf
           options: ${{ env.PDF_OPTIONS }}
 
       - name: Generate PDF file (ru)
         uses: ntdesmond/html2pdf-action@v1
         with:
-          path: ./build/cv.html?language=ru&print
+          path: http://localhost:4173/cv.html?language=ru&print
           output: ./src/pages/cv/files/cv_ru.pdf
           options: ${{ env.PDF_OPTIONS }}
 
@@ -60,4 +61,4 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
         with:
-          path: 'build/'
+          path: "build/"
