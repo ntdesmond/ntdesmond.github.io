@@ -19,9 +19,9 @@ import Tag from './tags/Tag';
 import Responsibility from './workExperience/Responsibility';
 import WorkExperienceEntry from './workExperience/WorkExperienceEntry';
 import SkillCategoryHeading from './skills/SkillCategoryHeading';
-import QR from './images/QR.svg';
-import LanguageFragment from './LanguageFragment';
 import BulletPoint from './skills/BulletPoint';
+import LanguageFragment from './LanguageFragment';
+import QrCode from './QrCode';
 
 const StyledCV = styled.div`
   display: grid;
@@ -86,9 +86,7 @@ const QRCodeWrapper = styled(FlexColumn)`
   }
 `;
 
-const QRCode = styled.div`
-  background: url(${QR}) center no-repeat;
-  background-size: contain;
+const StyledQrCode = styled(QrCode)`
   flex-grow: 1;
 
   @media print {
@@ -135,7 +133,7 @@ const CVComponent = () => {
                 />
               </div>
               <a href="https://ntdesmond.github.io/#/cv">ntdesmond.github.io/#/cv</a>
-              <QRCode />
+              <StyledQrCode />
             </QRCodeWrapper>
           </OnlyPrint>
         </InfoSection>
