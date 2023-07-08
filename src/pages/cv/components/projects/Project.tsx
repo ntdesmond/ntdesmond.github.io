@@ -31,7 +31,7 @@ const Project = (props: {
       <p>{props.description}</p>
       <p>{props.period}</p>
     </div>
-    {props.tags && <TagList width="8em" tags={props.tags} />}
+    {props.tags && <TagList width="10em" tags={props.tags} print />}
   </StyledEntry>
 );
 

@@ -196,6 +196,18 @@ const CVComponent = () => {
           </Section>
           <Section title={<LanguageFragment en="Projects" ru="Проекты" />}>
             <Project
+              title="uni-feedback-kiosk"
+              href="https://github.com/uni-feedback-kiosk"
+              description={
+                <LanguageFragment
+                  en="Developed a full-stack kiosk system and setup scripts"
+                  ru="Разработал full-stack систему для инфокиоска и скрипты для установки"
+                />
+              }
+              period={2023}
+              tags={['Vite', 'React', 'Chakra UI', 'Electron', 'FastAPI', 'MongoDB']}
+            />
+            <Project
               title="innonymous"
               href="https://github.com/innonymous/app"
               description={
@@ -205,7 +217,7 @@ const CVComponent = () => {
                 />
               }
               period={2023}
-              tags={['TypeScript', 'React', 'Chakra UI', 'Vite']}
+              tags={['Vite', 'React', 'Chakra UI']}
             />
             <Project
               title="Paste and Search"
@@ -217,7 +229,7 @@ const CVComponent = () => {
                 />
               }
               period={2022}
-              tags={['TypeScript', 'React', 'GitHub Pages']}
+              tags={['Vite', 'React', 'GitHub Pages']}
             />
             <Project
               title="PPFS"
@@ -229,19 +241,7 @@ const CVComponent = () => {
                 />
               }
               period={2022}
-              tags={['Python', 'FastAPI', 'MongoDB']}
-            />
-            <Project
-              title="@goodscalcbot"
-              href="https://t.me/goodscalcbot"
-              description={
-                <LanguageFragment
-                  en="Developed a Telegram bot to share expenses"
-                  ru="Разработал Telegram-бота для разделения расходов"
-                />
-              }
-              period={2020}
-              tags={['Telegram API', 'Python']}
+              tags={['FastAPI', 'MongoDB']}
             />
           </Section>
         </CVColumn>
@@ -254,7 +254,8 @@ const CVComponent = () => {
               <Tag slug="FastAPI" />, pandas, numpy
             </TechSkill>
             <TechSkill name="JS/TS" tagSlug="JS">
-              <Tag slug="TypeScript" />, <Tag slug="React" />, Webpack
+              <Tag slug="TypeScript" />, <Tag slug="React" />, <Tag slug="Vite" />,{' '}
+              <Tag slug="Electron" />
             </TechSkill>
             <TechSkill name="C#">WPF, WinForms</TechSkill>
             <SkillCategoryHeading>
@@ -275,12 +276,12 @@ const CVComponent = () => {
             <LanguageFragment
               en={
                 <>
-                  Basic knowledge of <Tag slug="Bash" /> scripting
+                  Basic <Tag slug="Bash" /> and <Tag slug="PowerShell" /> scripting
                 </>
               }
               ru={
                 <>
-                  Знание скриптов <Tag slug="Bash" /> на базовом уровне
+                  Простые скрипты на <Tag slug="Bash" /> и <Tag slug="PowerShell" />
                 </>
               }
             />

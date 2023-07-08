@@ -4,6 +4,7 @@ import Tag from './Tag';
 
 const TagsWrapper = styled(FlexRow)<{ width?: string; print?: boolean }>`
   flex-wrap: wrap;
+  font-size: 0.8em;
   gap: 0.5em 0.8em;
   align-content: center;
   justify-content: center;
