@@ -64,7 +64,7 @@ const CVPage = () => {
             <Button onClick={() => window.frames[0].print()}>
               <LanguageFragment en="Print" ru="Печать" language={language} />
             </Button>
-            <Link href={files[language]} target="_blank" rel="noreferrer">
+            <Link href={files[language]} isExternal>
               <LanguageFragment en="Open PDF version" ru="Открыть PDF-версию" language={language} />
             </Link>
           </HStack>

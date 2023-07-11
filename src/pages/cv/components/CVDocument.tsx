@@ -30,78 +30,6 @@ import LanguageFragment from './LanguageFragment';
 import QrCode from './QrCode';
 import { OnlyPrint } from '../../../components/utils/Print';
 
-// const StyledCV = styled.div`
-//   display: grid;
-//   grid-template:
-//     'info info'
-//     'sections1 sections2' /
-//     1fr fit-content(20em);
-//   gap: 1em 3em;
-//   margin: 2em;
-
-//   @media screen and (max-width: 1024px) {
-//     display: flex;
-//     flex-direction: column;
-//   }
-
-//   @media print {
-//     margin: 0;
-//     grid-template-columns: 1fr 0.6fr;
-//   }
-// `;
-
-// const InfoSection = styled(FlexRow)`
-//   grid-area: info;
-
-//   @media screen and (max-width: 710px) {
-//     flex-direction: column;
-//   }
-// `;
-
-// const CVColumn = styled(FlexColumn)<{ index: number }>`
-//   grid-area: ${(p) => `sections${p.index}`};
-// `;
-
-// const Name = styled(PageHeading)`
-//   font-family: 'Oswald', 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-
-//   @media screen and (max-width: 710px) {
-//     text-align: center;
-//   }
-// `;
-
-// const Position = styled(SectionHeading)`
-//   font-weight: normal;
-//   color: #035;
-
-//   @media screen and (max-width: 710px) {
-//     text-align: center;
-//   }
-// `;
-
-// const QRCodeWrapper = styled(FlexColumn)`
-//   margin-left: auto;
-
-//   align-self: stretch;
-//   align-items: stretch;
-//   text-align: center;
-
-//   gap: 0.2em;
-
-//   > * {
-//     flex-basis: 0;
-//   }
-// `;
-
-// const StyledQrCode = styled(QrCode)`
-//   flex-grow: 1;
-
-//   @media print {
-//     print-color-adjust: exact;
-//     -webkit-print-color-adjust: exact;
-//   }
-// `;
-
 const CVDocument = () => {
   const [tags, setTags] = useState<Set<string>>(new Set(['Frontend', 'Backend']));
   const [isPrintMode] = useMediaQuery('print');
@@ -121,10 +49,10 @@ const CVDocument = () => {
         <GridItem colSpan={2}>
           <HStack align="center" spacing="2em">
             <Box margin="0">
-              <Heading size="2xl" fontFamily="Oswald">
+              <Heading as="h1" size="xl" fontFamily="cv_name">
                 <LanguageFragment en="Vladislav Safonov" ru="Владислав Сафонов" />
               </Heading>
-              <Heading color="#035" fontWeight="normal">
+              <Heading size="lg" color="#035" fontWeight="normal">
                 <LanguageFragment en="Software Developer" ru="Разработчик ПО (Программист)" />
               </Heading>
             </Box>
@@ -157,13 +85,15 @@ const CVDocument = () => {
             <OnlyPrint>
               <Spacer />
               <VStack spacing="0" alignSelf="stretch">
-                <div>
+                <Box>
                   <LanguageFragment
                     en="Interactive CV is available here:"
                     ru="Интерактивное резюме доступно здесь:"
                   />
-                </div>
-                <a href="https://ntdesmond.github.io/#/cv">ntdesmond.github.io/#/cv</a>
+                </Box>
+                <Link href="https://ntdesmond.github.io/#/cv" isExternal>
+                  ntdesmond.github.io/#/cv
+                </Link>
                 <QrCode width="100%" flexGrow="1" />
               </VStack>
             </OnlyPrint>

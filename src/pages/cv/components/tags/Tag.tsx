@@ -56,6 +56,7 @@ const Tag = (props: { slug: string; name?: string; register?: boolean }) => {
     <Link
       bgColor={isSelected ? 'yellow' : 'unset'}
       fontWeight={isSelected ? 'bold' : 'normal'}
+      color={isSelected ? 'blue.800' : undefined}
       textDecoration="underline dotted 1px"
       as={RouteLink}
       to={target}

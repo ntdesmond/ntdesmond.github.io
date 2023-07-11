@@ -12,8 +12,10 @@ const Home = () => (
         Who?
       </Heading>
       <Text>
-        <code>ntdesmond</code>, usually pronounced as <i>NT Desmond (an tee desmond)</i> is my
-        nickname.
+        <Text as="span" fontFamily="mono">
+          ntdesmond
+        </Text>
+        , usually pronounced as <i>NT Desmond (an tee desmond)</i> is my nickname.
       </Text>
       <Text>
         My real name is <b>Vladislav Safonov</b>, and, as of 2023, I&#39;m a student of{' '}
