@@ -1,31 +1,25 @@
 import React from 'react';
-import styled from 'styled-components';
-import { XCentered } from './alignment/CenterAlign';
-import Footer from './footer/Footer';
-import Header from './header/Header';
+import { Box, Center, HStack, Link, Text, VStack } from '@chakra-ui/react';
+import NavLink from './NavLink';
 
-const StyledLayout = styled.main`
-  transition: padding 0.2s;
-  height: 100%;
-  display: grid;
-  grid-template-rows:
-    2em
-    auto
-    min-content;
-  max-width: 1100px;
-  padding: 0.5em;
-  width: 100%;
-  box-sizing: border-box;
-`;
-
-const Layout = (props: { children: React.ReactNode; className?: string }) => (
-  <XCentered height="100%">
-    <StyledLayout className={props.className}>
-      <Header />
-      <section>{props.children}</section>
-      <Footer />
-    </StyledLayout>
-  </XCentered>
+const Layout = (props: { children: React.ReactNode }) => (
+  <Center height="100%" width="100%" padding="0.5em" boxSizing="border-box">
+    <VStack height="100%" align="stretch" width="container.lg">
+      <HStack>
+        <NavLink to="/">home</NavLink>
+        <NavLink to="/cv">cv</NavLink>
+      </HStack>
+      <Box flexGrow="1" as="section">
+        {props.children}
+      </Box>
+      <Text textAlign="center">
+        Source code of this website is available at{' '}
+        <Link href={`https://github.com/${import.meta.env.GITHUB_REPO}`} isExternal>
+          GitHub
+        </Link>
+      </Text>
+    </VStack>
+  </Center>
 );
 
 export default Layout;

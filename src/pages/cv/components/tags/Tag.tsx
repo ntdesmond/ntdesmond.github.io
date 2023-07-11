@@ -1,40 +1,42 @@
 import { useContext, useEffect, useMemo } from 'react';
-import { Link, useLocation } from 'react-router-dom';
-import styled from 'styled-components';
+import { Link as RouteLink, useLocation } from 'react-router-dom';
+import { Link, Text, useMediaQuery } from '@chakra-ui/react';
 import TagsContext from '../../contexts/TagsContext';
 
-const StyledTag = styled(Link)`
-  color: #0066cc;
-  font-weight: 500;
-  text-decoration: underline dotted 1px;
+// const StyledTag = styled(Link)`
+//   color: #0066cc;
+//   font-weight: 500;
+//   text-decoration: underline dotted 1px;
 
-  @media print {
-    :visited {
-      color: black;
-    }
-    font-weight: normal;
-    text-decoration: none;
-    color: black;
-  }
-`;
+//   @media print {
+//     :visited {
+//       color: black;
+//     }
+//     font-weight: normal;
+//     text-decoration: none;
+//     color: black;
+//   }
+// `;
 
-const StyledSelectedTag = styled(StyledTag)`
-  @media not print {
-    > span {
-      background-color: #ff5;
-      color: #001155;
-      font-weight: bold;
-    }
-  }
-`;
+// const StyledSelectedTag = styled(StyledTag)`
+//   @media not print {
+//     > span {
+//       background-color: #ff5;
+//       color: #001155;
+//       font-weight: bold;
+//     }
+//   }
+// `;
 
-const Tag = (props: { slug: string; name?: string; register?: boolean; className?: string }) => {
-  const { hash, search } = useLocation();
+const Tag = (props: { slug: string; name?: string; register?: boolean }) => {
+  const { hash } = useLocation();
   const { pushTag } = useContext(TagsContext);
 
-  const isPrintMode = useMemo(() => new URLSearchParams(search).get('print') !== null, [search]);
+  const [isPrintMode] = useMediaQuery('print');
 
   const target = useMemo(() => `#${encodeURI(props.slug)}`, [props.slug]);
+
+  const isSelected = useMemo(() => decodeURI(hash.slice(1)) === props.slug, [hash, props.slug]);
 
   useEffect(() => {
     if (props.register !== false) {
@@ -44,20 +46,22 @@ const Tag = (props: { slug: string; name?: string; register?: boolean; className
 
   if (isPrintMode) {
     return (
-      <StyledTag className={props.className} as="span">
+      <Text as="span" textDecoration="underline dotted 1px">
         {props.name || props.slug}
-      </StyledTag>
+      </Text>
     );
   }
 
-  return decodeURI(hash.slice(1)) === props.slug ? (
-    <StyledSelectedTag className={props.className} to={target}>
-      <span>{props.name || props.slug}</span>
-    </StyledSelectedTag>
-  ) : (
-    <StyledTag className={props.className} to={search + target}>
+  return (
+    <Link
+      bgColor={isSelected ? 'yellow' : 'unset'}
+      fontWeight={isSelected ? 'bold' : 'normal'}
+      textDecoration="underline dotted 1px"
+      as={RouteLink}
+      to={target}
+    >
       {props.name || props.slug}
-    </StyledTag>
+    </Link>
   );
 };
 

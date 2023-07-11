@@ -1,20 +1,18 @@
 import { ReactNode } from 'react';
-import styled from 'styled-components';
-import { FlexRow } from '../../../../components/layout/alignment/Flex';
-import ExternalURL from '../../../../components/UI/ExternalURL';
+import { Box, HStack, Heading, Link, Text } from '@chakra-ui/react';
 import TagList from '../tags/TagList';
 
-const StyledEntry = styled(FlexRow)`
-  margin-bottom: 1em;
+// const StyledEntry = styled(FlexRow)`
+//   margin-bottom: 1em;
 
-  @media print {
-    margin-bottom: 0.4em;
-  }
-`;
+//   @media print {
+//     margin-bottom: 0.4em;
+//   }
+// `;
 
-const StyledProjectName = styled.p`
-  font-weight: bold;
-`;
+// const StyledProjectName = styled.p`
+//   font-weight: bold;
+// `;
 
 const Project = (props: {
   title: string;
@@ -23,16 +21,26 @@ const Project = (props: {
   href?: string;
   tags?: string[];
 }) => (
-  <StyledEntry gap="1em" justify="space-between" align="center">
-    <div>
-      <StyledProjectName>
-        {props.href ? <ExternalURL href={props.href}>{props.title}</ExternalURL> : props.title}
-      </StyledProjectName>
-      <p>{props.description}</p>
-      <p>{props.period}</p>
-    </div>
-    {props.tags && <TagList width="10em" tags={props.tags} print />}
-  </StyledEntry>
+  <HStack justify="space-between" align="center">
+    <Box>
+      <Heading size="md">
+        {props.href ? (
+          <Link href={props.href} isExternal>
+            {props.title}
+          </Link>
+        ) : (
+          props.title
+        )}
+      </Heading>
+      <Text>{props.description}</Text>
+      <Text>{props.period}</Text>
+    </Box>
+    {props.tags && (
+      <Box width="10em">
+        <TagList tags={props.tags} print />
+      </Box>
+    )}
+  </HStack>
 );
 
 export default Project;

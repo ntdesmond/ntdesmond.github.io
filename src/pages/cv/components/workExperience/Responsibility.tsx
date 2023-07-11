@@ -1,12 +1,12 @@
 import React from 'react';
-import { FlexRow } from '../../../../components/layout/alignment/Flex';
+import { HStack } from '@chakra-ui/react';
 import TagList from '../tags/TagList';
 
 const Responsibility = (props: { children: React.ReactNode; tags: string[] }) => (
-  <FlexRow gap="0.5em" justify="space-between">
+  <HStack justify="space-between">
     <div>{props.children}</div>
-    <TagList width="10em" tags={props.tags} print />
-  </FlexRow>
+    <TagList tags={props.tags} print />
+  </HStack>
 );
 
 export default Responsibility;
