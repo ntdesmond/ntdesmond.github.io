@@ -49,7 +49,7 @@ const CVDocument = () => {
         <GridItem colSpan={2}>
           <HStack align="center" spacing="2em">
             <Box margin="0">
-              <Heading as="h1" size="xl" fontFamily="cv_name">
+              <Heading as="h1" size="xl" fontFamily="cv_name" whiteSpace="nowrap">
                 <LanguageFragment en="Vladislav Safonov" ru="Владислав Сафонов" />
               </Heading>
               <Heading size="lg" color="#035" fontWeight="normal">
@@ -84,7 +84,7 @@ const CVDocument = () => {
             </Box>
             <OnlyPrint>
               <Spacer />
-              <VStack spacing="0" alignSelf="stretch">
+              <VStack spacing="0" alignSelf="stretch" textAlign="center">
                 <Box>
                   <LanguageFragment
                     en="Interactive CV is available here:"
