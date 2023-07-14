@@ -1,4 +1,5 @@
-import { useCallback, useMemo, useState } from 'react';
+import { useCallback, useEffect, useMemo, useState } from 'react';
+import { useTranslation, Trans } from 'react-i18next';
 import {
   Box,
   Grid,
@@ -14,6 +15,7 @@ import {
   VStack,
   useMediaQuery,
 } from '@chakra-ui/react';
+import { useLocation } from 'react-router-dom';
 import { AiFillGithub } from 'react-icons/ai';
 import { MdMail, MdLocationPin } from 'react-icons/md';
 import TelegramIcon from './TelegramIcon';
@@ -26,13 +28,28 @@ import TechSkill from './skills/TechSkill';
 import Tag from './tags/Tag';
 import Responsibility from './workExperience/Responsibility';
 import WorkExperienceEntry from './workExperience/WorkExperienceEntry';
-import LanguageFragment from './LanguageFragment';
 import QrCode from './QrCode';
 import { OnlyPrint } from '../../../components/utils/Print';
 
 const CVDocument = () => {
   const [tags, setTags] = useState<Set<string>>(new Set(['Frontend', 'Backend']));
   const [isPrintMode] = useMediaQuery('print');
+
+  const { search } = useLocation();
+
+  const {
+    t,
+    i18n: { changeLanguage },
+  } = useTranslation();
+
+  useEffect(() => {
+    const language = new URLSearchParams(search).get('language');
+    if (!language) {
+      return;
+    }
+
+    changeLanguage(language);
+  }, [changeLanguage, search]);
 
   const pushTag = useCallback((tag: string) => setTags((oldTags) => new Set(oldTags.add(tag))), []);
 
@@ -50,10 +67,10 @@ const CVDocument = () => {
           <HStack align="center" spacing="2em">
             <Box margin="0">
               <Heading as="h1" size="xl" fontFamily="cv_name" whiteSpace="nowrap">
-                <LanguageFragment en="Vladislav Safonov" ru="Владислав Сафонов" />
+                {t('cv_name')}
               </Heading>
               <Heading size="lg" color="#035" fontWeight="normal">
-                <LanguageFragment en="Software Developer" ru="Разработчик ПО (Программист)" />
+                {t('position')}
               </Heading>
             </Box>
             <Box whiteSpace="nowrap">
@@ -78,19 +95,14 @@ const CVDocument = () => {
                 </HStack>
                 <HStack>
                   <Icon as={MdLocationPin} boxSize="1.5em" />
-                  <LanguageFragment en="Innopolis, Russia" ru="Иннополис, Россия" />
+                  <Text>{t('location')}</Text>
                 </HStack>
               </Box>
             </Box>
             <OnlyPrint>
               <Spacer />
               <VStack spacing="0" alignSelf="stretch" textAlign="center">
-                <Box>
-                  <LanguageFragment
-                    en="Interactive CV is available here:"
-                    ru="Интерактивное резюме доступно здесь:"
-                  />
-                </Box>
+                <Box>{t('full_cv')}</Box>
                 <Link href="https://ntdesmond.github.io/#/cv" isExternal>
                   ntdesmond.github.io/#/cv
                 </Link>
@@ -100,109 +112,62 @@ const CVDocument = () => {
           </HStack>
         </GridItem>
         <Box>
-          <Section title={<LanguageFragment en="Summary" ru="О себе" />}>
-            <LanguageFragment
-              en={
-                <>
-                  Highly motivated computer science student at Innopolis University with a strong
-                  passion for developing user-friendly applications. Experienced in creating
-                  full-stack applications and systems, utilizing <Tag slug="FastAPI" /> for the
-                  backend and <Tag slug="React" /> for the frontend. Able to set up a{' '}
-                  <Tag slug="CI/CD" /> system for automatic deployment. Aiming to deliver smooth and
-                  efficient user experience. With a systematic view on projects, I ensure proper
-                  system design and quality.
-                </>
-              }
-              ru={
-                <>
-                  Высокомотивированный студент факультета компьютерных наук Университета Иннополис,
-                  увлеченный разработкой user-friendly приложений. Есть опыт создания full-stack
-                  приложений и систем с использованием <Tag slug="FastAPI" /> для бэкенда и{' '}
-                  <Tag slug="React" /> для фронтенда. Способен настроить <Tag slug="CI/CD" /> для
-                  автоматического развертывания приложения. Благодаря систематическому взгляду на
-                  проект, могу обеспечить качество работы и правильную архитектуру приложения.
-                </>
-              }
+          <Section title={t('sections.summary.title')}>
+            <Trans
+              t={t}
+              i18nKey="sections.summary.content"
+              components={{
+                FastAPI: <Tag slug="FastAPI" />,
+                React: <Tag slug="React" />,
+                CI_CD: <Tag slug="CI/CD" />,
+              }}
             />
           </Section>
-          <Section title={<LanguageFragment en="Work Experience" ru="Опыт работы" />}>
+          <Section title={t('sections.work.title')}>
             <WorkExperienceEntry
-              company={<LanguageFragment en="Innopolis University" ru="Университет Иннополис" />}
-              position={
-                <LanguageFragment
-                  en="Developer at Electronics Design Center"
-                  ru="Разработчик  Дизайн-центра электроники"
-                />
-              }
-              period={2021}
+              company={t('sections.work.content.iu_electronics.company')}
+              position={t('sections.work.content.iu_electronics.position')}
+              period={t('sections.work.content.iu_electronics.period')}
             >
               <Responsibility tags={['Linux', 'Bash', 'Python', 'Git']}>
-                <LanguageFragment
-                  en={
-                    <>
-                      Worked on automation scripts and improvement of open-source instruments{' '}
-                      <a href="http://opencircuitdesign.com/qflow/">qflow</a> and{' '}
-                      <a href="https://github.com/The-OpenROAD-Project/OpenLane/">OpenLane</a>
-                    </>
-                  }
-                  ru={
-                    <>
-                      Работал над скриптами автоматизации и улучшением открытых инструментов{' '}
-                      <a href="http://opencircuitdesign.com/qflow/">qflow</a> и{' '}
-                      <a href="https://github.com/The-OpenROAD-Project/OpenLane/">OpenLane</a>
-                    </>
-                  }
+                <Trans
+                  t={t}
+                  i18nKey="sections.work.content.iu_electronics.responsibilities.automation"
+                  components={[
+                    <Link href="http://opencircuitdesign.com/qflow/" isExternal />,
+                    <Link href="https://github.com/The-OpenROAD-Project/OpenLane/" isExternal />,
+                  ]}
                 />
               </Responsibility>
             </WorkExperienceEntry>
           </Section>
-          <Section title={<LanguageFragment en="Projects" ru="Проекты" />}>
+          <Section title={t('sections.projects.title')}>
             <VStack align="stretch" spacing="1em">
               <Project
                 title="uni-feedback-kiosk"
                 href="https://github.com/uni-feedback-kiosk"
-                description={
-                  <LanguageFragment
-                    en="Developed a full-stack kiosk system and setup scripts"
-                    ru="Разработал full-stack систему для инфокиоска и скрипты для установки"
-                  />
-                }
+                description={t('sections.projects.content.kiosk')}
                 period={2023}
                 tags={['Vite', 'React', 'Chakra UI', 'Electron', 'FastAPI', 'MongoDB']}
               />
               <Project
                 title="innonymous"
                 href="https://github.com/innonymous/app"
-                description={
-                  <LanguageFragment
-                    en="Developed a frontend for an instant web messenger"
-                    ru="Разработал фронтенд для веб-мессенджера"
-                  />
-                }
+                description={t('sections.projects.content.innonymous')}
                 period={2023}
                 tags={['Vite', 'React', 'Chakra UI']}
               />
               <Project
                 title="Paste and Search"
                 href="https://github.com/ntdesmond/paste-and-search"
-                description={
-                  <LanguageFragment
-                    en="Developed a website for easier reverse image searching"
-                    ru="Разработал веб-сайт для упрощения поиска по изображению"
-                  />
-                }
+                description={t('sections.projects.content.paste_and_search')}
                 period={2022}
                 tags={['Vite', 'React', 'GitHub Pages']}
               />
               <Project
                 title="PPFS"
                 href="https://github.com/ntdesmond/PPFS"
-                description={
-                  <LanguageFragment
-                    en="Developed a file server with simple authentication"
-                    ru="Разработал файл-сервер с простой авторизацией"
-                  />
-                }
+                description={t('sections.projects.content.ppfs')}
                 period={2022}
                 tags={['FastAPI', 'MongoDB']}
               />
@@ -210,9 +175,9 @@ const CVDocument = () => {
           </Section>
         </Box>
         <Box lineHeight="2em">
-          <Section title={<LanguageFragment en="Technical skills" ru="Навыки" />}>
+          <Section title={t('sections.tech_skills.title')}>
             <Heading size="md" marginY="0.5em">
-              <LanguageFragment en="Programming languages" ru="Языки программирования" />
+              {t('sections.tech_skills.content.languages')}
             </Heading>
             <TechSkill name="Python">
               <Tag slug="FastAPI" />, pandas, numpy
@@ -223,74 +188,53 @@ const CVDocument = () => {
             </TechSkill>
             <TechSkill name="C#">WPF, WinForms</TechSkill>
             <Heading size="md" marginY="0.5em">
-              <LanguageFragment en="Other" ru="Прочее" />
+              {t('sections.tech_skills.content.other')}
             </Heading>
             <Text>
-              <Tag slug="Git" /> (
-              <LanguageFragment en="GitHub is preferred" ru="предпочитаю GitHub" />)
+              <Tag slug="Git" /> ({t('sections.tech_skills.content.prefer_github')})
             </Text>
             <Text>
               <Tag slug="CI/CD" />: GitHub Actions, GitLab CI
             </Text>
             <Text>Docker, Docker Compose</Text>
+            <Text>Redis, MongoDB, SQLite, MySQL, PostgreSQL</Text>
             <Text>
-              <LanguageFragment en="SQL and NoSQL databases" ru="SQL и NoSQL базы данных" />:{' '}
-              Firestore, Redis, MongoDB, SQLite, MySQL, PostgreSQL
+              <Trans
+                t={t}
+                i18nKey="sections.tech_skills.content.scripts"
+                components={{
+                  Bash: <Tag slug="Bash" />,
+                  PowerShell: <Tag slug="PowerShell" />,
+                }}
+              />
             </Text>
-            <LanguageFragment
-              en={
-                <>
-                  Basic <Tag slug="Bash" /> and <Tag slug="PowerShell" /> scripting
-                </>
-              }
-              ru={
-                <>
-                  Простые скрипты на <Tag slug="Bash" /> и <Tag slug="PowerShell" />
-                </>
-              }
-            />
           </Section>
-          <Section title={<LanguageFragment en="Education" ru="Образование" />}>
+          <Section title={t('sections.education.title')}>
             <EducationEntry
-              specialty={
-                <LanguageFragment
-                  en="Computer science, Bachelor"
-                  ru="Компьютерные науки, Бакалавр"
-                />
-              }
-              organization={
-                <LanguageFragment en="Innopolis University" ru="Университет Иннополис" />
-              }
+              specialty={t('sections.education.content.specialty')}
+              organization={t('sections.education.content.organization')}
               period="2019 — 2023"
             />
           </Section>
-          <Section title={<LanguageFragment en="Languages" ru="Языки" />}>
-            <Language
-              name={<LanguageFragment en="English" ru="Английский" />}
-              level={<LanguageFragment en="Advanced" ru="Продвинутый" />}
-            />
-            <Language
-              name={<LanguageFragment en="Russian" ru="Русский" />}
-              level={<LanguageFragment en="Native" ru="Родной" />}
-            />
+          <Section title={t('sections.languages.title')}>
+            {(
+              t('sections.languages.content', { returnObjects: true }) as {
+                name: string;
+                level: string;
+              }[]
+            ).map(({ name, level }) => (
+              <Language key={name} {...{ name, level }} />
+            ))}
           </Section>
-          <Section title={<LanguageFragment en="Soft skills" ru="Качества" />}>
-            <UnorderedList>
-              <ListItem>
-                <LanguageFragment en="Desire to learn" ru="Стремление учиться" />
-              </ListItem>
-              <ListItem>
-                <LanguageFragment en="Responsibility" ru="Ответственность" />
-              </ListItem>
-              <ListItem>
-                <LanguageFragment en="Adaptability" ru="Приспособляемость" />
-              </ListItem>
-              <ListItem>
-                <LanguageFragment en="Cooperation" ru="Сотрудничество" />
-              </ListItem>
-              <ListItem>
-                <LanguageFragment en="Confidence" ru="Уверенность" />
-              </ListItem>
+          <Section title={t('sections.soft_skills.title')}>
+            <UnorderedList marginLeft="1.5em">
+              {(t('sections.soft_skills.content', { returnObjects: true }) as string[]).map(
+                (item) => (
+                  <ListItem key={item} sx={{ '::marker': { fontSize: '1.5em' } }}>
+                    {item}
+                  </ListItem>
+                ),
+              )}
             </UnorderedList>
           </Section>
         </Box>

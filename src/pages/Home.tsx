@@ -6,7 +6,11 @@ const Home = () => (
   <Layout>
     <Box lineHeight="2em">
       <Text>
-        Hello, <code>ntdesmond</code> here.
+        Hello,{' '}
+        <Text as="span" fontFamily="mono">
+          ntdesmond
+        </Text>{' '}
+        here.
       </Text>
       <Heading size="lg" marginY="0.5em">
         Who?

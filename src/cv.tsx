@@ -3,6 +3,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { ChakraProvider, extendTheme } from '@chakra-ui/react';
 import CVDocument from './pages/cv/components/CVDocument';
 import baseTheme from './theme';
+import './i18n';
 import '@fontsource/oswald';
 import '@fontsource/open-sans/400.css';
 import '@fontsource/open-sans/700.css';

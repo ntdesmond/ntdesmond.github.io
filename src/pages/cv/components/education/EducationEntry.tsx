@@ -7,7 +7,7 @@ const EducationEntry = (props: {
   period: ReactNode;
 }) => (
   <Box>
-    <Heading size="lg">{props.organization}</Heading>
+    <Heading size="md">{props.organization}</Heading>
     <Text>{props.specialty}</Text>
     <Text>{props.period}</Text>
   </Box>

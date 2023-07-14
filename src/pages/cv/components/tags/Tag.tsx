@@ -3,31 +3,6 @@ import { Link as RouteLink, useLocation } from 'react-router-dom';
 import { Link, Text, useMediaQuery } from '@chakra-ui/react';
 import TagsContext from '../../contexts/TagsContext';
 
-// const StyledTag = styled(Link)`
-//   color: #0066cc;
-//   font-weight: 500;
-//   text-decoration: underline dotted 1px;
-
-//   @media print {
-//     :visited {
-//       color: black;
-//     }
-//     font-weight: normal;
-//     text-decoration: none;
-//     color: black;
-//   }
-// `;
-
-// const StyledSelectedTag = styled(StyledTag)`
-//   @media not print {
-//     > span {
-//       background-color: #ff5;
-//       color: #001155;
-//       font-weight: bold;
-//     }
-//   }
-// `;
-
 const Tag = (props: { slug: string; name?: string; register?: boolean }) => {
   const { hash } = useLocation();
   const { pushTag } = useContext(TagsContext);

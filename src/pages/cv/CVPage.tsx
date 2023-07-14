@@ -4,6 +4,7 @@ import {
   Button,
   Flex,
   HStack,
+  Icon,
   Link,
   Menu,
   MenuButton,
@@ -12,40 +13,28 @@ import {
   Text,
   VStack,
 } from '@chakra-ui/react';
+import { useTranslation } from 'react-i18next';
+import { MdArrowDropDown } from 'react-icons/md';
 import Layout from '../../components/layout/Layout';
-import LanguageFragment from './components/LanguageFragment';
 import EnCVFile from './files/cv_en.pdf';
 import RuCVFile from './files/cv_ru.pdf';
 import { Language } from './types/Language';
 
-// const ActionsPanel = styled(FlexRow)`
-//   gap: 2em;
-//   align-items: center;
-
-//   @media screen and (max-width: 640px) {
-//     flex-direction: column;
-//     gap: 1em;
-//   }
-// `;
-
-// const StyledInnerDocument = styled.iframe`
-//   width: 100%;
-//   height: 100%;
-//   border: none;
-// `;
-
-// const StyledLayout = styled(Layout)`
-//   /* Dirty fix for 4px scroll */
-//   overflow: hidden;
-// `;
-
-const files = {
+const files: Record<Language, string> = {
   en: EnCVFile,
   ru: RuCVFile,
 };
 
+const languages: Record<Language, string> = {
+  en: 'English',
+  ru: 'Русский',
+};
+
 const CVPage = () => {
   const [language, setLanguage] = useState<Language>('en');
+
+  const { t } = useTranslation(undefined, { lng: language });
+
   return (
     <Layout>
       <VStack height="100%" align="stretch">
@@ -53,19 +42,25 @@ const CVPage = () => {
           <HStack>
             <Text>Language / Язык:</Text>
             <Menu>
-              <MenuButton as={Button}>{language}</MenuButton>
+              <MenuButton
+                as={Button}
+                variant="outline"
+                fontWeight="normal"
+                rightIcon={<Icon as={MdArrowDropDown} boxSize="1.5em" marginRight="-0.5em" />}
+              >
+                {languages[language]}
+              </MenuButton>
               <MenuList>
-                <MenuItem onClick={() => setLanguage('en')}>English</MenuItem>
-                <MenuItem onClick={() => setLanguage('ru')}>Russian</MenuItem>
+                {Object.entries(languages).map(([code, name]) => (
+                  <MenuItem onClick={() => setLanguage(code as Language)}>{name}</MenuItem>
+                ))}
               </MenuList>
             </Menu>
           </HStack>
           <HStack gap="1em" align="center">
-            <Button onClick={() => window.frames[0].print()}>
-              <LanguageFragment en="Print" ru="Печать" language={language} />
-            </Button>
+            <Button onClick={() => window.frames[0].print()}>{t('print')}</Button>
             <Link href={files[language]} isExternal>
-              <LanguageFragment en="Open PDF version" ru="Открыть PDF-версию" language={language} />
+              {t('openPDF')}
             </Link>
           </HStack>
         </Flex>

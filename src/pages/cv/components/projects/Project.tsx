@@ -2,18 +2,6 @@ import { ReactNode } from 'react';
 import { Box, HStack, Heading, Link, Text } from '@chakra-ui/react';
 import TagList from '../tags/TagList';
 
-// const StyledEntry = styled(FlexRow)`
-//   margin-bottom: 1em;
-
-//   @media print {
-//     margin-bottom: 0.4em;
-//   }
-// `;
-
-// const StyledProjectName = styled.p`
-//   font-weight: bold;
-// `;
-
 const Project = (props: {
   title: string;
   description: ReactNode;
