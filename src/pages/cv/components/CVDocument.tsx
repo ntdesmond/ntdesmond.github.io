@@ -68,37 +68,34 @@ const CVDocument = () => {
           <HStack align="center" spacing="2em">
             <Box margin="0">
               <Heading as="h1" size="xl" fontFamily="cv_name" whiteSpace="nowrap">
-                {t('cv_name')}
+                {t('info.cv_name')}
               </Heading>
               <Heading size="lg" color="#035" fontWeight="normal">
-                {t('position')}
+                {t('info.position')}
               </Heading>
             </Box>
             <Box whiteSpace="nowrap">
-              <Box margin="0.5em">
-                <HStack>
-                  <Icon as={AiFillGithub} boxSize="1.5em" />
-                  <Link href="https://github.com/ntdesmond" isExternal>
-                    github.com/ntdesmond
-                  </Link>
-                </HStack>
-                <HStack>
-                  <Icon as={MdMail} boxSize="1.5em" />
-                  <Link href="mailto:ntdesmond@gmail.com" isExternal>
-                    ntdesmond@gmail.com
-                  </Link>
-                </HStack>
-                <HStack>
-                  <TelegramIcon boxSize="1.5em" />
-                  <Link href="https://t.me/ntdesmond" isExternal>
-                    t.me/ntdesmond
-                  </Link>
-                </HStack>
-                <HStack>
-                  <Icon as={MdLocationPin} boxSize="1.5em" />
-                  <Text>{t('location')}</Text>
-                </HStack>
-              </Box>
+              <Grid
+                margin="0.5em"
+                gridTemplateRows="repeat(4, auto)"
+                columnGap="0.5em"
+                gridAutoFlow="column"
+              >
+                <Icon as={AiFillGithub} boxSize="1.5em" />
+                <Icon as={MdMail} boxSize="1.5em" />
+                <TelegramIcon boxSize="1.5em" />
+                <Icon as={MdLocationPin} boxSize="1.5em" />
+                {['github', 'mail', 'telegram', 'location'].map((key) => (
+                  <Text key={key}>
+                    <Trans
+                      t={t}
+                      i18nKey={`info.${key}`}
+                      // eslint-disable-next-line jsx-a11y/anchor-is-valid
+                      components={{ a: <Link isExternal /> }}
+                    />
+                  </Text>
+                ))}
+              </Grid>
             </Box>
             <OnlyPrint>
               <Spacer />
@@ -140,8 +137,8 @@ const CVDocument = () => {
                   </Box>
                 </HStack>
                 <Box>
-                  {work.responsibilities.map(({ content, tags }) => (
-                    <HStack justify="space-between" key={content}>
+                  {Object.entries(work.responsibilities).map(([rid, { content, tags }]) => (
+                    <HStack justify="space-between" key={rid}>
                       <Box>
                         {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
                         <Trans components={{ a: <Link isExternal /> }}>{content}</Trans>

@@ -9,7 +9,7 @@ export interface Education {
 const education_ids = ['iu'] as const;
 export type EducationId = (typeof education_ids)[number];
 
-const education = merge<EducationId, Education>({
+const education = merge({
   en: {
     iu: {
       specialty: 'Computer science, Bachelor',

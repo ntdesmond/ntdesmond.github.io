@@ -1,23 +1,30 @@
 import { Language } from '../types/Language';
 
-export type MergeInput<TKey extends string, TValue> = {
-  en: Record<TKey, TValue>;
-} & Record<Language, Record<TKey, Partial<TValue>>>;
+type ValueOrRecord<T> = T | { [key: string]: ValueOrRecord<T> };
 
-/**
- * Merge `en` and `ru` keys of the object
- * @param obj object where `en` contains full `TValue` values and `ru` may omit some fields
- * @returns object with missing `ru` `TValue` fields filled from `en`
- */
-const merge = <TKey extends string, TValue>({
-  en,
-  ru,
-}: MergeInput<TKey, TValue>): Record<Language, Record<TKey, TValue>> => ({
-  en,
-  ru: (Object.entries(en) as [TKey, TValue][]).reduce(
-    (all, [id, value]) => ({ ...all, [id]: { ...value, ...ru[id] } }),
-    {} as typeof en,
-  ),
-});
+const isRecord = (item: unknown): item is Record<string, unknown> =>
+  !!item && typeof item === 'object' && !Array.isArray(item);
+
+type NestedObject = Record<string, ValueOrRecord<string | number | string[]>>;
+
+const merge = (strings: Record<Language, NestedObject>): Record<Language, NestedObject> => {
+  const merge_nested = (en: NestedObject, ru: NestedObject) =>
+    Object.entries(en).reduce(
+      (all, [key, value]): NestedObject => {
+        if (!(key in all)) {
+          return { ...all, [key]: value };
+        }
+        const nested_en = value;
+        const nested_ru = all[key];
+        if (isRecord(nested_en) && isRecord(nested_ru)) {
+          return { ...all, [key]: merge_nested(nested_en, nested_ru) };
+        }
+        return { ...all };
+      },
+      { ...ru },
+    );
+
+  return { en: strings.en, ru: merge_nested(strings.en, strings.ru) };
+};
 
 export default merge;

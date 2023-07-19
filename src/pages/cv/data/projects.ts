@@ -11,7 +11,7 @@ export interface Project {
 const project_ids = ['kiosk', 'innonymous', 'paste_and_search', 'ppfs'] as const;
 export type ProjectId = (typeof project_ids)[number];
 
-const projects = merge<ProjectId, Project>({
+const projects = merge({
   en: {
     kiosk: {
       name: 'uni-feedback-kiosk',

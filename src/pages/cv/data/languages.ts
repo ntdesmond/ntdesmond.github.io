@@ -1,4 +1,3 @@
-import { Language } from '../types/Language';
 import merge from './merge';
 
 export interface LanguageProficiency {
@@ -6,7 +5,7 @@ export interface LanguageProficiency {
   level: string;
 }
 
-const languages = merge<Language, LanguageProficiency>({
+const languages = merge({
   en: {
     en: {
       language: 'English',

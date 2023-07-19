@@ -5,6 +5,8 @@ import languages from './pages/cv/data/languages';
 import work from './pages/cv/data/work';
 import education from './pages/cv/data/education';
 import soft_skills from './pages/cv/data/soft_skills';
+import summary from './pages/cv/data/summary';
+import info from './pages/cv/data/info';
 
 i18n.use(initReactI18next).init({
   resources: {
@@ -12,21 +14,14 @@ i18n.use(initReactI18next).init({
       translation: {
         print: 'Print',
         openPDF: 'Open PDF version',
-
-        cv_name: 'Vladislav Safonov',
-        position: 'Software Developer',
-        location: 'Innopolis, Russia',
         full_cv: 'Interactive CV is available here:',
+
+        info: info.en,
 
         sections: {
           summary: {
             title: 'Summary',
-            content:
-              'Highly motivated software developer with a strong passion for developing user-friendly applications. ' +
-              'Experienced in creating full-stack applications and systems, utilizing <FastAPI/> ' +
-              'for the backend and <React/> for the frontend. Able to set up a <CI_CD/> ' +
-              'system for automatic deployment. Aiming to deliver smooth and efficient user experience. ' +
-              'With a systematic view on projects, I ensure proper system design and quality.',
+            content: summary.en,
           },
 
           work: {
@@ -72,22 +67,14 @@ i18n.use(initReactI18next).init({
       translation: {
         print: 'Печать',
         openPDF: 'Открыть PDF-версию',
-
-        cv_name: 'Владислав Сафонов',
-        position: 'Разработчик ПО (программист)',
-        location: 'Иннополис, Россия',
         full_cv: 'Интерактивное резюме доступно здесь:',
+
+        info: info.ru,
 
         sections: {
           summary: {
             title: 'О себе',
-            content:
-              'Высокомотивированный разработчик программного обеспечения, ' +
-              'увлеченный разработкой user-friendly приложений. Есть опыт создания full-stack ' +
-              'приложений и систем с использованием <FastAPI/> для бэкенда и <React/> для фронтенда. ' +
-              'Способен настроить <CI_CD/> для автоматического развертывания приложения. ' +
-              'Благодаря систематическому взгляду на проект, могу обеспечить качество работы ' +
-              'и правильную архитектуру приложения.',
+            content: summary.ru,
           },
 
           work: {
