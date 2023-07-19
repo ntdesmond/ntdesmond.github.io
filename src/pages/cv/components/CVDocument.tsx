@@ -25,13 +25,12 @@ import Section from './Section';
 import TechSkill from './skills/TechSkill';
 import TagList from './tags/TagList';
 import Tag from './tags/Tag';
-import Responsibility from './workExperience/Responsibility';
-import WorkExperienceEntry from './workExperience/WorkExperienceEntry';
 import QrCode from './QrCode';
 import { OnlyPrint } from '../../../components/utils/Print';
 import { ProjectId, type Project } from '../data/projects';
 import { Language } from '../types/Language';
 import { LanguageProficiency } from '../data/languages';
+import { WorkEntryId, WorkExperience } from '../data/work';
 
 const CVDocument = () => {
   const [allTags, setTags] = useState<Set<string>>(new Set(['Frontend', 'Backend']));
@@ -126,22 +125,33 @@ const CVDocument = () => {
             />
           </Section>
           <Section title={t('sections.work.title')}>
-            <WorkExperienceEntry
-              company={t('sections.work.content.iu_electronics.company')}
-              position={t('sections.work.content.iu_electronics.position')}
-              period={t('sections.work.content.iu_electronics.period')}
-            >
-              <Responsibility tags={['Linux', 'Bash', 'Python', 'Git']}>
-                <Trans
-                  t={t}
-                  i18nKey="sections.work.content.iu_electronics.responsibilities.automation"
-                  components={[
-                    <Link href="http://opencircuitdesign.com/qflow/" isExternal />,
-                    <Link href="https://github.com/The-OpenROAD-Project/OpenLane/" isExternal />,
-                  ]}
-                />
-              </Responsibility>
-            </WorkExperienceEntry>
+            {Object.entries(
+              t('sections.work.content', { returnObjects: true }) as Record<
+                WorkEntryId,
+                WorkExperience
+              >,
+            ).map(([id, work]) => (
+              <Box marginBottom="1em" key={id}>
+                <HStack justify="space-between" align="center">
+                  <Box>
+                    <Heading size="md">{work.company}</Heading>
+                    <Text>{work.position}</Text>
+                    <Text>{work.period}</Text>
+                  </Box>
+                </HStack>
+                <Box>
+                  {work.responsibilities.map(({ content, tags }) => (
+                    <HStack justify="space-between" key={content}>
+                      <Box>
+                        {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
+                        <Trans components={{ a: <Link isExternal /> }}>{content}</Trans>
+                      </Box>
+                      <TagList tags={tags} print />
+                    </HStack>
+                  ))}
+                </Box>
+              </Box>
+            ))}
           </Section>
           <Section title={t('sections.projects.title')}>
             <VStack align="stretch" spacing="1em">

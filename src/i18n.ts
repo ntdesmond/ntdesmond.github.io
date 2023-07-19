@@ -2,6 +2,7 @@ import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
 import projects from './pages/cv/data/projects';
 import languages from './pages/cv/data/languages';
+import work from './pages/cv/data/work';
 
 i18n.use(initReactI18next).init({
   resources: {
@@ -29,17 +30,7 @@ i18n.use(initReactI18next).init({
           work: {
             title: 'Work Experience',
             responsibilities: 'Responsibilities:',
-            content: {
-              iu_electronics: {
-                company: 'Innopolis University',
-                position: 'Developer at Electronics Design Center',
-                period: '04/2021 — 10/2021',
-                responsibilities: {
-                  automation:
-                    'Worked on automation scripts and improvement of open-source instruments <0>qflow</0> and <1>OpenLane</1>',
-                },
-              },
-            },
+            content: work.en,
           },
 
           projects: {
@@ -109,17 +100,7 @@ i18n.use(initReactI18next).init({
           work: {
             title: 'Опыт работы',
             responsibilities: 'Обязанности:',
-            content: {
-              iu_electronics: {
-                company: 'Университет Иннополис',
-                position: 'Разработчик Дизайн-центра электроники',
-                period: 'Апрель 2021 — Октябрь 2021',
-                responsibilities: {
-                  automation:
-                    'Работал над скриптами автоматизации и улучшением открытых инструментов <0>qflow</0> и <1>OpenLane</1>',
-                },
-              },
-            },
+            content: work.ru,
           },
 
           projects: {
