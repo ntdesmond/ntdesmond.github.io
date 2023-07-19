@@ -1,6 +1,7 @@
 import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
 import projects from './pages/cv/data/projects';
+import languages from './pages/cv/data/languages';
 
 i18n.use(initReactI18next).init({
   resources: {
@@ -66,16 +67,7 @@ i18n.use(initReactI18next).init({
 
           languages: {
             title: 'Languages',
-            content: [
-              {
-                name: 'English',
-                level: 'Advanced',
-              },
-              {
-                name: 'Russian',
-                level: 'Native',
-              },
-            ],
+            content: languages.en,
           },
 
           soft_skills: {
@@ -155,16 +147,7 @@ i18n.use(initReactI18next).init({
 
           languages: {
             title: 'Языки',
-            content: [
-              {
-                name: 'Английский',
-                level: 'Продвинутый',
-              },
-              {
-                name: 'Русский',
-                level: 'Родной',
-              },
-            ],
+            content: languages.ru,
           },
 
           soft_skills: {

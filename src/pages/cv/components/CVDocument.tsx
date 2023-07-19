@@ -21,7 +21,6 @@ import { MdMail, MdLocationPin } from 'react-icons/md';
 import TelegramIcon from './TelegramIcon';
 import TagsContext from '../contexts/TagsContext';
 import EducationEntry from './education/EducationEntry';
-import Language from './languages/Language';
 import Section from './Section';
 import TechSkill from './skills/TechSkill';
 import TagList from './tags/TagList';
@@ -31,6 +30,8 @@ import WorkExperienceEntry from './workExperience/WorkExperienceEntry';
 import QrCode from './QrCode';
 import { OnlyPrint } from '../../../components/utils/Print';
 import { ProjectId, type Project } from '../data/projects';
+import { Language } from '../types/Language';
+import { LanguageProficiency } from '../data/languages';
 
 const CVDocument = () => {
   const [allTags, setTags] = useState<Set<string>>(new Set(['Frontend', 'Backend']));
@@ -211,13 +212,15 @@ const CVDocument = () => {
             />
           </Section>
           <Section title={t('sections.languages.title')}>
-            {(
-              t('sections.languages.content', { returnObjects: true }) as {
-                name: string;
-                level: string;
-              }[]
-            ).map(({ name, level }) => (
-              <Language key={name} {...{ name, level }} />
+            {Object.entries(
+              t('sections.languages.content', { returnObjects: true }) as Record<
+                Language,
+                LanguageProficiency
+              >,
+            ).map(([id, { language, level }]) => (
+              <Text key={id}>
+                <b>{language}</b>: {level}
+              </Text>
             ))}
           </Section>
           <Section title={t('sections.soft_skills.title')}>
