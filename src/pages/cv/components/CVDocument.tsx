@@ -22,17 +22,18 @@ import TelegramIcon from './TelegramIcon';
 import TagsContext from '../contexts/TagsContext';
 import EducationEntry from './education/EducationEntry';
 import Language from './languages/Language';
-import Project from './projects/Project';
 import Section from './Section';
 import TechSkill from './skills/TechSkill';
+import TagList from './tags/TagList';
 import Tag from './tags/Tag';
 import Responsibility from './workExperience/Responsibility';
 import WorkExperienceEntry from './workExperience/WorkExperienceEntry';
 import QrCode from './QrCode';
 import { OnlyPrint } from '../../../components/utils/Print';
+import { ProjectId, type Project } from '../data/projects';
 
 const CVDocument = () => {
-  const [tags, setTags] = useState<Set<string>>(new Set(['Frontend', 'Backend']));
+  const [allTags, setTags] = useState<Set<string>>(new Set(['Frontend', 'Backend']));
   const [isPrintMode] = useMediaQuery('print');
 
   const { search } = useLocation();
@@ -53,7 +54,7 @@ const CVDocument = () => {
 
   const pushTag = useCallback((tag: string) => setTags((oldTags) => new Set(oldTags.add(tag))), []);
 
-  const tagsContextValue = useMemo(() => ({ tags, pushTag }), [pushTag, tags]);
+  const tagsContextValue = useMemo(() => ({ tags: allTags, pushTag }), [pushTag, allTags]);
 
   return (
     <Grid
@@ -143,34 +144,27 @@ const CVDocument = () => {
           </Section>
           <Section title={t('sections.projects.title')}>
             <VStack align="stretch" spacing="1em">
-              <Project
-                title="uni-feedback-kiosk"
-                href="https://github.com/uni-feedback-kiosk"
-                description={t('sections.projects.content.kiosk')}
-                period={2023}
-                tags={['Vite', 'React', 'Chakra UI', 'Electron', 'FastAPI', 'MongoDB']}
-              />
-              <Project
-                title="innonymous"
-                href="https://github.com/innonymous/app"
-                description={t('sections.projects.content.innonymous')}
-                period={2023}
-                tags={['Vite', 'React', 'Chakra UI']}
-              />
-              <Project
-                title="Paste and Search"
-                href="https://github.com/ntdesmond/paste-and-search"
-                description={t('sections.projects.content.paste_and_search')}
-                period={2022}
-                tags={['Vite', 'React', 'GitHub Pages']}
-              />
-              <Project
-                title="PPFS"
-                href="https://github.com/ntdesmond/PPFS"
-                description={t('sections.projects.content.ppfs')}
-                period={2022}
-                tags={['FastAPI', 'MongoDB']}
-              />
+              {Object.entries(
+                t('sections.projects.content', { returnObjects: true }) as Record<
+                  ProjectId,
+                  Project
+                >,
+              ).map(([id, project]) => (
+                <HStack key={id} justify="space-between" align="center">
+                  <Box>
+                    <Heading size="md">
+                      <Link href={project.url} isExternal>
+                        {project.name}
+                      </Link>
+                    </Heading>
+                    <Text>{project.description}</Text>
+                    <Text>{project.year}</Text>
+                  </Box>
+                  <Box width="10em">
+                    <TagList tags={project.tags} print />
+                  </Box>
+                </HStack>
+              ))}
             </VStack>
           </Section>
         </Box>

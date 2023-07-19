@@ -1,5 +1,6 @@
 import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
+import projects from './pages/cv/data/projects';
 
 i18n.use(initReactI18next).init({
   resources: {
@@ -42,12 +43,7 @@ i18n.use(initReactI18next).init({
 
           projects: {
             title: 'Projects',
-            content: {
-              kiosk: 'Developed a full-stack kiosk system and setup scripts',
-              innonymous: 'Developed a frontend for an instant web messenger',
-              paste_and_search: 'Developed a website for easier reverse image search',
-              ppfs: 'Developed a file server with simple authentication',
-            },
+            content: projects.en,
           },
 
           tech_skills: {
@@ -136,12 +132,7 @@ i18n.use(initReactI18next).init({
 
           projects: {
             title: 'Projects',
-            content: {
-              kiosk: 'Разработал full-stack систему для инфокиоска и скрипты для установки',
-              innonymous: 'Разработал фронтенд для веб-мессенджера',
-              paste_and_search: 'Разработал веб-сайт для упрощения поиска по изображению',
-              ppfs: 'Разработал файл-сервер с простой авторизацией',
-            },
+            content: projects.ru,
           },
 
           tech_skills: {
