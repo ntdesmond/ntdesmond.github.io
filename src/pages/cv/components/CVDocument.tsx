@@ -20,7 +20,6 @@ import { AiFillGithub } from 'react-icons/ai';
 import { MdMail, MdLocationPin } from 'react-icons/md';
 import TelegramIcon from './TelegramIcon';
 import TagsContext from '../contexts/TagsContext';
-import EducationEntry from './education/EducationEntry';
 import Section from './Section';
 import TechSkill from './skills/TechSkill';
 import TagList from './tags/TagList';
@@ -31,6 +30,7 @@ import { ProjectId, type Project } from '../data/projects';
 import { Language } from '../types/Language';
 import { LanguageProficiency } from '../data/languages';
 import { WorkEntryId, WorkExperience } from '../data/work';
+import { Education, EducationId } from '../data/education';
 
 const CVDocument = () => {
   const [allTags, setTags] = useState<Set<string>>(new Set(['Frontend', 'Backend']));
@@ -215,11 +215,18 @@ const CVDocument = () => {
             </Text>
           </Section>
           <Section title={t('sections.education.title')}>
-            <EducationEntry
-              specialty={t('sections.education.content.specialty')}
-              organization={t('sections.education.content.organization')}
-              period="2019 — 2023"
-            />
+            {Object.entries(
+              t('sections.education.content', { returnObjects: true }) as Record<
+                EducationId,
+                Education
+              >,
+            ).map(([id, { organization, period, specialty }]) => (
+              <Box key={id}>
+                <Heading size="md">{organization}</Heading>
+                <Text>{specialty}</Text>
+                <Text>{period}</Text>
+              </Box>
+            ))}
           </Section>
           <Section title={t('sections.languages.title')}>
             {Object.entries(

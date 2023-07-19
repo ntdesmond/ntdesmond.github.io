@@ -3,6 +3,8 @@ import { initReactI18next } from 'react-i18next';
 import projects from './pages/cv/data/projects';
 import languages from './pages/cv/data/languages';
 import work from './pages/cv/data/work';
+import education from './pages/cv/data/education';
+import soft_skills from './pages/cv/data/soft_skills';
 
 i18n.use(initReactI18next).init({
   resources: {
@@ -50,10 +52,7 @@ i18n.use(initReactI18next).init({
 
           education: {
             title: 'Education',
-            content: {
-              specialty: 'Computer science, Bachelor',
-              organization: 'Innopolis University',
-            },
+            content: education.en,
           },
 
           languages: {
@@ -63,13 +62,7 @@ i18n.use(initReactI18next).init({
 
           soft_skills: {
             title: 'Soft skills',
-            content: [
-              'Desire to learn',
-              'Responsibility',
-              'Adaptability',
-              'Cooperation',
-              'Confidence',
-            ],
+            content: soft_skills.en,
           },
         },
       },
@@ -120,10 +113,7 @@ i18n.use(initReactI18next).init({
 
           education: {
             title: 'Образование',
-            content: {
-              specialty: 'Компьютерные науки, Бакалавр',
-              organization: 'Университет Иннополис',
-            },
+            content: education.ru,
           },
 
           languages: {
@@ -133,13 +123,7 @@ i18n.use(initReactI18next).init({
 
           soft_skills: {
             title: 'Качества',
-            content: [
-              'Стремление учиться',
-              'Ответственность',
-              'Приспособляемость',
-              'Сотрудничество',
-              'Уверенность',
-            ],
+            content: soft_skills.ru,
           },
         },
       },
