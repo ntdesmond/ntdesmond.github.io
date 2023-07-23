@@ -45,6 +45,8 @@ const headingStyle = defineStyleConfig({
 const linkStyle = defineStyleConfig({
   baseStyle: {
     color: 'blue.500',
+    printColorAdjust: 'exact',
+    WebkitPrintColorAdjust: 'exact',
   },
 });
 
