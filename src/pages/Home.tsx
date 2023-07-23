@@ -22,7 +22,8 @@ const Home = () => (
         , usually pronounced as <i>NT Desmond (an tee desmond)</i> is my nickname.
       </Text>
       <Text>
-        My real name is <b>Vladislav Safonov</b>, and, as of 2023, I&#39;m a student of{' '}
+        My real name is <b>Vladislav Safonov</b>, I am a software developer. In 2023, I finished my
+        bachelor&#39;s degree at{' '}
         <Link href="https://innopolis.university/">Innopolis University</Link>.
       </Text>
       <Heading size="lg" marginY="0.5em">
@@ -31,11 +32,11 @@ const Home = () => (
       <Text>
         Originally this site is meant to hold my{' '}
         <Link as={RouteLink} to="/cv">
-          &#34;interactive&#34; CV
-        </Link>
-        , written in React, so that it works as an example of my work.
+          CV
+        </Link>{' '}
+        written in React.
       </Text>
-      <Text>Probably, I will add some more stuff here, we&#39;ll see.</Text>
+      <Text>Probably, I will add more stuff here later, we&#39;ll see.</Text>
     </Box>
   </Layout>
 );
