@@ -7,6 +7,7 @@ import education from './pages/cv/data/education';
 import soft_skills from './pages/cv/data/soft_skills';
 import summary from './pages/cv/data/summary';
 import info from './pages/cv/data/info';
+import tech_skills from './pages/cv/data/tech_skills';
 
 i18n.use(initReactI18next).init({
   resources: {
@@ -37,12 +38,9 @@ i18n.use(initReactI18next).init({
 
           tech_skills: {
             title: 'Technical skills',
-            content: {
-              languages: 'Programming languages',
-              other: 'Other',
-              prefer_github: 'GitHub is preferred',
-              scripts: '<Bash/> and <PowerShell/> scripts',
-            },
+            languages: 'Programming languages',
+            other: 'Other',
+            content: tech_skills.en,
           },
 
           education: {
@@ -90,12 +88,9 @@ i18n.use(initReactI18next).init({
 
           tech_skills: {
             title: 'Навыки',
-            content: {
-              languages: 'Языки программирования',
-              other: 'Прочее',
-              prefer_github: 'предпочитаю GitHub',
-              scripts: '<Bash/> и <PowerShell/> скрипты',
-            },
+            languages: 'Языки программирования',
+            other: 'Прочее',
+            content: tech_skills.ru,
           },
 
           education: {

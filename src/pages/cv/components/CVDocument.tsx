@@ -21,16 +21,16 @@ import { MdMail, MdLocationPin } from 'react-icons/md';
 import TelegramIcon from './TelegramIcon';
 import TagsContext from '../contexts/TagsContext';
 import Section from './Section';
-import TechSkill from './skills/TechSkill';
 import TagList from './tags/TagList';
 import Tag from './tags/Tag';
 import QrCode from './QrCode';
 import { OnlyPrint } from '../../../components/utils/Print';
-import { ProjectId, type Project } from '../data/projects';
-import { Language } from '../types/Language';
-import { LanguageProficiency } from '../data/languages';
-import { WorkEntryId, WorkExperience } from '../data/work';
-import { Education, EducationId } from '../data/education';
+import type { ProjectId, Project } from '../data/projects';
+import type { Language } from '../types/Language';
+import type { LanguageProficiency } from '../data/languages';
+import type { WorkEntryId, WorkExperience } from '../data/work';
+import type { Education, EducationId } from '../data/education';
+import type { ProgrammingLanguageId, TechSkillId } from '../data/tech_skills';
 
 const CVDocument = () => {
   const [allTags, setTags] = useState<Set<string>>(new Set(['Frontend', 'Backend']));
@@ -177,37 +177,31 @@ const CVDocument = () => {
         <Box lineHeight="2em">
           <Section title={t('sections.tech_skills.title')}>
             <Heading size="md" marginY="0.5em">
-              {t('sections.tech_skills.content.languages')}
+              {t('sections.tech_skills.languages')}
             </Heading>
-            <TechSkill name="Python">
-              <Tag name="FastAPI" />, pandas, numpy
-            </TechSkill>
-            <TechSkill name="JS/TS" tagSlug="JS">
-              <Tag name="TypeScript" />, <Tag name="React" />, <Tag name="Vite" />,{' '}
-              <Tag name="Electron" />
-            </TechSkill>
-            <TechSkill name="C#">WPF, WinForms</TechSkill>
+            {Object.entries(
+              t('sections.tech_skills.content.languages', { returnObjects: true }) as Record<
+                ProgrammingLanguageId,
+                string
+              >,
+            ).map(([id, content]) => (
+              <Text key={id}>
+                <Trans components={{ Tag: <Tag /> }}>{content}</Trans>
+              </Text>
+            ))}
             <Heading size="md" marginY="0.5em">
-              {t('sections.tech_skills.content.other')}
+              {t('sections.tech_skills.other')}
             </Heading>
-            <Text>
-              <Tag name="Git" /> ({t('sections.tech_skills.content.prefer_github')})
-            </Text>
-            <Text>
-              <Tag name="CI/CD" />: GitHub Actions, GitLab CI
-            </Text>
-            <Text>Docker, Docker Compose</Text>
-            <Text>Redis, MongoDB, SQLite, MySQL, PostgreSQL</Text>
-            <Text>
-              <Trans
-                t={t}
-                i18nKey="sections.tech_skills.content.scripts"
-                components={{
-                  Bash: <Tag name="Bash" />,
-                  PowerShell: <Tag name="PowerShell" />,
-                }}
-              />
-            </Text>
+            {Object.entries(
+              t('sections.tech_skills.content.other', { returnObjects: true }) as Record<
+                TechSkillId,
+                string
+              >,
+            ).map(([id, content]) => (
+              <Text key={id}>
+                <Trans components={{ Tag: <Tag /> }}>{content}</Trans>
+              </Text>
+            ))}
           </Section>
           <Section title={t('sections.education.title')}>
             {Object.entries(

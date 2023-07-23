@@ -10,7 +10,7 @@ const TagList = ({ tags, print }: { tags: string[]; print?: boolean }) => {
     <Wrap justify="center">
       {tags.map((tag) => (
         <WrapItem key={tag}>
-          <Tag slug={tag} />
+          <Tag name={tag} />
         </WrapItem>
       ))}
     </Wrap>
