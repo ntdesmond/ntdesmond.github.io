@@ -1,26 +1,13 @@
+import { Box, Heading } from '@chakra-ui/react';
 import { ReactNode } from 'react';
-import styled from 'styled-components';
-import FixedMargin from '../../../components/layout/alignment/FixedMargin';
-import { SectionHeading } from '../../../components/typography/Headings';
 
-const StyledHeading = styled(SectionHeading)`
-  color: #035;
-  border-bottom: 0.15em solid #035;
-  margin: 0.5rem 0;
-  white-space: nowrap;
-`;
-
-const Section = (
-  { title, children, className }: {
-    title: ReactNode;
-    children: ReactNode;
-    className?: string;
-  },
-) => (
-  <FixedMargin margin="0.5rem 0" className={className}>
-    <StyledHeading>{title}</StyledHeading>
+const Section = ({ title, children }: { title: ReactNode; children: ReactNode }) => (
+  <Box marginY="0.5em">
+    <Heading color="#035" borderColor="current" borderBottom="0.15em solid" marginBottom="0.3em">
+      {title}
+    </Heading>
     {children}
-  </FixedMargin>
+  </Box>
 );
 
 export default Section;

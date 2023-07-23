@@ -2,4 +2,7 @@ node_modules
 build
 .vscode
 .env
-**/files/cv*.pdf
+public/cv*.pdf
+
+.*cache
+.env.local

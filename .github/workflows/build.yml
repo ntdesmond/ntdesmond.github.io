@@ -32,30 +32,30 @@ jobs:
         with:
           node-version: 16
 
-      - name: Build CV
-        run: |
-          npm install
-          npm run build:cv
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build the app
+        env:
+          GITHUB_REPO: ${{ github.repository }}
+        run: npm run build
+
+      - name: Serve the app
+        run: npm run preview -- --host & npx wait-on tcp:4173
 
       - name: Generate PDF file (en)
         uses: ntdesmond/html2pdf-action@v1
         with:
-          path: ./build/cv.html?language=en&print
-          output: ./src/pages/cv/files/cv_en.pdf
+          path: http://172.17.0.1:4173/cv.html?language=en
+          output: ./build/cv_en.pdf
           options: ${{ env.PDF_OPTIONS }}
 
       - name: Generate PDF file (ru)
         uses: ntdesmond/html2pdf-action@v1
         with:
-          path: ./build/cv.html?language=ru&print
-          output: ./src/pages/cv/files/cv_ru.pdf
+          path: http://172.17.0.1:4173/cv.html?language=ru
+          output: ./build/cv_ru.pdf
           options: ${{ env.PDF_OPTIONS }}
-
-      - name: Build the rest of the app
-        env:
-          GITHUB_REPO: ${{ github.repository }}
-        run: |
-          npm run build:main
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
