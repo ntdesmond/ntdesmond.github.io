@@ -16,7 +16,7 @@ import {
 import { useTranslation } from 'react-i18next';
 import { MdArrowDropDown } from 'react-icons/md';
 import Layout from '../../components/layout/Layout';
-import { Language } from './types/Language';
+import { Language } from './Language';
 
 const files: Record<Language, string> = {
   en: '/cv_en.pdf',

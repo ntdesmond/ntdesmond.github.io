@@ -1,4 +1,4 @@
-import { Language } from '../types/Language';
+import { Language } from '../Language';
 
 type ValueOrRecord<T> = T | { [key: string]: ValueOrRecord<T> };
 

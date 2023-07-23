@@ -18,19 +18,19 @@ import {
 import { useLocation } from 'react-router-dom';
 import { AiFillGithub } from 'react-icons/ai';
 import { MdMail, MdLocationPin } from 'react-icons/md';
-import TelegramIcon from './TelegramIcon';
-import TagsContext from '../contexts/TagsContext';
-import Section from './Section';
-import TagList from './tags/TagList';
-import Tag from './tags/Tag';
-import QrCode from './QrCode';
-import { OnlyPrint } from '../../../components/utils/Print';
-import type { ProjectId, Project } from '../data/projects';
-import type { Language } from '../types/Language';
-import type { LanguageProficiency } from '../data/languages';
-import type { WorkEntryId, WorkExperience } from '../data/work';
-import type { Education, EducationId } from '../data/education';
-import type { ProgrammingLanguageId, TechSkillId } from '../data/tech_skills';
+import TelegramIcon from './components/icons/TelegramIcon';
+import TagsContext from './contexts/TagsContext';
+import Section from './components/Section';
+import TagList from './components/tags/TagList';
+import Tag from './components/tags/Tag';
+import QrCode from './components/icons/QrCode';
+import { OnlyPrint } from '../../components/utils/Print';
+import type { ProjectId, Project } from './data/projects';
+import type { Language } from './Language';
+import type { LanguageProficiency } from './data/languages';
+import type { WorkEntryId, WorkExperience } from './data/work';
+import type { Education, EducationId } from './data/education';
+import type { ProgrammingLanguageId, TechSkillId } from './data/tech_skills';
 
 const CVDocument = () => {
   const [allTags, setTags] = useState<Set<string>>(new Set(['Frontend', 'Backend']));

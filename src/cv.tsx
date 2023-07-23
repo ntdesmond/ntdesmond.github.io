@@ -1,7 +1,7 @@
 import { createRoot } from 'react-dom/client';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { ChakraProvider, extendTheme } from '@chakra-ui/react';
-import CVDocument from './pages/cv/components/CVDocument';
+import CVDocument from './pages/cv/CVDocument';
 import baseTheme from './theme';
 import './i18n';
 import '@fontsource/oswald';
