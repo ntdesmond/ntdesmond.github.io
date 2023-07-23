@@ -233,9 +233,7 @@ const CVDocument = () => {
             <UnorderedList marginLeft="1.5em">
               {(t('sections.soft_skills.content', { returnObjects: true }) as string[]).map(
                 (item) => (
-                  <ListItem key={item} sx={{ '::marker': { fontSize: '1.5em' } }}>
-                    {item}
-                  </ListItem>
+                  <ListItem key={item}>{item}</ListItem>
                 ),
               )}
             </UnorderedList>
