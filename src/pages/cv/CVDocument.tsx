@@ -65,7 +65,7 @@ const CVDocument = () => {
     >
       <TagsContext.Provider value={tagsContextValue}>
         <GridItem colSpan={2}>
-          <HStack align="center" spacing="2em">
+          <HStack align="center" spacing="0">
             <Box margin="0">
               <Heading as="h1" size="xl" fontFamily="cv_name" whiteSpace="nowrap">
                 {t('info.cv_name')}
@@ -76,7 +76,7 @@ const CVDocument = () => {
             </Box>
             <Box whiteSpace="nowrap">
               <Grid
-                margin="0.5em"
+                marginX="2em"
                 gridTemplateRows="repeat(4, auto)"
                 columnGap="0.5em"
                 gridAutoFlow="column"
@@ -97,8 +97,8 @@ const CVDocument = () => {
                 ))}
               </Grid>
             </Box>
+            <Spacer />
             <OnlyPrint>
-              <Spacer />
               <VStack spacing="0" alignSelf="stretch" textAlign="center">
                 <Box>{t('full_cv')}</Box>
                 <Link href="https://ntdesmond.github.io/#/cv" isExternal>

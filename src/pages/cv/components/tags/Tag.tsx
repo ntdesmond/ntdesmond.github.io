@@ -1,7 +1,8 @@
 import { useContext, useEffect, useMemo } from 'react';
 import { Link as RouteLink, useLocation } from 'react-router-dom';
-import { Link, Text, useMediaQuery } from '@chakra-ui/react';
+import { Link, Text } from '@chakra-ui/react';
 import TagsContext from '../../contexts/TagsContext';
+import { NoPrint, OnlyPrint } from '../../../../components/utils/Print';
 
 const Tag = ({
   slug: originalSlug,
@@ -14,8 +15,6 @@ const Tag = ({
 }) => {
   const { hash } = useLocation();
   const { pushTag } = useContext(TagsContext);
-
-  const [isPrintMode] = useMediaQuery('print');
 
   const slug = useMemo(() => originalSlug || name, [name, originalSlug]);
 
@@ -32,25 +31,26 @@ const Tag = ({
     }
   }, [pushTag, register, slug]);
 
-  if (isPrintMode) {
-    return (
-      <Text as="span" textDecoration="underline dotted 1px">
-        {name}
-      </Text>
-    );
-  }
-
   return (
-    <Link
-      bgColor={isSelected ? 'yellow' : 'unset'}
-      fontWeight={isSelected ? 'bold' : 'normal'}
-      color={isSelected ? 'blue.800' : undefined}
-      textDecoration="underline dotted 1px"
-      as={RouteLink}
-      to={target}
-    >
-      {name}
-    </Link>
+    <>
+      <OnlyPrint>
+        <Text as="span" textDecoration="underline dotted 1px">
+          {name}
+        </Text>
+      </OnlyPrint>
+      <NoPrint>
+        <Link
+          bgColor={isSelected ? 'yellow' : 'unset'}
+          fontWeight={isSelected ? 'bold' : 'normal'}
+          color={isSelected ? 'blue.800' : undefined}
+          textDecoration="underline dotted 1px"
+          as={RouteLink}
+          to={target}
+        >
+          {name}
+        </Link>
+      </NoPrint>
+    </>
   );
 };
 
