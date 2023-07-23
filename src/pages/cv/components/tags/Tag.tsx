@@ -3,26 +3,36 @@ import { Link as RouteLink, useLocation } from 'react-router-dom';
 import { Link, Text, useMediaQuery } from '@chakra-ui/react';
 import TagsContext from '../../contexts/TagsContext';
 
-const Tag = (props: { slug: string; name?: string; register?: boolean }) => {
+const Tag = ({
+  slug: originalSlug,
+  name,
+  register,
+}: {
+  slug?: string;
+  name?: string;
+  register?: boolean;
+}) => {
   const { hash } = useLocation();
   const { pushTag } = useContext(TagsContext);
 
   const [isPrintMode] = useMediaQuery('print');
 
-  const target = useMemo(() => `#${encodeURI(props.slug)}`, [props.slug]);
+  const slug = useMemo(() => originalSlug || name, [name, originalSlug]);
 
-  const isSelected = useMemo(() => decodeURI(hash.slice(1)) === props.slug, [hash, props.slug]);
+  const target = useMemo(() => `#${encodeURI(slug || '')}`, [slug]);
+
+  const isSelected = useMemo(() => decodeURI(hash.slice(1)) === slug, [hash, slug]);
 
   useEffect(() => {
-    if (props.register !== false) {
-      pushTag(props.slug);
+    if (slug && register !== false) {
+      pushTag(slug);
     }
-  }, [props.register, props.slug, pushTag]);
+  }, [pushTag, register, slug]);
 
   if (isPrintMode) {
     return (
       <Text as="span" textDecoration="underline dotted 1px">
-        {props.name || props.slug}
+        {name}
       </Text>
     );
   }
@@ -36,7 +46,7 @@ const Tag = (props: { slug: string; name?: string; register?: boolean }) => {
       as={RouteLink}
       to={target}
     >
-      {props.name || props.slug}
+      {name}
     </Link>
   );
 };

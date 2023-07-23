@@ -115,9 +115,7 @@ const CVDocument = () => {
               t={t}
               i18nKey="sections.summary.content"
               components={{
-                FastAPI: <Tag slug="FastAPI" />,
-                React: <Tag slug="React" />,
-                CI_CD: <Tag slug="CI/CD" />,
+                Tag: <Tag />,
               }}
             />
           </Section>
@@ -182,21 +180,21 @@ const CVDocument = () => {
               {t('sections.tech_skills.content.languages')}
             </Heading>
             <TechSkill name="Python">
-              <Tag slug="FastAPI" />, pandas, numpy
+              <Tag name="FastAPI" />, pandas, numpy
             </TechSkill>
             <TechSkill name="JS/TS" tagSlug="JS">
-              <Tag slug="TypeScript" />, <Tag slug="React" />, <Tag slug="Vite" />,{' '}
-              <Tag slug="Electron" />
+              <Tag name="TypeScript" />, <Tag name="React" />, <Tag name="Vite" />,{' '}
+              <Tag name="Electron" />
             </TechSkill>
             <TechSkill name="C#">WPF, WinForms</TechSkill>
             <Heading size="md" marginY="0.5em">
               {t('sections.tech_skills.content.other')}
             </Heading>
             <Text>
-              <Tag slug="Git" /> ({t('sections.tech_skills.content.prefer_github')})
+              <Tag name="Git" /> ({t('sections.tech_skills.content.prefer_github')})
             </Text>
             <Text>
-              <Tag slug="CI/CD" />: GitHub Actions, GitLab CI
+              <Tag name="CI/CD" />: GitHub Actions, GitLab CI
             </Text>
             <Text>Docker, Docker Compose</Text>
             <Text>Redis, MongoDB, SQLite, MySQL, PostgreSQL</Text>
@@ -205,8 +203,8 @@ const CVDocument = () => {
                 t={t}
                 i18nKey="sections.tech_skills.content.scripts"
                 components={{
-                  Bash: <Tag slug="Bash" />,
-                  PowerShell: <Tag slug="PowerShell" />,
+                  Bash: <Tag name="Bash" />,
+                  PowerShell: <Tag name="PowerShell" />,
                 }}
               />
             </Text>

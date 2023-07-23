@@ -52,7 +52,9 @@ const CVPage = () => {
               </MenuButton>
               <MenuList>
                 {Object.entries(languages).map(([code, name]) => (
-                  <MenuItem onClick={() => setLanguage(code as Language)}>{name}</MenuItem>
+                  <MenuItem key={code} onClick={() => setLanguage(code as Language)}>
+                    {name}
+                  </MenuItem>
                 ))}
               </MenuList>
             </Menu>

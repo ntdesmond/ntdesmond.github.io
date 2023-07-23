@@ -3,7 +3,7 @@ import Tag from '../tags/Tag';
 
 const TechSkill = (props: { name: string; tagSlug?: string; children: React.ReactNode }) => (
   <Text>
-    <Tag slug={props.tagSlug || props.name} name={props.name} />: {props.children}
+    <Tag slug={props.tagSlug} name={props.name} />: {props.children}
   </Text>
 );
 
