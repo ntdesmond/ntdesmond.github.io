@@ -7,8 +7,7 @@
     "dev": "vite",
     "lint": "tsc --noEmit && eslint . --report-unused-disable-directives --max-warnings 0 && prettier --check .",
     "format": "eslint --fix . && prettier -w .",
-    "build:cv": "npx vite build --mode cv",
-    "build:main": "npx vite build",
+    "build": "npx vite build",
     "preview": "vite preview"
   },
   "repository": {

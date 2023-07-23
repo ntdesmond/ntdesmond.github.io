@@ -16,13 +16,11 @@ import {
 import { useTranslation } from 'react-i18next';
 import { MdArrowDropDown } from 'react-icons/md';
 import Layout from '../../components/layout/Layout';
-import EnCVFile from './files/cv_en.pdf';
-import RuCVFile from './files/cv_ru.pdf';
 import { Language } from './types/Language';
 
 const files: Record<Language, string> = {
-  en: EnCVFile,
-  ru: RuCVFile,
+  en: '/cv_en.pdf',
+  ru: '/cv_ru.pdf',
 };
 
 const languages: Record<Language, string> = {
