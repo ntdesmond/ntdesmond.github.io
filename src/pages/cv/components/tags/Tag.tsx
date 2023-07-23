@@ -19,9 +19,12 @@ const Tag = ({
 
   const slug = useMemo(() => originalSlug || name, [name, originalSlug]);
 
-  const target = useMemo(() => `#${encodeURI(slug || '')}`, [slug]);
-
   const isSelected = useMemo(() => decodeURI(hash.slice(1)) === slug, [hash, slug]);
+
+  const target = useMemo(
+    () => (isSelected ? `#` : `#${encodeURI(slug || '')}`),
+    [isSelected, slug],
+  );
 
   useEffect(() => {
     if (slug && register !== false) {
