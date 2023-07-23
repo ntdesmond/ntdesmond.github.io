@@ -9,9 +9,9 @@ export type TechSkillId = (typeof tech_skill_ids)[number];
 const tech_skills = merge({
   en: {
     languages: {
-      python: '<Tag name="Python"/>: <Tag name="FastAPI" />, pandas, numpy',
-      js: '<Tag name="JS"/>: TypeScript, <Tag name="React" />, <Tag name="Electron" />, Vite',
-      csharp: '<Tag name="C#"/>: WPF, WinForms',
+      python: 'Python: <Tag name="FastAPI" />, pandas, numpy',
+      js: 'JS: TypeScript, <Tag name="React" />, <Tag name="Electron" />, Vite',
+      csharp: 'C#: WPF, WinForms',
     },
     other: {
       git: '<Tag name="Git" /> (prefer GitHub)',
