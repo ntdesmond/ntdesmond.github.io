@@ -9,19 +9,16 @@ type NestedObject = Record<string, ValueOrRecord<string | number | string[]>>;
 
 const merge = (strings: Record<Language, NestedObject>): Record<Language, NestedObject> => {
   const merge_nested = (en: NestedObject, ru: NestedObject) =>
-    Object.entries(en).reduce(
+    Object.entries(ru).reduce(
       (all, [key, value]): NestedObject => {
-        if (!(key in all)) {
-          return { ...all, [key]: value };
-        }
-        const nested_en = value;
-        const nested_ru = all[key];
+        const nested_ru = value;
+        const nested_en = all[key];
         if (isRecord(nested_en) && isRecord(nested_ru)) {
           return { ...all, [key]: merge_nested(nested_en, nested_ru) };
         }
-        return { ...all };
+        return { ...all, [key]: value };
       },
-      { ...ru },
+      { ...en },
     );
 
   return { en: strings.en, ru: merge_nested(strings.en, strings.ru) };
