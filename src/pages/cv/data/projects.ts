@@ -18,14 +18,14 @@ const projects = merge({
       url: 'https://github.com/uni-feedback-kiosk',
       description: 'Developed a full-stack kiosk system and setup scripts',
       year: 2023,
-      tags: ['Vite', 'React', 'Chakra UI', 'Electron', 'FastAPI', 'MongoDB'],
+      tags: ['Vite', 'React', 'Electron', 'FastAPI', 'MongoDB'],
     },
     innonymous: {
       name: 'innonymous',
       url: 'https://github.com/innonymous/app',
       description: 'Developed a frontend for an instant web messenger',
       year: 2023,
-      tags: ['Vite', 'React', 'Chakra UI'],
+      tags: ['Vite', 'React'],
     },
     paste_and_search: {
       name: 'Paste and Search',

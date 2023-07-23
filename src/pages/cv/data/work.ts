@@ -41,7 +41,6 @@ const work = merge({
           content: `Работал над скриптами автоматизации и улучшением открытых инструментов 
             <a href="http://opencircuitdesign.com/qflow/">qflow</a> и
             <a href="https://github.com/The-OpenROAD-Project/OpenLane/">OpenLane</a>`,
-          tags: ['Linux', 'Bash', 'Python', 'Git'],
         },
       },
     },

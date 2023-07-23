@@ -10,14 +10,14 @@ const tech_skills = merge({
   en: {
     languages: {
       python: '<Tag name="Python"/>: <Tag name="FastAPI" />, pandas, numpy',
-      js: '<Tag name="JS"/>: <Tag name="TypeScript" />, <Tag name="React" />, <Tag name="Vite" />, <Tag name="Electron" />',
+      js: '<Tag name="JS"/>: TypeScript, <Tag name="React" />, <Tag name="Electron" />, Vite',
       csharp: '<Tag name="C#"/>: WPF, WinForms',
     },
     other: {
       git: '<Tag name="Git" /> (prefer GitHub)',
       ci_cd: '<Tag name="CI/CD" />: GitHub Actions, GitLab CI',
       docker: 'Docker, Docker Compose',
-      databases: 'Redis, MongoDB, SQLite, MySQL, PostgreSQL',
+      databases: 'Redis, MongoDB, SQLite, PostgreSQL',
       shell_scripts: '<Tag name="Bash" /> and <Tag name="PowerShell" /> scripts',
     },
   },
