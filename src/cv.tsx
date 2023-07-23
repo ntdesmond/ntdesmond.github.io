@@ -1,3 +1,4 @@
+import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { ChakraProvider, extendTheme } from '@chakra-ui/react';
@@ -27,11 +28,13 @@ const theme = extendTheme({ styles: { global: printStyle } }, baseTheme);
 
 const root = createRoot(document.getElementById('root') as HTMLElement);
 root.render(
-  <ChakraProvider theme={theme}>
-    <BrowserRouter>
-      <Routes>
-        <Route path="*" element={<CVDocument />} />
-      </Routes>
-    </BrowserRouter>
-  </ChakraProvider>,
+  <StrictMode>
+    <ChakraProvider theme={theme}>
+      <BrowserRouter>
+        <Routes>
+          <Route path="*" element={<CVDocument />} />
+        </Routes>
+      </BrowserRouter>
+    </ChakraProvider>
+  </StrictMode>,
 );

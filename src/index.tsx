@@ -1,3 +1,4 @@
+import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import { HashRouter } from 'react-router-dom';
 import { ChakraProvider } from '@chakra-ui/react';
@@ -10,9 +11,11 @@ import '@fontsource/fira-code/400.css';
 
 const root = createRoot(document.getElementById('root') as HTMLElement);
 root.render(
-  <ChakraProvider theme={theme}>
-    <HashRouter>
-      <App />
-    </HashRouter>
-  </ChakraProvider>,
+  <StrictMode>
+    <ChakraProvider theme={theme}>
+      <HashRouter>
+        <App />
+      </HashRouter>
+    </ChakraProvider>
+  </StrictMode>,
 );
