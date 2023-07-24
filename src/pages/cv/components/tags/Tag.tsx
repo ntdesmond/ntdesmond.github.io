@@ -33,12 +33,12 @@ const Tag = ({
 
   return (
     <>
-      <OnlyPrint>
+      <OnlyPrint as="span">
         <Text as="span" textDecoration="underline dotted 1px">
           {name}
         </Text>
       </OnlyPrint>
-      <NoPrint>
+      <NoPrint as="span">
         <Link
           bgColor={isSelected ? 'yellow' : 'unset'}
           fontWeight={isSelected ? 'bold' : 'normal'}
