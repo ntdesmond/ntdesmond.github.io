@@ -36,7 +36,7 @@ const CVPage = () => {
   return (
     <Layout>
       <VStack height="100%" align="stretch">
-        <Flex direction={['column', 'row']} gap={['1em', '2em']}>
+        <Flex direction={['column', 'row']} gap={['1em', '2em']} align={['center', 'start']}>
           <HStack>
             <Text>Language / Язык:</Text>
             <Menu>

@@ -10,6 +10,7 @@ import {
   Link,
   ListItem,
   Spacer,
+  Stack,
   Text,
   UnorderedList,
   VStack,
@@ -57,15 +58,15 @@ const CVDocument = () => {
   const tagsContextValue = useMemo(() => ({ tags: allTags, pushTag }), [pushTag, allTags]);
 
   return (
-    <Grid
-      templateColumns="auto fit-content(20em)"
-      rowGap="1em"
-      columnGap="3em"
-      margin={isPrintMode ? '0' : '2em'}
-    >
+    <Grid rowGap="1em" columnGap="3em" margin={isPrintMode ? '0' : '2em'}>
       <TagsContext.Provider value={tagsContextValue}>
-        <GridItem colSpan={2}>
-          <HStack align="center" spacing="0">
+        <GridItem sx={{ '@media print': { gridColumn: 'span 2' } }} colSpan={{ base: 1, md: 2 }}>
+          <Stack
+            sx={{ '@media print': { flexDirection: 'row' } }}
+            direction={{ base: 'column', md: 'row' }}
+            align="center"
+            spacing="0"
+          >
             <Box margin="0">
               <Heading as="h1" size="xl" fontFamily="cv_name" whiteSpace="nowrap">
                 {t('info.cv_name')}
@@ -76,7 +77,7 @@ const CVDocument = () => {
             </Box>
             <Box whiteSpace="nowrap">
               <Grid
-                marginX="2em"
+                margin="2em"
                 gridTemplateRows="repeat(4, auto)"
                 columnGap="0.5em"
                 gridAutoFlow="column"
@@ -107,7 +108,7 @@ const CVDocument = () => {
                 <QrCode width="100%" flexGrow="1" />
               </VStack>
             </OnlyPrint>
-          </HStack>
+          </Stack>
         </GridItem>
         <Box>
           <Section title={t('sections.summary.title')}>
