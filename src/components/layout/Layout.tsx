@@ -14,7 +14,7 @@ const Layout = (props: { children: React.ReactNode }) => (
       </Box>
       <Text textAlign="center">
         Source code of this website is available at{' '}
-        <Link href={`https://github.com/${import.meta.env.GITHUB_REPO}`} isExternal>
+        <Link href={`https://github.com/${import.meta.env.VITE_GITHUB_REPO}`} isExternal>
           GitHub
         </Link>
       </Text>

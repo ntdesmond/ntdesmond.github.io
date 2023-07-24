@@ -37,7 +37,7 @@ jobs:
 
       - name: Build the app
         env:
-          GITHUB_REPO: ${{ github.repository }}
+          VITE_GITHUB_REPO: ${{ github.repository }}
         run: npm run build
 
       - name: Serve the app
