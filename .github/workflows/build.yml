@@ -1,7 +1,7 @@
-name: Build Webpack and generate PDFs
+name: Build bundle and generate PDFs
 
 # Build is done for all pushes except the master branch.
-# In master, this workflow is called as a
+# In master, this workflow is called through deploy.yml
 on:
   push:
     branches-ignore: [master]
