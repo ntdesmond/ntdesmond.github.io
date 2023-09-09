@@ -32,6 +32,7 @@ import type { LanguageProficiency } from './data/languages';
 import type { WorkEntryId, WorkExperience } from './data/work';
 import type { Education, EducationId } from './data/education';
 import type { ProgrammingLanguageId, TechSkillId } from './data/tech_skills';
+import { Publication, PublicationId } from './data/publications';
 
 const CVDocument = () => {
   const [allTags, setTags] = useState<Set<string>>(new Set(['Frontend', 'Backend']));
@@ -163,7 +164,7 @@ const CVDocument = () => {
               ).map(([id, project]) => (
                 <HStack key={id} justify="space-between" align="center">
                   <Box>
-                    <Heading size="md">
+                    <Heading size="sm">
                       <Link href={project.url} isExternal>
                         {project.name}
                       </Link>
@@ -173,6 +174,28 @@ const CVDocument = () => {
                   </Box>
                   <Box width="10em">
                     <TagList tags={project.tags} print />
+                  </Box>
+                </HStack>
+              ))}
+            </VStack>
+          </Section>
+          <Section title={t('sections.publications.title')}>
+            <VStack align="stretch" spacing="1em">
+              {Object.entries(
+                t('sections.publications.content', { returnObjects: true }) as Record<
+                  PublicationId,
+                  Publication
+                >,
+              ).map(([id, publication]) => (
+                <HStack key={id} justify="space-between" align="center">
+                  <Box>
+                    <Heading size="sm">
+                      <Link href={publication.url} isExternal>
+                        {publication.name}
+                      </Link>
+                    </Heading>
+                    <Text>{publication.type}</Text>
+                    <Text>{publication.date}</Text>
                   </Box>
                 </HStack>
               ))}
