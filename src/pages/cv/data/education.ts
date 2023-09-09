@@ -14,7 +14,7 @@ const education = merge({
     iu: {
       specialty: 'Computer science, Bachelor',
       organization: 'Innopolis University',
-      period: '2021 — 2023',
+      period: '2019 — 2023',
     },
   },
   ru: {

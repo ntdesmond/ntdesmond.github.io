@@ -8,6 +8,7 @@ import soft_skills from './pages/cv/data/soft_skills';
 import summary from './pages/cv/data/summary';
 import info from './pages/cv/data/info';
 import tech_skills from './pages/cv/data/tech_skills';
+import publications from './pages/cv/data/publications';
 
 i18n.use(initReactI18next).init({
   resources: {
@@ -34,6 +35,11 @@ i18n.use(initReactI18next).init({
           projects: {
             title: 'Projects',
             content: projects.en,
+          },
+
+          publications: {
+            title: 'Publications',
+            content: publications.en,
           },
 
           tech_skills: {
@@ -96,6 +102,11 @@ i18n.use(initReactI18next).init({
           education: {
             title: 'Образование',
             content: education.ru,
+          },
+
+          publications: {
+            title: 'Публикации',
+            content: publications.ru,
           },
 
           languages: {

@@ -32,6 +32,7 @@ import type { LanguageProficiency } from './data/languages';
 import type { WorkEntryId, WorkExperience } from './data/work';
 import type { Education, EducationId } from './data/education';
 import type { ProgrammingLanguageId, TechSkillId } from './data/tech_skills';
+import { Publication, PublicationId } from './data/publications';
 
 const CVDocument = () => {
   const [allTags, setTags] = useState<Set<string>>(new Set(['Frontend', 'Backend']));
@@ -58,7 +59,7 @@ const CVDocument = () => {
   const tagsContextValue = useMemo(() => ({ tags: allTags, pushTag }), [pushTag, allTags]);
 
   return (
-    <Grid rowGap="1em" columnGap="3em" margin={isPrintMode ? '0' : '2em'}>
+    <Grid rowGap="1em" columnGap="3em" margin={isPrintMode ? 0 : { base: 0, md: 4 }}>
       <TagsContext.Provider value={tagsContextValue}>
         <GridItem sx={{ '@media print': { gridColumn: 'span 2' } }} colSpan={{ base: 1, md: 2 }}>
           <Stack
@@ -67,7 +68,11 @@ const CVDocument = () => {
             align="center"
             spacing="0"
           >
-            <Box margin="0">
+            <Box
+              margin="0"
+              sx={{ '@media print': { textAlign: 'left' } }}
+              textAlign={{ base: 'center', md: 'left' }}
+            >
               <Heading as="h1" size="xl" fontFamily="cv_name" whiteSpace="nowrap">
                 {t('info.cv_name')}
               </Heading>
@@ -159,7 +164,7 @@ const CVDocument = () => {
               ).map(([id, project]) => (
                 <HStack key={id} justify="space-between" align="center">
                   <Box>
-                    <Heading size="md">
+                    <Heading size="sm">
                       <Link href={project.url} isExternal>
                         {project.name}
                       </Link>
@@ -169,6 +174,28 @@ const CVDocument = () => {
                   </Box>
                   <Box width="10em">
                     <TagList tags={project.tags} print />
+                  </Box>
+                </HStack>
+              ))}
+            </VStack>
+          </Section>
+          <Section title={t('sections.publications.title')}>
+            <VStack align="stretch" spacing="1em">
+              {Object.entries(
+                t('sections.publications.content', { returnObjects: true }) as Record<
+                  PublicationId,
+                  Publication
+                >,
+              ).map(([id, publication]) => (
+                <HStack key={id} justify="space-between" align="center">
+                  <Box>
+                    <Heading size="sm">
+                      <Link href={publication.url} isExternal>
+                        {publication.name}
+                      </Link>
+                    </Heading>
+                    <Text>{publication.type}</Text>
+                    <Text>{publication.date}</Text>
                   </Box>
                 </HStack>
               ))}
