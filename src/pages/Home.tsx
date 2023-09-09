@@ -1,5 +1,4 @@
-import { Link as RouteLink } from 'react-router-dom';
-import { Text, Heading, Link, Box } from '@chakra-ui/react';
+import { Text, Heading, Link, Box, ListItem, UnorderedList } from '@chakra-ui/react';
 import Layout from '../components/layout/Layout';
 
 const Home = () => (
@@ -12,8 +11,8 @@ const Home = () => (
         </Text>{' '}
         here.
       </Text>
-      <Heading size="lg" marginY="0.5em">
-        Who?
+      <Heading size="md" marginY="0.5em">
+        About me
       </Heading>
       <Text>
         <Text as="span" fontFamily="mono">
@@ -24,19 +23,38 @@ const Home = () => (
       <Text>
         My real name is <b>Vladislav Safonov</b>, I am a software developer. In 2023, I finished my
         bachelor&#39;s degree at{' '}
-        <Link href="https://innopolis.university/">Innopolis University</Link>.
+        <Link href="https://innopolis.university/" isExternal>
+          Innopolis University
+        </Link>
+        .
       </Text>
-      <Heading size="lg" marginY="0.5em">
-        So?
-      </Heading>
       <Text>
-        Originally this site is meant to hold my{' '}
-        <Link as={RouteLink} to="/cv">
-          CV
-        </Link>{' '}
-        written in React.
+        By the way, I made my thesis publicly available at{' '}
+        <Link href="https://dx.doi.org/10.13140/RG.2.2.24800.25609" isExternal>
+          ResearchGate
+        </Link>
+        .
       </Text>
-      <Text>Probably, I will add more stuff here later, we&#39;ll see.</Text>
+      <Heading size="md" marginY="0.5em">
+        Links
+      </Heading>
+      <UnorderedList>
+        <ListItem>
+          <Link href="https://t.me/ntdesmond" isExternal>
+            telegram
+          </Link>
+        </ListItem>
+        <ListItem>
+          <Link href="https://t.me/the_moon_bear" isExternal>
+            telegram channel (ru)
+          </Link>
+        </ListItem>
+        <ListItem>
+          <Link href="https://github.com/ntdesmond" isExternal>
+            github profile
+          </Link>
+        </ListItem>
+      </UnorderedList>
     </Box>
   </Layout>
 );
