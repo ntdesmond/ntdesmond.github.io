@@ -58,7 +58,7 @@ const CVDocument = () => {
   const tagsContextValue = useMemo(() => ({ tags: allTags, pushTag }), [pushTag, allTags]);
 
   return (
-    <Grid rowGap="1em" columnGap="3em" margin={isPrintMode ? '0' : '2em'}>
+    <Grid rowGap="1em" columnGap="3em" margin={isPrintMode ? 0 : { base: 0, md: 4 }}>
       <TagsContext.Provider value={tagsContextValue}>
         <GridItem sx={{ '@media print': { gridColumn: 'span 2' } }} colSpan={{ base: 1, md: 2 }}>
           <Stack
@@ -67,7 +67,11 @@ const CVDocument = () => {
             align="center"
             spacing="0"
           >
-            <Box margin="0">
+            <Box
+              margin="0"
+              sx={{ '@media print': { textAlign: 'left' } }}
+              textAlign={{ base: 'center', md: 'left' }}
+            >
               <Heading as="h1" size="xl" fontFamily="cv_name" whiteSpace="nowrap">
                 {t('info.cv_name')}
               </Heading>

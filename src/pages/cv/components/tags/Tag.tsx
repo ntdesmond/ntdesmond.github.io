@@ -44,6 +44,7 @@ const Tag = ({
           fontWeight={isSelected ? 'bold' : 'normal'}
           color={isSelected ? 'blue.800' : undefined}
           textDecoration="underline dotted 1px"
+          textAlign="center"
           as={RouteLink}
           to={target}
         >
