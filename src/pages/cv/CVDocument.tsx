@@ -17,7 +17,7 @@ import {
   useMediaQuery,
 } from '@chakra-ui/react';
 import { useLocation } from 'react-router-dom';
-import { AiFillGithub } from 'react-icons/ai';
+import { AiFillGithub, AiFillLinkedin } from 'react-icons/ai';
 import { MdMail, MdLocationPin } from 'react-icons/md';
 import TelegramIcon from './components/icons/TelegramIcon';
 import TagsContext from './contexts/TagsContext';
@@ -83,15 +83,16 @@ const CVDocument = () => {
             <Box whiteSpace="nowrap">
               <Grid
                 margin="2em"
-                gridTemplateRows="repeat(4, auto)"
+                gridTemplateRows="repeat(5, auto)"
                 columnGap="0.5em"
                 gridAutoFlow="column"
               >
+                <Icon as={AiFillLinkedin} boxSize="1.5em" />
                 <Icon as={AiFillGithub} boxSize="1.5em" />
                 <Icon as={MdMail} boxSize="1.5em" />
                 <TelegramIcon boxSize="1.5em" />
                 <Icon as={MdLocationPin} boxSize="1.5em" />
-                {['github', 'mail', 'telegram', 'location'].map((key) => (
+                {['linkedin', 'github', 'mail', 'telegram', 'location'].map((key) => (
                   <Text key={key}>
                     <Trans
                       t={t}
