@@ -88,7 +88,7 @@ i18n.use(initReactI18next).init({
           },
 
           projects: {
-            title: 'Projects',
+            title: 'Проекты',
             content: projects.ru,
           },
 
